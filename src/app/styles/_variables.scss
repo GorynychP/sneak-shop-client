@@ -1,0 +1,49 @@
+:root {
+    --font-family-base: 'Rubik', sans-serif;
+
+    --logistic-color: #5b6ecc;
+    --habitation-color: #c850a0;
+    --leisure-color: #00a76a;
+    --security-color: #b89068;
+    --travel-guide-color: #577b91;
+
+    --plus-color: #36ac32;
+    --minus-color: #e22626;
+
+    --gradient-color-right: linear-gradient(to right, #5b6ecc, #c850a0, #00a76a, #b89068, #577b91);
+    --gradient-color-top: linear-gradient(to top, #5b6ecc, #c850a0, #00a76a, #b89068, #577b91);
+
+    --border: 1px solid var(--color-dark-alt);
+    --border-accent: 1px solid var(--color-accent);
+    --border-radius: 14px;
+    --border-radius-small: 7px;
+    --border-radius-large: 20px;
+
+    // --shadow: 0px 14px 4px rgba(0, 0, 0, 0.5);
+    --shadow: 0 5px 14px rgba(0, 0, 0, 0.15);
+
+    --container-width: 1340px;
+    --container-padding-x: 14px;
+
+    --container-width-small: 1250px;
+    --container-padding-x-small: 10px;
+
+    --sections-padding-y: 70px;
+
+    --input-height: 59px;
+    --button-height: 68px;
+
+    --transition-duration: 0.2s;
+
+    --button-z-index: 50;
+    --dropdown-z-index: 80;
+    --modal-z-index: 100;
+
+    @include desktop {
+        --sections-padding-y: 50px;
+    }
+
+    @include mobile {
+        --sections-padding-y: 30px;
+    }
+}

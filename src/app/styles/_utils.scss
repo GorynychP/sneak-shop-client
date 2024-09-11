@@ -1,0 +1,35 @@
+.container {
+    max-width: calc(var(--container-width) + var(--container-padding-x) * 2);
+    margin-inline: auto;
+    padding-inline: var(--container-padding-x);
+    // padding-bottom: var(--sections-padding-y);
+}
+
+.container-small-layout {
+    max-width: calc(var(--container-width-small) + var(--container-padding-x-small) * 2);
+    margin-inline: auto;
+    padding-inline: var(--container-padding-x-small);
+}
+.container-small {
+    max-width: calc(var(--container-width-small) + var(--container-padding-x-small) * 2);
+    margin-inline: auto;
+    padding-inline: var(--container-padding-x-small);
+    @include mobile-s() {
+        padding-inline: 0px;
+    }
+}
+
+.visually-hidden {
+    @include visually-hidden;
+}
+
+.hidden-mobile {
+    @include mobile {
+        display: none !important;
+    }
+}
+.visible-mobile {
+    @include mobile-above {
+        display: none !important;
+    }
+}
