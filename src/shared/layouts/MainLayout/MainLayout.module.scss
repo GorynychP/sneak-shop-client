@@ -1,0 +1,54 @@
+@import '@/app/styles/media';
+
+.MainLayout {
+    --headerHeight: 85px;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: var(--headerHeight) 1fr;
+
+    .header {
+        position: sticky;
+        top: 0px;
+        z-index: 100;
+    }
+    .main {
+        display: grid;
+        grid-template-columns: 1fr;
+        min-height: calc(100vh - var(--headerHeight));
+        // min-height: 100vh;
+
+        .sidebar {
+            position: sticky;
+            top: var(--headerHeight);
+            display: flex;
+            justify-content: end;
+            height: 80vh;
+            // height: 740px;
+        }
+        .content {
+            height: 100%;
+
+            // min-height: 100vh;
+        }
+        // .right {
+        //     padding: 32px;
+        // }
+    }
+    .footer {
+        display: flex;
+        align-items: center;
+        margin-top: 50px;
+        padding-block: 20px;
+        padding-inline: 40px;
+        height: 130px;
+        @include tablet() {
+            padding-block: 20px;
+            padding-inline: 30px;
+        }
+        @include mobile() {
+            padding-block: 15px;
+            padding-inline: 15px;
+        }
+    }
+}

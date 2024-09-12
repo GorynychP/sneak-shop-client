@@ -1,0 +1,50 @@
+.header {
+    --headerHeight: 85px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: var(--headerHeight);
+    background: var(--bg);
+
+    .header-left {
+        width: 600px;
+        height: var(--headerHeight);
+        background: var(--bg-light);
+
+        &-block {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            width: 540px;
+            height: var(--headerHeight);
+            background: var(--bg-dark);
+
+            &-links {
+                display: flex;
+                gap: 32px;
+            }
+        }
+    }
+
+    .header-right {
+        @include flex-center;
+        gap: 32px;
+        &-block {
+            @include flex-center;
+            gap: 32px;
+
+            // height: var(--headerHeight);
+            // background: var(--bg-dark);
+
+            &-links {
+                @include flex-center;
+                @include square(42px);
+
+                @include hover() {
+                    background: var(--bg-dark);
+                    border-radius: 50%;
+                }
+            }
+        }
+    }
+}

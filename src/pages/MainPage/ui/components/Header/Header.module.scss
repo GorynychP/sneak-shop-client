@@ -1,0 +1,27 @@
+@import '@/app/styles/mixins.scss';
+
+.Header {
+    display: flex;
+
+    .rightBlockInfo {
+        @include flex-center();
+        // display: flex;
+        // justify-content: center;
+        width: 100%;
+
+        .info {
+            display: flex;
+            width: 380px;
+            height: 533px;
+            flex-direction: column;
+            gap: 32px;
+
+            .title {
+                color: var(--text-accent);
+            }
+            .description {
+                text-align: start;
+            }
+        }
+    }
+}

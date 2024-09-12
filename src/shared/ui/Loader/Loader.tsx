@@ -1,5 +1,4 @@
 import clsx from 'clsx';
-import './Loader.scss';
 
 interface LoaderProps {
     className?: string;
