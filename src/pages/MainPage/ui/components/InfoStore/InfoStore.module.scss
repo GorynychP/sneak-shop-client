@@ -1,0 +1,25 @@
+@import '@/app/styles/mixins.scss';
+.InfoStore {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: var(--bg-light);
+    padding: 30px 60px;
+    .flexDivСolum {
+        @include flex-center();
+        flex-direction: column;
+        gap: 10px;
+        .flexDiv {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            h3 {
+                margin: 0;
+
+                font-size: 24px;
+                max-width: 112px;
+            }
+        }
+    }
+}

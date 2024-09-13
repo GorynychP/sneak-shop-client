@@ -22,6 +22,13 @@
             &-links {
                 display: flex;
                 gap: 32px;
+                a {
+                    padding: 10px;
+                    @include hover() {
+                        background: var(--bg-light);
+                        border-radius: 50%;
+                    }
+                }
             }
         }
     }

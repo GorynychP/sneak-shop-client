@@ -1,0 +1,43 @@
+@import '@/app/styles/mixins.scss';
+@import '@/app/styles/media.scss';
+.Footer {
+    @include flex-center();
+    gap: 50px;
+    padding: 50px;
+
+    .nameBrandAndPhone,
+    .infoShop,
+    .contacts {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: space-between;
+        gap: 10px;
+
+        h2 {
+            margin: 0;
+            color: var(--text-accent);
+        }
+    }
+
+    .nameBrandAndPhone {
+        gap: 14px;
+    }
+
+    .networks {
+        display: flex;
+        gap: 20px;
+
+        a {
+            @include square(48px);
+            @include flex-center();
+            @include hover() {
+                background: var(--bg-dark);
+                border-radius: 50%;
+            }
+            svg {
+                height: 28px;
+            }
+        }
+    }
+}
