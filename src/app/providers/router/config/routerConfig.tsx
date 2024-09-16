@@ -1,5 +1,7 @@
+import { CatalogPage } from '@/pages/CatalogPage';
 import { MainPage } from '@/pages/MainPage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
+import { ProductDetailsPage } from '@/pages/ProductDetailsPage';
 import {
     AppRoutes,
     getRouteMain,
@@ -7,6 +9,9 @@ import {
     getRouteForMen,
     getRouteForWomen,
     getRouteSale,
+    getRouteForMenDetails,
+    getRouteForWomenDetails,
+    getRouteSaleDetails,
 } from '@/shared/const/router';
 
 export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
@@ -17,15 +22,28 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     },
     [AppRoutes.FOR_MEN]: {
         path: getRouteForMen(),
-        element: <>Страница для мужских товаров</>,
+        element: <CatalogPage />,
     },
     [AppRoutes.FOR_WOMEN]: {
         path: getRouteForWomen(),
-        element: <>Страница для женских товаров</>,
+        element: <CatalogPage />,
     },
     [AppRoutes.SALE]: {
         path: getRouteSale(),
-        element: <>Страница Распродаж</>,
+        element: <CatalogPage />,
+    },
+
+    [AppRoutes.PRODUCT_DETAILS_FOR_MEN]: {
+        path: getRouteForMenDetails(':id'),
+        element: <ProductDetailsPage />,
+    },
+    [AppRoutes.PRODUCT_DETAILS_FOR_WOMEN]: {
+        path: getRouteForWomenDetails(':id'),
+        element: <ProductDetailsPage />,
+    },
+    [AppRoutes.PRODUCT_DETAILS_SALE]: {
+        path: getRouteSaleDetails(':id'),
+        element: <ProductDetailsPage />,
     },
 
     [AppRoutes.NOT_FOUND]: {

@@ -4,20 +4,14 @@ import cls from './Card.module.scss';
 
 import FavoritesIcon from '@/shared/assets/icon/heartCard.svg';
 import FavoritesLikeIcon from '@/shared/assets/icon/heartRed.svg';
+import { I_ProductSneakers } from '@/entities/Sneakers';
 
-interface I_ProductSneaker {
-    name: string;
-    icon: string;
-    price: number;
-    rating: number;
-    discount?: number;
-}
 interface CardProps {
     className?: string;
-    productSneaker: I_ProductSneaker;
+    product: I_ProductSneakers;
 }
 
-export const Card = memo(({ className, productSneaker }: CardProps) => {
+export const Card = memo(({ className, product: productSneaker }: CardProps) => {
     const { name, icon, price, discount, rating } = productSneaker || {};
     const [isFavorites, setIsFavorites] = useState(false);
     const onFavorites = () => {
@@ -52,12 +46,12 @@ export const Card = memo(({ className, productSneaker }: CardProps) => {
                                 <div className={cls.line} />
                                 <p>
                                     {price}
-                                    руб.
+                                    $.
                                 </p>
                             </div>
                         )}
                         <p style={{ color: colorPrice }} className={cls.price}>
-                            {discountPrice()} руб.
+                            {discountPrice()} $.
                         </p>
                     </div>
                 </div>

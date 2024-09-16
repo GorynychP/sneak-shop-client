@@ -1,0 +1,13 @@
+.Breadcrumb {
+    padding: 28px 0 20px 48px;
+    .link {
+        color: var(--link);
+        font-size: 20px;
+    }
+    .link:not(:last-child)::after {
+        content: '>';
+        color: var(--text);
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}

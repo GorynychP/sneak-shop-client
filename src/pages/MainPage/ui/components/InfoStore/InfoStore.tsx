@@ -18,7 +18,7 @@ export const InfoStore = memo(({ className }: InfoStoreProps) => {
                     <img width={92} height={82} src={DeliveryTruckIcon} alt="delivery-truck" />{' '}
                     <h3>Быстрая доставка</h3>
                 </div>
-                <p>Курьером, почтой России</p>
+                <p>Курьером, почтой Мира</p>
             </div>
             <div className={cls.flexDivСolum}>
                 <div className={cls.flexDiv}>
@@ -30,7 +30,7 @@ export const InfoStore = memo(({ className }: InfoStoreProps) => {
                 <div className={cls.flexDiv}>
                     <img width={62} height={62} src={ReturnIcon} alt="return" /> <h3>Легкий возврат</h3>
                 </div>
-                <p>Почтой России</p>
+                <p>Почтой Мира</p>
             </div>
             <div className={cls.flexDivСolum}>
                 <div className={cls.flexDiv}>

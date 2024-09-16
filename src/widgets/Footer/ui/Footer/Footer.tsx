@@ -15,7 +15,7 @@ export const Footer = memo(({ className }: FooterProps) => {
         <div className={clsx(cls.Footer, [className])}>
             <div className={cls.nameBrandAndPhone}>
                 <h2>SneakShop</h2>
-                <p>+7 (ХХХ) ХХ ХХ ХХХ</p>
+                <p>+XX (ХХХ) ХХ ХХ ХХХ</p>
             </div>
             <div className={cls.infoShop}>
                 <AppLink to="#">О нас</AppLink>
@@ -28,13 +28,13 @@ export const Footer = memo(({ className }: FooterProps) => {
                 <AppLink to="#">Политика конфиденциальности</AppLink>
             </div>
             <div className={cls.networks}>
-                <AppLink to="#">
+                <AppLink target="_blank" to="#">
                     <TelegramLogo />
                 </AppLink>
-                <AppLink to="#">
+                <AppLink target="_blank" to="#">
                     <TwitterLogo />
                 </AppLink>
-                <AppLink to="#">
+                <AppLink target="_blank" to="#">
                     <InstagramLogo />
                 </AppLink>
             </div>
