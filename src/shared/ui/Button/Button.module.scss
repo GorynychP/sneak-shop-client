@@ -1,0 +1,55 @@
+.Button {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: var(--text);
+    gap: 8px;
+    padding: 8px 16px;
+    &:not(:disabled):hover {
+        color: var(--text-accent);
+    }
+}
+
+.filled {
+    background: var(--bg-light);
+    border: none;
+    outline: none;
+    padding: 8px 16px;
+    border-radius: 34px;
+}
+
+.outline {
+    background: none;
+    border: 2px solid var(--icon-redesigned);
+    border-radius: 34px;
+}
+.outline_cancel {
+    border: 2px solid var(--cancel-redesigned);
+    color: var(--cancel-redesigned);
+    background: none;
+    border-radius: 34px;
+}
+.outline_save {
+    border: 2px solid var(--save-redesigned);
+    background: none;
+    color: var(--save-redesigned);
+    border-radius: 34px;
+}
+
+.disabled {
+    cursor: default;
+    opacity: 0.5;
+}
+
+.fullWidth {
+    width: 100%;
+}
+
+.addonLeft,
+.addonRight {
+    display: flex;
+}
+
+// .withAddon {
+//     padding: 0 2px 0 12px;
+// }

@@ -1,9 +1,14 @@
+@import '@/app/styles/media.scss';
+
 .Breadcrumb {
-    padding: 28px 0 20px 48px;
     .link {
-        color: var(--link);
+        color: var(--text-accent-light);
         font-size: 20px;
+        @include hover() {
+            color: var(--text-accent);
+        }
     }
+
     .link:not(:last-child)::after {
         content: '>';
         color: var(--text);

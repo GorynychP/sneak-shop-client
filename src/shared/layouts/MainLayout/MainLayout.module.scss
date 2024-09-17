@@ -28,6 +28,7 @@
         }
         .content {
             height: 100%;
+            min-height: 100vh;
 
             // min-height: 100vh;
         }
@@ -38,10 +39,7 @@
     .footer {
         display: flex;
         align-items: center;
-        margin-top: 50px;
-        padding-block: 20px;
-        padding-inline: 40px;
-        height: 130px;
+        justify-content: center;
         @include tablet() {
             padding-block: 20px;
             padding-inline: 30px;

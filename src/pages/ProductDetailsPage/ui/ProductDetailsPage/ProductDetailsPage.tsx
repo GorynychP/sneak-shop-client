@@ -1,12 +1,13 @@
 import { Breadcrumb } from '@/features/Breadcrumbs';
+import { Page } from '@/widgets/Page';
 import { memo } from 'react';
 
 const ProductDetailsPage = memo(() => {
     return (
-        <div className="ProductDetailsPage">
+        <Page className="ProductDetailsPage">
             <Breadcrumb />
             <h1>ProductDetailsPage</h1>
-        </div>
+        </Page>
     );
 });
 export default ProductDetailsPage;

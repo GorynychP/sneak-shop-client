@@ -6,7 +6,7 @@ import { SneakersBlocks } from '@/entities/Sneakers';
 const MainPage = memo(() => {
     return (
         <div className="MainPage">
-            <Header />
+            <Header height="650px" />
             <SneakersBlocks />
             <InfoStore />
         </div>

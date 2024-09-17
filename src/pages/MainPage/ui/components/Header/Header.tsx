@@ -5,16 +5,15 @@ import BrandSneakersImage from '@/shared/assets/brand-icon.png';
 import { Background } from '@/widgets/Background';
 interface HeaderProps {
     className?: string;
+    height?: string;
 }
 
-export const Header = memo(({ className }: HeaderProps) => {
+export const Header = memo(({ className, height }: HeaderProps) => {
     return (
-        <div className={clsx(cls.Header, [className])}>
-            <div className={cls.leftBlockImage}>
-                <Background height="650px">
-                    <img width={470} src={BrandSneakersImage} />
-                </Background>
-            </div>
+        <div style={{ height }} className={clsx(cls.Header, [className])}>
+            <Background height={height}>
+                <img width={470} height={530} src={BrandSneakersImage} />
+            </Background>
             <div className={cls.rightBlockInfo}>
                 <div className={cls.info}>
                     <h1 className={cls.title}>SneakShop</h1>

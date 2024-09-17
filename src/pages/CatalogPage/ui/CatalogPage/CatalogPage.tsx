@@ -1,11 +1,18 @@
 import { Breadcrumb } from '@/features/Breadcrumbs';
+import { Page } from '@/widgets/Page';
 import { memo } from 'react';
+import { TitleCatalog } from '../components/TitleCatalog/TitleCatalog';
+import { SortDropdown } from '@/features/sort';
 
 const CatalogPagePage = memo(() => {
     return (
-        <div className="CatalogPagePage">
+        <Page className="CatalogPagePage">
             <Breadcrumb />
-        </div>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <TitleCatalog countProduct={4} />
+                <SortDropdown />
+            </div>
+        </Page>
     );
 });
 

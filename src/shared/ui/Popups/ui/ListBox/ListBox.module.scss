@@ -1,0 +1,43 @@
+.options {
+    position: absolute;
+    background: var(--bg);
+    border-radius: 12px;
+    border: 2px solid var(--bg-light);
+    z-index: var(--dropdown-z-index);
+    box-shadow: var(--shadow);
+    cursor: pointer;
+}
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+.disabled {
+    opacity: 0.7;
+}
+.readonly {
+    opacity: 0.8;
+}
+.selected {
+    background: var(--bg-light);
+    color: var(--text-accent);
+}
+
+.circle {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    // border: 1px solid var(--bg-dark);
+    margin-left: 20px;
+    // background: var(--bg-dark);
+}
+
+.borderedCircle {
+    border: 1px solid var(--bg-dark);
+    background-color: transparent;
+}
+.filledCircle {
+    background-color: var(--bg-dark);
+}

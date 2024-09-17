@@ -9,9 +9,9 @@ function App() {
     const { theme } = useTheme();
 
     return (
-        <main id="app" className={clsx('sneak-shop', [theme, 'container-small-layout'])}>
+        <div id="app" className={clsx('sneak-shop', [theme, 'container-small-layout'])}>
             <MainLayout header={<Navbar />} content={<AppRouter />} footer={<Footer />} />
-        </main>
+        </div>
     );
 }
 

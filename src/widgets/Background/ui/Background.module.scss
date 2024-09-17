@@ -1,9 +1,21 @@
 .Background {
-    width: 600px;
+    position: relative;
+    width: 100%;
+
     // min-height: 100vh;
     // background: var(--bg-light-30);
+    .background1 {
+        position: absolute;
+        width: 600px;
+        z-index: -1;
+
+        // min-height: 100vh;
+        // background: var(--bg-dark-30);
+    }
     .background2 {
+        position: absolute;
         width: 540px;
+        z-index: -1;
         // min-height: 100vh;
         // background: var(--bg-dark-30);
     }

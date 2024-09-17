@@ -3,9 +3,6 @@ import clsx from 'clsx';
 import { AppLink } from '@/shared/ui/AppLink';
 import { getRouteMain } from '@/shared/const/router';
 
-// import AppSneakersImage3 from '@/shared/assets/icon/sneakers2.svg?react';
-// import AppSneakersImage2 from '@/shared/assets/icon/sneakers-profil.svg?react';
-// import AppSneakersImage1 from '@/shared/assets/icon/sneakers 1.svg?react';
 import AppSneakersImage from '@/shared/assets/icon/sneakers.svg';
 import CartImage from '@/shared/assets/icon/cart.svg';
 import FavoriteImage from '@/shared/assets/icon/heart.svg';
@@ -23,9 +20,6 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                 <div className="header-left-block">
                     <AppLink to={getRouteMain()}>
                         <img src={AppSneakersImage} />
-                        {/* <AppSneakersImage1 width={34} height={32} /> */}
-                        {/* <AppSneakersImage2 width={34} height={32} /> */}
-                        {/* <AppSneakersImage3 width={34} height={32} /> */}
                     </AppLink>
                     <div className="header-left-block-links">
                         <AppLink to="./ForMen">Мужские</AppLink>

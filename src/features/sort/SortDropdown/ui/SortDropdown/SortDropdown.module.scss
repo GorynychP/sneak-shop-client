@@ -1,0 +1,14 @@
+.SortDropdown {
+    .arrowDown,
+    .arrowUp {
+        width: 14px;
+        height: 14px;
+    }
+
+    .arrowDown {
+        transform: rotate(180deg);
+    }
+    .arrowUp {
+        transform: rotate(0deg);
+    }
+}
