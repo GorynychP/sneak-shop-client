@@ -9,7 +9,7 @@ interface BackgroundProps {
     height?: string;
 }
 
-export const Background = memo(({ className, children, height = '100vh' }: BackgroundProps) => {
+export const Background = memo(({ className, children, height = '100%' }: BackgroundProps) => {
     const location = useLocation();
     const IsLocationPathHome = location.pathname === '/';
     const background1 = IsLocationPathHome ? 'var(--bg-light)' : 'var(--bg-light-30)';
@@ -18,7 +18,7 @@ export const Background = memo(({ className, children, height = '100vh' }: Backg
         <div className={clsx(cls.Background, [className])}>
             <div style={{ height, background: background1 }} className={cls.background1}></div>
             <div
-                style={{ height: IsLocationPathHome ? '590px' : '100vh', background: background2 }}
+                style={{ height: IsLocationPathHome ? '590px' : '100%', background: background2 }}
                 className={cls.background2}
             ></div>
             {children}

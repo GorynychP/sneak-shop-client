@@ -12,7 +12,7 @@ interface CardProps {
 }
 
 export const Card = memo(({ className, product: productSneaker }: CardProps) => {
-    const { name, icon, price, discount, rating } = productSneaker || {};
+    const { title, images, price, discount, rating } = productSneaker || {};
     const [isFavorites, setIsFavorites] = useState(false);
     const onFavorites = () => {
         setIsFavorites(!isFavorites);
@@ -26,12 +26,12 @@ export const Card = memo(({ className, product: productSneaker }: CardProps) => 
     return (
         <div className={clsx(cls.Card, [className])}>
             <div className={cls.cardImage}>
-                <img src={icon} alt={name} />
+                <img src={images[0]} alt={title} />
                 <span className={cls.cardRating}>★ {rating}</span>
             </div>
 
             <div className={cls.cardInfo}>
-                <p className={cls.cardTitle}>{name}</p>
+                <p className={cls.cardTitle}>{title}</p>
                 <div className={cls.cardLikeAndPrice}>
                     <img
                         width={32}

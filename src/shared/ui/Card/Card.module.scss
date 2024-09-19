@@ -1,8 +1,10 @@
 .Card {
     display: flex;
     flex-direction: column;
-    min-width: 240px;
-    min-height: 364px;
+    height: 364px;
+    width: 240px;
+    max-width: 240px;
+    max-height: 364px;
     padding: 12px;
     border: 1px solid var(--bg-dark);
     border-radius: 10px;

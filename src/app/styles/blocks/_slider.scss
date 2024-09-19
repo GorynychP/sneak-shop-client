@@ -1,0 +1,14 @@
+.rc-slider-rail {
+    background-color: var(--bg-dark) !important;
+}
+
+.rc-slider-track,
+.rc-slider-handle {
+    background-color: var(--text-accent) !important;
+    border: none !important;
+    opacity: 1 !important;
+}
+.rc-slider-handle-dragging {
+    border: none !important;
+    box-shadow: none !important;
+}
