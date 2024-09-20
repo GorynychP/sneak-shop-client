@@ -1,3 +1,4 @@
+@import '@/app/styles/mixins.scss';
 .Button {
     display: flex;
     align-items: center;
@@ -5,9 +6,9 @@
     color: var(--text);
     gap: 8px;
     padding: 8px 16px;
-    &:not(:disabled):hover {
-        color: var(--text-accent);
-    }
+    // &:not(:disabled):hover {
+    //     color: var(--text-accent);
+    // }
 }
 
 .filled {
@@ -18,11 +19,30 @@
     border-radius: 34px;
 }
 
+.accent_button {
+    background: var(--text-accent);
+    border: none;
+    outline: none;
+    border-radius: 12px;
+    color: var(--bg-light);
+}
+
+.icon_button {
+    @include flex-center();
+    @include square(42px);
+    background: transparent;
+    border: 1px solid var(--text-accent);
+    border-radius: 12px;
+    color: var(--bg-light);
+    padding: 0;
+}
+
 .outline {
     background: none;
     border: 2px solid var(--icon-redesigned);
     border-radius: 34px;
 }
+
 .outline_cancel {
     border: 2px solid var(--cancel-redesigned);
     color: var(--cancel-redesigned);

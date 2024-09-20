@@ -4,7 +4,13 @@ import cls from './Button.module.scss';
 import clsx from 'clsx';
 import { Mods } from '../Stack/Flex/Flex';
 
-export type ButtonTheme = 'filled' | 'outline' | 'outline_cancel' | 'outline_save';
+export type ButtonTheme =
+    | 'accent_button'
+    | 'icon_button'
+    | 'filled'
+    | 'outline'
+    | 'outline_cancel'
+    | 'outline_save';
 
 export enum ButtonSize {
     M = 'size_m',

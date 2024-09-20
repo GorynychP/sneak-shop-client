@@ -1,0 +1,14 @@
+.SneakersDetails {
+    .description {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        padding-inline: 50px;
+        .title {
+            margin: 0;
+        }
+        .text {
+            font-size: 22px;
+        }
+    }
+}

@@ -2,7 +2,11 @@ import { memo } from 'react';
 import clsx from 'clsx';
 import cls from './ProductInfo.module.scss';
 import { I_ProductSneakers } from '../../../model/types/sneakers';
-import { VStack } from '@/shared/ui/Stack';
+import { HStack, VStack } from '@/shared/ui/Stack';
+import { Existence } from '@/shared/ui/Existence';
+import { Button } from '@/shared/ui/Button';
+import { ButtonFavorites } from '@/features/ButtonFavorites';
+import CartIcon from '@/shared/assets/icon/shopping-cart.svg?react';
 
 interface ProductInfoProps {
     className?: string;
@@ -24,6 +28,13 @@ export const ProductInfo = memo(({ className, product }: ProductInfoProps) => {
                     ))}
                 </div>
             </VStack>
+            <Existence />
+            <HStack gap="8">
+                <Button addonLeft={<CartIcon className={cls.cartIcon} />} theme="accent_button">
+                    В корзину
+                </Button>
+                <ButtonFavorites />
+            </HStack>
         </div>
     );
 });

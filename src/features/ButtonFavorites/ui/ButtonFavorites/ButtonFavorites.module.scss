@@ -1,0 +1,39 @@
+.ButtonFavorites {
+    .favoriteOff,
+    .favoriteOn {
+        stroke: var(--text-accent);
+        fill: var(--bg);
+    }
+    .favoriteOn {
+        fill: var(--text-accent);
+        // color: var(--text-accent);
+        animation: favoritesOn 0.6s ease;
+    }
+    .favoriteOff {
+        animation: favoritesOff 0.6s ease;
+    }
+}
+
+@keyframes favoritesOn {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes favoritesOff {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.8);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
