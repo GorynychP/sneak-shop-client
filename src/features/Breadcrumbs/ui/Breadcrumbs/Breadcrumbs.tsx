@@ -7,9 +7,10 @@ import { getRouteMain } from '@/shared/const/router';
 
 interface BreadcrumbsProps {
     className?: string;
+    title?: string;
 }
 
-export const Breadcrumbs = memo(({ className }: BreadcrumbsProps) => {
+export const Breadcrumbs = memo(({ className, title }: BreadcrumbsProps) => {
     const location = useLocation();
 
     let currentLink = '';
@@ -21,10 +22,10 @@ export const Breadcrumbs = memo(({ className }: BreadcrumbsProps) => {
         const isLast = index === pathParts.length - 1;
 
         return isLast ? (
-            <span key={currentLink}>{crumb}</span>
+            <span key={currentLink}>{title ? title : crumb}</span>
         ) : (
             <AppLink key={currentLink} to={currentLink} className={cls.link}>
-                {crumb}
+                {title ? title : crumb}
             </AppLink>
         );
     });

@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import clsx from 'clsx';
 import { AppLink } from '@/shared/ui/AppLink';
-import { getRouteMain } from '@/shared/const/router';
+import { getRouteCart, getRouteMain } from '@/shared/const/router';
 
 import AppSneakersImage from '@/shared/assets/icon/sneakers.svg';
 import CartImage from '@/shared/assets/icon/cart.svg';
@@ -30,7 +30,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
             <div className="header-right">
                 <Input width="272px" height="48px" addonRight={<img src={SearchImage} />} />
                 <div className="header-right-block">
-                    <AppLink className="header-right-block-links" to="./ForMen">
+                    <AppLink className="header-right-block-links" to={getRouteCart()}>
                         <img width={34} height={32} src={CartImage} />
                     </AppLink>
                     <AppLink className="header-right-block-links" to="./ForWomen">

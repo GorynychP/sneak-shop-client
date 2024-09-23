@@ -1,0 +1,11 @@
+.Cart {
+    .ProductListCart {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        overflow: hidden;
+        overflow-y: auto;
+        height: 650px;
+        padding: 0px 20px;
+    }
+}

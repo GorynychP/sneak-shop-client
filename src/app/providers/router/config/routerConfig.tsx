@@ -1,3 +1,4 @@
+import { CartPage } from '@/pages/CartPage';
 import { CatalogPage } from '@/pages/CatalogPage';
 import { MainPage } from '@/pages/MainPage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
@@ -12,6 +13,7 @@ import {
     getRouteForMenDetails,
     getRouteForWomenDetails,
     getRouteSaleDetails,
+    getRouteCart,
 } from '@/shared/const/router';
 
 export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
@@ -44,6 +46,11 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     [AppRoutes.PRODUCT_DETAILS_SALE]: {
         path: getRouteSaleDetails(':id'),
         element: <ProductDetailsPage />,
+    },
+
+    [AppRoutes.CART]: {
+        path: getRouteCart(),
+        element: <CartPage />,
     },
 
     [AppRoutes.NOT_FOUND]: {

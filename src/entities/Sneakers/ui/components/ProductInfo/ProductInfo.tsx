@@ -7,6 +7,8 @@ import { Existence } from '@/shared/ui/Existence';
 import { Button } from '@/shared/ui/Button';
 import { ButtonFavorites } from '@/features/ButtonFavorites';
 import CartIcon from '@/shared/assets/icon/shopping-cart.svg?react';
+import { useNavigate } from 'react-router-dom';
+import { getRouteCart } from '@/shared/const/router';
 
 interface ProductInfoProps {
     className?: string;
@@ -14,13 +16,14 @@ interface ProductInfoProps {
 }
 
 export const ProductInfo = memo(({ className, product }: ProductInfoProps) => {
+    const navigate = useNavigate();
     const { rating, sizes } = product;
     return (
         <div className={clsx(cls.ProductInfo, [className])}>
             <h2 className={cls.title}>{product.title}</h2>
             <span className={cls.rating}>★ {rating.toFixed(1)}</span>
             <b className={cls.price}>{product.price} $.</b>
-            <VStack gap="20" className={cls.sizes}>
+            <VStack gap="16" className={cls.sizes}>
                 <p>Размер:</p>
                 <div className={cls.sizesNum}>
                     {sizes?.map((num) => (
@@ -30,7 +33,11 @@ export const ProductInfo = memo(({ className, product }: ProductInfoProps) => {
             </VStack>
             <Existence />
             <HStack gap="8">
-                <Button addonLeft={<CartIcon className={cls.cartIcon} />} theme="accent_button">
+                <Button
+                    onClick={() => navigate(getRouteCart())}
+                    addonLeft={<CartIcon className={cls.cartIcon} />}
+                    theme="accent_button"
+                >
                     В корзину
                 </Button>
                 <ButtonFavorites />

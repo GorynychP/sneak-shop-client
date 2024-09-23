@@ -27,6 +27,7 @@ h3,
 h4 {
     font-weight: 500;
     color: var(--text);
+    // margin: 0;
 }
 
 h1,
@@ -47,4 +48,19 @@ h3,
 h4,
 .h4 {
     @include fluid-text(22, 20);
+}
+
+*::-webkit-scrollbar {
+    width: 10px; /* ширина scrollbar */
+    height: 8px;
+}
+
+*::-webkit-scrollbar-track {
+    background: var(--bg); /* цвет дорожки */
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--bg-dark); /* цвет плашки */
+    border-radius: 20px; /* закругления плашки */
+    border: 1px solid var(--text-accent); /* padding вокруг плашки */
 }

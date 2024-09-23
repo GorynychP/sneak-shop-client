@@ -1,0 +1,32 @@
+.CartEmpty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    h2 {
+        color: #b4a1a1;
+        margin: 0;
+    }
+
+    p {
+        margin: 0;
+        font-size: 20px;
+        color: #b4a1a1;
+    }
+
+    button {
+        // color: #8a6a6a;
+        // background-color: #ebc6bb;
+        padding: 12px 24px;
+        .arrowIcon {
+            rotate: -90deg;
+            transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+        }
+        &:hover {
+            .arrowIcon {
+                transform: translateY(4px);
+            }
+        }
+    }
+}

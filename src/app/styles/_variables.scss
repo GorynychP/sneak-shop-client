@@ -29,6 +29,15 @@
     --dropdown-z-index: 80;
     --modal-z-index: 100;
 
+    --min: 4px;
+    --xxs: 8px;
+    --xs: 16px;
+    --s: 24px;
+    --m: 32px;
+    --l: 40px;
+    --xl: 48px;
+    --xxl: 56px;
+
     @include desktop {
         --sections-padding-y: 50px;
     }

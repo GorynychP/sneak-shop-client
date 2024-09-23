@@ -16,7 +16,7 @@ export const SneakersDetails = memo(({ className }: SneakersDetailsProps) => {
     const product = sneakersData[0];
     return (
         <VStack align="start" gap="44" className={clsx(cls.SneakersDetails, [className])}>
-            <HStack align="start" gap="44">
+            <HStack align="center" gap="44">
                 <ProductGallery product={product} />
                 <ProductInfo product={product} />
             </HStack>
