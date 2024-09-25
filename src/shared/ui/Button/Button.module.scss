@@ -36,6 +36,12 @@
     color: var(--bg-light);
     padding: 0;
 }
+.icon_button_no_border {
+    @include flex-center();
+    background: transparent;
+    border: none;
+    padding: 0;
+}
 
 .outline {
     background: none;

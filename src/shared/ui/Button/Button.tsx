@@ -7,6 +7,7 @@ import { Mods } from '../Stack/Flex/Flex';
 export type ButtonTheme =
     | 'accent_button'
     | 'icon_button'
+    | 'icon_button_no_border'
     | 'filled'
     | 'outline'
     | 'outline_cancel'

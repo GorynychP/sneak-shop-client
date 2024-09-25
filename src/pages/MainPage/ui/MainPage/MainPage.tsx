@@ -1,13 +1,13 @@
 import { memo } from 'react';
 import { Header } from '../components/Header/Header';
 import { InfoStore } from '../components/InfoStore/InfoStore';
-import { SneakersBlocks } from '@/entities/Sneakers';
+import { ProductSwiperBlocks } from '@/widgets/Product/ProductSwiperBlocks';
 
 const MainPage = memo(() => {
     return (
         <div className="MainPage">
             <Header height="650px" />
-            <SneakersBlocks />
+            <ProductSwiperBlocks />
             <InfoStore />
         </div>
     );

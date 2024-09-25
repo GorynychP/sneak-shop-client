@@ -4,7 +4,7 @@ import { memo } from 'react';
 import { TitleCatalog } from '../components/TitleCatalog/TitleCatalog';
 import { SortDropdown, SortSize } from '@/features/sort';
 import { HStack } from '@/shared/ui/Stack';
-import { SneakersList } from '@/entities/Sneakers';
+import { SneakersList } from '@/widgets/Product/SneakersList';
 
 const CatalogPagePage = memo(() => {
     return (
