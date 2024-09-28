@@ -9,7 +9,7 @@ import sneakerIcon4 from '@/shared/assets/Sneakers/For men/4.png';
 // import sneakerIcon9 from '@/shared/assets/Sneakers/For women/2.png';
 // import sneakerIcon10 from '@/shared/assets/Sneakers/For women/3.png';
 // import sneakerIcon11 from '@/shared/assets/Sneakers/For men/10.png';
-import { I_CartProduct } from '../types/cart';
+import { I_CartProduct } from '../model/types/cart';
 
 export const productCartData: I_CartProduct[] = [
     {

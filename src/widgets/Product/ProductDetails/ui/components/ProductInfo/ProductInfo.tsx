@@ -1,22 +1,18 @@
 import { memo, ReactElement } from 'react';
 import clsx from 'clsx';
 import cls from './ProductInfo.module.scss';
-import { I_Product } from '../../../model/types/sneakers';
+import { I_Product } from '../../../../../../entities/Product/model/types/sneakers';
 import { HStack, VStack } from '@/shared/ui/Stack';
 import { Existence } from '@/shared/ui/Existence';
-import { Button } from '@/shared/ui/Button';
-import CartIcon from '@/shared/assets/icon/shopping-cart.svg?react';
-import { useNavigate } from 'react-router-dom';
-import { getRouteCart } from '@/shared/const/router';
 
 interface ProductInfoProps {
     className?: string;
     product: I_Product;
     buttonFavorite: ReactElement;
+    buttonCart: ReactElement;
 }
 
-export const ProductInfo = memo(({ className, product, buttonFavorite }: ProductInfoProps) => {
-    const navigate = useNavigate();
+export const ProductInfo = memo(({ className, product, buttonFavorite, buttonCart }: ProductInfoProps) => {
     const { rating, sizes } = product;
     return (
         <div className={clsx(cls.ProductInfo, [className])}>
@@ -33,13 +29,7 @@ export const ProductInfo = memo(({ className, product, buttonFavorite }: Product
             </VStack>
             <Existence />
             <HStack gap="8">
-                <Button
-                    onClick={() => navigate(getRouteCart())}
-                    addonLeft={<CartIcon className={cls.cartIcon} />}
-                    theme="accent_button"
-                >
-                    В корзину
-                </Button>
+                {buttonCart}
                 {buttonFavorite}
             </HStack>
         </div>

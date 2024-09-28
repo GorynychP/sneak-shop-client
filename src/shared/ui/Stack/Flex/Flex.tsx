@@ -5,7 +5,7 @@ import clsx from 'clsx';
 
 export type Mods = Record<string, boolean | string | undefined>;
 export type FlexJustify = 'start' | 'center' | 'end' | 'between';
-export type FlexAlign = 'start' | 'center' | 'end';
+export type FlexAlign = 'start' | 'center' | 'end' | 'none';
 export type FlexDirection = 'row' | 'column';
 export type FlexGap = '4' | '8' | '12' | '16' | '20' | '24' | '28' | '32' | '44' | '50' | '64';
 
@@ -19,6 +19,7 @@ const alignClasses: Record<FlexAlign, string> = {
     start: cls.alignStart,
     center: cls.alignCenter,
     end: cls.alignEnd,
+    none: '',
 };
 const directionClasses: Record<FlexDirection, string> = {
     row: cls.directionRow,

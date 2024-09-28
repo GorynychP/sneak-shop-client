@@ -1,9 +1,6 @@
 .panel {
-    background: var(--dark-bg-redesigned);
+    // background: var(--dark-bg-redesigned);
     position: absolute;
-    // z-index: 1000;
     z-index: var(--modal-z-index);
-    // display: flex;
-    // flex-direction: column;
     padding: 15px;
 }

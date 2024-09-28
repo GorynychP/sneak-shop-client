@@ -1,0 +1,31 @@
+.FavoriteItem {
+    display: flex;
+    gap: 16px;
+    justify-content: space-between;
+    // padding-bottom: 16px;
+    padding: 0px 16px 16px 0px;
+
+    border-bottom: 1px solid var(--bg-dark);
+    width: 450px;
+    img {
+        border-radius: 12px;
+        width: 100px;
+        height: 100px;
+    }
+    .infoTop,
+    .infoBottom {
+        display: flex;
+        // flex-grow: 1;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .title,
+    .price {
+        font-size: 20px;
+        text-align: start;
+    }
+
+    .infoTop {
+    }
+}

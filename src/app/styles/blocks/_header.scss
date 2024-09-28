@@ -43,7 +43,7 @@
             // height: var(--headerHeight);
             // background: var(--bg-dark);
 
-            &-links {
+            &-link {
                 @include flex-center;
                 @include square(42px);
 

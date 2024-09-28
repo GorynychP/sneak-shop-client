@@ -50,6 +50,7 @@ export const Button: FC<ButtonProps> = forwardRef(
             [cls.fullWidth]: fullWidth,
             [cls.withAddon]: Boolean(addonLeft) || Boolean(addonRight),
         };
+
         return (
             <button
                 className={clsx(cls.Button, mods, [className, cls[theme], cls[size]])}

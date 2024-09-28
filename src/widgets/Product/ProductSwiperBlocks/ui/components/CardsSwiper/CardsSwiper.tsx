@@ -11,7 +11,7 @@ import { getRouteForMen, getRouteForWomen, getRouteMain, getRouteSale } from '@/
 import { ProductCard } from '@/entities/Product';
 import ArrowIcon from '@/shared/assets/icon/arrow.svg?react';
 import { I_Product } from '@/entities/Product/model/types/sneakers';
-import { ButtonFavorites } from '@/features/Product/ButtonFavorites';
+import { AddToFavoritesButton } from '@/features/Favorites/AddToFavoritesButton';
 
 type T_Tile = 'SALE' | 'FOR WOMEN' | 'FOR MEN';
 interface CardsSwiperProps {
@@ -58,7 +58,10 @@ export const CardsSwiper = memo(({ className, title, products }: CardsSwiperProp
                 >
                     {products.map((product) => (
                         <SwiperSlide key={product.id}>
-                            <ProductCard favoritesButton={<ButtonFavorites borderNone />} product={product} />
+                            <ProductCard
+                                favoritesButton={<AddToFavoritesButton borderNone />}
+                                product={product}
+                            />
                         </SwiperSlide>
                     ))}
                 </Swiper>

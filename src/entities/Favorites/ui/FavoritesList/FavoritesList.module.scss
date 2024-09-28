@@ -1,0 +1,12 @@
+.FavoritesList {
+    background-color: var(--bg);
+    border: 2px solid var(--bg-dark);
+    padding: 40px 28px;
+    border-radius: 12px;
+    height: 600px;
+    .list {
+        overflow: hidden;
+        max-height: 400px;
+        overflow-y: auto;
+    }
+}

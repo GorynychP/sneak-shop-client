@@ -5,8 +5,10 @@ import { TitleCatalog } from '../components/TitleCatalog/TitleCatalog';
 import { SortDropdown, SortSize } from '@/features/sort';
 import { HStack } from '@/shared/ui/Stack';
 import { SneakersList } from '@/widgets/Product/SneakersList';
+import { sneakersData } from '@/entities/Product';
 
 const CatalogPagePage = memo(() => {
+    const products = sneakersData;
     return (
         <Page className="CatalogPagePage">
             <Breadcrumb />
@@ -18,7 +20,7 @@ const CatalogPagePage = memo(() => {
 
             <HStack justify="between">
                 <SortSize />
-                <SneakersList />
+                <SneakersList products={products} />
             </HStack>
         </Page>
     );
