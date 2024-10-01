@@ -6,10 +6,10 @@ import { getRouteCart, getRouteMain } from '@/shared/const/router';
 import AppSneakersImage from '@/shared/assets/icon/sneakers.svg';
 import CartImage from '@/shared/assets/icon/cart.svg';
 // import FavoriteImage from '@/shared/assets/icon/heart.svg';
-import AccountImage from '@/shared/assets/icon/account.svg';
 import SearchImage from '@/shared/assets/icon/search.svg';
 import { Input } from '@/shared/ui/Input';
 import { ButtonFavorites } from '../../../Favorites/ButtonFavorites';
+import { AuthModal } from '@/features/AuthUser';
 
 interface NavbarProps {
     className?: string;
@@ -36,13 +36,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                         <img width={34} height={32} src={CartImage} />
                     </AppLink>
                     <ButtonFavorites />
-                    {/* <AppLink className="header-right-block-link" to="./ForWomen">
-
-                        <img width={32} height={28} src={FavoriteImage} />
-                    </AppLink> */}
-                    <AppLink className="header-right-block-link" to="./account">
-                        <img width={26} height={28} src={AccountImage} alt="account" />
-                    </AppLink>
+                    <AuthModal />
                 </div>
             </div>
         </header>

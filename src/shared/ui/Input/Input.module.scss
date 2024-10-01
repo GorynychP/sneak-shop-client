@@ -2,9 +2,9 @@
     display: flex;
     align-items: center;
     border-radius: 48px;
-    padding: 8px 16px;
-    background: var(--bg-dark);
-    border: 2px solid var(--bg);
+    padding: 6px 16px;
+    background: var(--bg-light);
+    border: 2px solid var(--bg-light);
 }
 
 .input {
@@ -14,7 +14,7 @@
     width: 100%;
     color: var(--text);
     &::placeholder {
-        color: var(--text);
+        color: var(--bg-dark);
     }
 }
 .addonLeft,
@@ -24,6 +24,7 @@
 
 .focused {
     border: 2px solid var(--text-accent);
+
     .addonLeft svg,
     .addonRight svg {
         color: var(--bg-dark);

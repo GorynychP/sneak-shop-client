@@ -59,7 +59,7 @@ export const CardsSwiper = memo(({ className, title, products }: CardsSwiperProp
                     {products.map((product) => (
                         <SwiperSlide key={product.id}>
                             <ProductCard
-                                favoritesButton={<AddToFavoritesButton borderNone />}
+                                favoritesButton={<AddToFavoritesButton productId={product.id} borderNone />}
                                 product={product}
                             />
                         </SwiperSlide>
