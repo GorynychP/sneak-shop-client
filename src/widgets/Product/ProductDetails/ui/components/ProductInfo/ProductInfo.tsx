@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import cls from './ProductInfo.module.scss';
 import { I_Product } from '../../../../../../entities/Product/model/types/sneakers';
 import { HStack, VStack } from '@/shared/ui/Stack';
-import { Existence } from '@/shared/ui/Existence';
+import { StatusTag } from '@/shared/ui/StatusTag';
 
 interface ProductInfoProps {
     className?: string;
@@ -27,7 +27,7 @@ export const ProductInfo = memo(({ className, product, buttonFavorite, buttonCar
                     ))}
                 </div>
             </VStack>
-            <Existence />
+            <StatusTag className={cls.existence} text="В наличии" />
             <HStack gap="8">
                 {buttonCart}
                 {buttonFavorite}

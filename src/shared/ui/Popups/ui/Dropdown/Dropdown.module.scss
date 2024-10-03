@@ -1,7 +1,7 @@
 .Dropdown {
     position: relative;
     cursor: pointer;
-    width: 100%;
+    // width: 100%;
 }
 
 .menu {
@@ -17,9 +17,9 @@
     flex-direction: column;
     overflow: hidden;
     box-shadow: var(--shadow);
-    // &:focus {
-    //     outline: none;
-    // }
+    &:focus {
+        outline: none;
+    }
 }
 .itemWrapper {
     display: flex;
@@ -30,9 +30,10 @@
     align-items: center;
     justify-content: space-between;
     padding: 8px 20px;
+    border: none;
+    // border-bottom: 2px solid var(--bg-dark);
     font-weight: 400;
     width: 100%;
-    border: none;
     background: none;
     outline: none;
     color: var(--text);

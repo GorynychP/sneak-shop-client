@@ -9,9 +9,12 @@ export enum AppRoutes {
     FOR_MEN = 'for-men',
     FOR_WOMEN = 'for-women',
     SALE = 'sale',
+
     PRODUCT_DETAILS_FOR_MEN = 'product-details-for-men',
     PRODUCT_DETAILS_FOR_WOMEN = 'product-details-for-women',
     PRODUCT_DETAILS_SALE = 'product-details-sale',
+
+    PROFILE = 'profile',
 
     CART = 'cart',
 
@@ -20,6 +23,8 @@ export enum AppRoutes {
 
 // Ссылка Главная
 export const getRouteMain = () => '/';
+
+export const getRouteProfile = () => '/profile';
 
 export const getRouteForMen = () => '/ForMen';
 export const getRouteForWomen = () => '/ForWomen';

@@ -17,22 +17,6 @@ export const SortDropdown = memo(({ className }: SortDropdownProps) => {
     };
     return (
         <div className={clsx(cls.SortDropdown, [className])}>
-            {/* <Dropdown
-                direction="bottom left"
-                trigger={
-                    <Button
-                        addonRight={<ArrowIcon className={click ? cls.arrowDown : cls.arrowUp} />}
-                        theme="filled"
-                        className={cls.trigger}
-                        onClick={onClickButton}
-                    >
-                        Сортировать
-                    </Button>
-                }
-                checkbox
-                onClick
-                items={items}
-            /> */}
             <ListBox
                 defaultValue="Сортировать"
                 value={value}

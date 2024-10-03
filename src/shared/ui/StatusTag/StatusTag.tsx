@@ -1,14 +1,15 @@
 import { memo } from 'react';
 import clsx from 'clsx';
-import cls from './Existence.module.scss';
+import cls from './StatusTag.module.scss';
 
-interface ExistenceProps {
+interface StatusTagProps {
     className?: string;
+    text: string;
 }
 
-export const Existence = memo(({ className }: ExistenceProps) => {
+export const StatusTag = memo(({ className, text }: StatusTagProps) => {
     return (
-        <div className={clsx(cls.Existence, [className])}>
+        <div className={clsx(cls.StatusTag, [className])}>
             <svg
                 className={cls.icon}
                 xmlns="http://www.w3.org/2000/svg"
@@ -19,7 +20,7 @@ export const Existence = memo(({ className }: ExistenceProps) => {
                 <circle cx="12" cy="12" r="10" fill="none" className={cls.customStroke} strokeWidth="2" />
                 <path d="M7 12l3 3 7-7" fill="none" className={cls.customStrokeCheck} strokeWidth="2" />
             </svg>
-            <p>в наличии</p>
+            <p>{text}</p>
         </div>
     );
 });

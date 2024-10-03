@@ -22,6 +22,10 @@
     display: flex;
 }
 
+.border {
+    border: 2px solid var(--bg-dark);
+}
+
 .focused {
     border: 2px solid var(--text-accent);
 
@@ -34,6 +38,7 @@
 .addonLeft {
     padding-right: 8px;
 }
+
 .addonRight {
     padding-left: 8px;
 }

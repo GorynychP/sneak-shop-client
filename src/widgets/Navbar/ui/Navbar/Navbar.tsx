@@ -10,12 +10,15 @@ import SearchImage from '@/shared/assets/icon/search.svg';
 import { Input } from '@/shared/ui/Input';
 import { ButtonFavorites } from '../../../Favorites/ButtonFavorites';
 import { AuthModal } from '@/features/AuthUser';
+import { AvatarDropdown } from '@/features/AvatarDropdown';
 
 interface NavbarProps {
     className?: string;
 }
 
 export const Navbar = memo(({ className }: NavbarProps) => {
+    const auth = true;
+
     return (
         <header className={clsx('header', [className])}>
             <div className="header-left">
@@ -30,13 +33,13 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                 </div>
             </div>
             <div className="header-right">
-                <Input width="272px" height="48px" addonRight={<img src={SearchImage} />} />
+                <Input type="search" width="272px" height="48px" addonRight={<img src={SearchImage} />} />
                 <div className="header-right-block">
                     <AppLink className="header-right-block-link" to={getRouteCart()}>
                         <img width={34} height={32} src={CartImage} />
                     </AppLink>
                     <ButtonFavorites />
-                    <AuthModal />
+                    {auth ? <AvatarDropdown /> : <AuthModal />}
                 </div>
             </div>
         </header>

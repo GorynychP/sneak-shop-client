@@ -1,20 +1,13 @@
-import {
-    ForwardedRef,
-    forwardRef,
-    InputHTMLAttributes,
-    ReactElement,
-    useEffect,
-    useRef,
-    useState,
-} from 'react';
+import { forwardRef, InputHTMLAttributes, ReactElement, useEffect, useRef, useState } from 'react';
 import clsx, { ClassValue } from 'clsx';
 import cls from './Input.module.scss';
 
-type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'readOnly'>;
+type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChangeHandler' | 'readOnly'>;
 interface InputProps extends HTMLInputProps {
     className?: string;
     value?: string | number;
-    onChange?: (value: string) => void;
+    onChange?: (value: React.ChangeEvent<HTMLInputElement>) => void;
+    onChangeSecondary?: (value: string) => void;
     autofocus?: boolean;
     readonly?: boolean;
     label?: string;
@@ -25,11 +18,12 @@ interface InputProps extends HTMLInputProps {
     height?: string;
 }
 
-export const Input = forwardRef((props: InputProps, ref: ForwardedRef<HTMLInputElement>) => {
+export const Input = forwardRef((props: InputProps) => {
     const {
         className,
         value,
         onChange,
+        onChangeSecondary,
         type = 'text',
         width = '100%',
         height = '48px',
@@ -43,12 +37,18 @@ export const Input = forwardRef((props: InputProps, ref: ForwardedRef<HTMLInputE
     } = props;
     const refInput = useRef<HTMLInputElement>(null);
     const [isFocused, setIsFocused] = useState(false);
+
     useEffect(() => {
         if (autofocus) {
             setIsFocused(true);
             refInput.current?.focus();
         }
     }, [autofocus, refInput]);
+    useEffect(() => {
+        if (readonly || disabled) {
+            setIsFocused(false);
+        }
+    }, [readonly, disabled]);
 
     const onBlur = () => {
         setIsFocused(false);
@@ -57,7 +57,7 @@ export const Input = forwardRef((props: InputProps, ref: ForwardedRef<HTMLInputE
         setIsFocused(true);
     };
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-        onChange?.(e.target.value);
+        onChangeSecondary?.(e.target.value);
     };
 
     const mods: ClassValue = {
@@ -65,6 +65,7 @@ export const Input = forwardRef((props: InputProps, ref: ForwardedRef<HTMLInputE
         [cls.focused]: isFocused,
         [cls.withAddonLeft]: Boolean(addonLeft),
         [cls.withAddonRight]: Boolean(addonRight),
+        [cls.border]: type !== 'search',
     };
     return (
         <div className={clsx(cls.Input, [className])}>
@@ -76,7 +77,7 @@ export const Input = forwardRef((props: InputProps, ref: ForwardedRef<HTMLInputE
                     className={cls.input}
                     type={type}
                     value={value}
-                    onChange={onChangeHandler}
+                    onChange={onChangeSecondary ? onChangeHandler : onChange}
                     onBlur={onBlur}
                     // onBlurCapture={onBlur}
                     onFocus={onFocus}
