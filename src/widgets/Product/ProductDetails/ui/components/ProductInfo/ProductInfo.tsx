@@ -1,7 +1,7 @@
 import { memo, ReactElement } from 'react';
 import clsx from 'clsx';
 import cls from './ProductInfo.module.scss';
-import { I_Product } from '../../../../../../entities/Product/model/types/sneakers';
+import { I_Product } from '../../../../../../entities/Product/model/types/product';
 import { HStack, VStack } from '@/shared/ui/Stack';
 import { StatusTag } from '@/shared/ui/StatusTag';
 

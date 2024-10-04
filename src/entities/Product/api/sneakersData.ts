@@ -1,4 +1,4 @@
-import { I_Product } from '../model/types/sneakers';
+import { I_Product } from '../model/types/product';
 // import sneakerIcon1 from '@/shared/assets/Sneakers/For men/1.png';
 import sneakerIcon2 from '@/shared/assets/Sneakers/For men/2.png';
 import sneakerIcon3 from '@/shared/assets/Sneakers/For men/3.png';

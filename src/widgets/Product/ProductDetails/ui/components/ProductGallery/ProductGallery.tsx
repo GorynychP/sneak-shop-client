@@ -1,7 +1,7 @@
 import { memo, useState } from 'react';
 import clsx from 'clsx';
 import cls from './ProductGallery.module.scss';
-import { I_Product } from '../../../../../../entities/Product/model/types/sneakers';
+import { I_Product } from '../../../../../../entities/Product/model/types/product';
 
 interface ProductGalleryProps {
     className?: string;

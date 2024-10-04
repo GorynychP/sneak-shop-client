@@ -1,7 +1,7 @@
 import { memo, ReactElement, useCallback } from 'react';
 import clsx from 'clsx';
 import cls from './ProductCard.module.scss';
-import { I_Product } from '../../model/types/sneakers';
+import { I_Product } from '../../model/types/product';
 
 interface ProductCardProps {
     className?: string;

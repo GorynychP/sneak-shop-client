@@ -2,6 +2,7 @@ import { CartPage } from '@/pages/CartPage';
 import { CatalogPage } from '@/pages/CatalogPage';
 import { MainPage } from '@/pages/MainPage';
 import { NotFoundPage } from '@/pages/NotFoundPage';
+import { OrdersPage } from '@/pages/OrdersPage';
 import { ProductDetailsPage } from '@/pages/ProductDetailsPage';
 import { ProfilePage } from '@/pages/ProfilePage';
 import {
@@ -16,6 +17,7 @@ import {
     getRouteSaleDetails,
     getRouteCart,
     getRouteProfile,
+    getRouteMyOrders,
 } from '@/shared/const/router';
 
 export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
@@ -28,6 +30,11 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     [AppRoutes.PROFILE]: {
         path: getRouteProfile(),
         element: <ProfilePage />,
+    },
+
+    [AppRoutes.ORDERS]: {
+        path: getRouteMyOrders(),
+        element: <OrdersPage />,
     },
 
     [AppRoutes.FOR_MEN]: {

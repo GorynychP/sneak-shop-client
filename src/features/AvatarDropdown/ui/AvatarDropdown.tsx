@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import cls from './AvatarDropdown.module.scss';
 import { Dropdown } from '@/shared/ui/Popups';
 import AccountImage from '@/shared/assets/icon/account.svg';
-import { getRouteCart, getRouteMain, getRouteProfile } from '@/shared/const/router';
+import { getRouteMain, getRouteMyOrders, getRouteProfile } from '@/shared/const/router';
 
 interface AvatarDropdownProps {
     className?: string;
@@ -26,7 +26,7 @@ export const AvatarDropdown = memo(({ className }: AvatarDropdownProps) => {
         {
             content: 'Мои заказы',
             key: 3,
-            href: getRouteCart(),
+            href: getRouteMyOrders(),
         },
 
         { content: 'Выйти', key: 4, onClick: onLogout },

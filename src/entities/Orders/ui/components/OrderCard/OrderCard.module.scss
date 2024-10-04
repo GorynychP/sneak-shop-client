@@ -1,0 +1,17 @@
+.OrderCard {
+    display: flex;
+    gap: 16px;
+    padding: 16px;
+    background-color: var(--bg);
+    border: 1px solid var(--bg-dark);
+    border-radius: 12px;
+    max-width: 580px;
+
+    h3,
+    p {
+        margin: 0;
+    }
+    .status {
+        background-color: #f3ddae;
+    }
+}

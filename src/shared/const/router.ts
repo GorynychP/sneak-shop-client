@@ -6,6 +6,7 @@ export type AppRoutesProps = RouteProps & {
 
 export enum AppRoutes {
     MAIN = 'main',
+
     FOR_MEN = 'for-men',
     FOR_WOMEN = 'for-women',
     SALE = 'sale',
@@ -18,6 +19,8 @@ export enum AppRoutes {
 
     CART = 'cart',
 
+    ORDERS = 'orders',
+
     NOT_FOUND = 'not_found',
 }
 
@@ -25,6 +28,8 @@ export enum AppRoutes {
 export const getRouteMain = () => '/';
 
 export const getRouteProfile = () => '/profile';
+
+export const getRouteMyOrders = () => '/orders';
 
 export const getRouteForMen = () => '/ForMen';
 export const getRouteForWomen = () => '/ForWomen';

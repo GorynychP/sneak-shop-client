@@ -2,7 +2,7 @@ import { memo } from 'react';
 import clsx from 'clsx';
 import cls from './ProductList.module.scss';
 import { ProductCard } from '../../../entities/Product/ui/ProductCard/ProductCard';
-import { I_Product } from '../../../entities/Product/model/types/sneakers';
+import { I_Product } from '../../../entities/Product/model/types/product';
 import { AddToFavoritesButton } from '@/features/Favorites/AddToFavoritesButton';
 
 interface ProductListProps {
