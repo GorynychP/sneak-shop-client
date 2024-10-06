@@ -6,6 +6,7 @@ import { sneakersData } from '@/entities/Product';
 
 const MainPage = memo(() => {
     const products = sneakersData;
+
     return (
         <>
             <Header height="650px" />

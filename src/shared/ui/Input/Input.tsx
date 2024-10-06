@@ -1,4 +1,13 @@
-import { forwardRef, InputHTMLAttributes, ReactElement, useEffect, useRef, useState } from 'react';
+import {
+    ForwardedRef,
+    forwardRef,
+    InputHTMLAttributes,
+    ReactElement,
+    useEffect,
+    useImperativeHandle,
+    useRef,
+    useState,
+} from 'react';
 import clsx, { ClassValue } from 'clsx';
 import cls from './Input.module.scss';
 
@@ -18,7 +27,7 @@ interface InputProps extends HTMLInputProps {
     height?: string;
 }
 
-export const Input = forwardRef((props: InputProps) => {
+export const Input = forwardRef((props: InputProps, ref: ForwardedRef<HTMLInputElement>) => {
     const {
         className,
         value,
@@ -37,7 +46,7 @@ export const Input = forwardRef((props: InputProps) => {
     } = props;
     const refInput = useRef<HTMLInputElement>(null);
     const [isFocused, setIsFocused] = useState(false);
-
+    useImperativeHandle(ref, () => refInput.current as HTMLInputElement);
     useEffect(() => {
         if (autofocus) {
             setIsFocused(true);

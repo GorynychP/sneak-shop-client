@@ -23,5 +23,6 @@ export default defineConfig({
             '@': path.resolve(__dirname, './src'),
         },
     },
+
     // base: '/sneak-shop-client/',
 });
