@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import cls from './AddToCartButton.module.scss';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
 import { useNavigate } from 'react-router-dom';
-import { getRouteCart } from '@/shared/const/router';
+import { getRouteCart } from '@/shared/constants/router';
 
 interface AddToCartButtonProps {
     className?: string;

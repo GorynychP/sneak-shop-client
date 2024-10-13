@@ -1,4 +1,4 @@
-import { Theme } from '@/shared/const/theme';
+import { Theme } from '@/shared/constants/theme';
 import { createContext } from 'react';
 
 export interface ThemeContextProps {

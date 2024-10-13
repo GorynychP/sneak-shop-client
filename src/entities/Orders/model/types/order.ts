@@ -1,5 +1,5 @@
 import { I_CartProduct } from '@/entities/Cart/model/types/cart';
-import { I_User } from '@/entities/user/model/types/user';
+import { I_User } from '@/entities/User/model/types/user';
 
 export enum EnumOrderStatus {
     PENDING = 'Pending',

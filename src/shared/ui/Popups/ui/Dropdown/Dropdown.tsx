@@ -49,7 +49,7 @@ export function Dropdown(props: DropdownProps) {
                                 onMouseEnter={!onClick ? () => setIsOpen(true) : () => {}}
                                 className={clsx(cls.menu, {}, menuClasses)}
                             >
-                                {items.map((item, index) => {
+                                {items.map((item) => {
                                     const content = ({ active }: { active: boolean }) => (
                                         <button
                                             type="button"
@@ -76,7 +76,7 @@ export function Dropdown(props: DropdownProps) {
                                             <MenuItem
                                                 as={AppLink}
                                                 to={item.href}
-                                                key={item.key}
+                                                key={item.href}
                                                 disabled={item.disabled}
                                             >
                                                 {content}
@@ -84,7 +84,7 @@ export function Dropdown(props: DropdownProps) {
                                         );
                                     }
                                     return (
-                                        <MenuItem as={Fragment} key={index} disabled={item.disabled}>
+                                        <MenuItem as={Fragment} key={item.key} disabled={item.disabled}>
                                             {content}
                                         </MenuItem>
                                     );

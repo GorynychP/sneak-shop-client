@@ -7,7 +7,7 @@ import { memo, useCallback } from 'react';
 import { Navigation, Pagination, A11y } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { AppLink } from '@/shared/ui/AppLink';
-import { getRouteForMen, getRouteForWomen, getRouteMain, getRouteSale } from '@/shared/const/router';
+import { getRouteForMen, getRouteForWomen, getRouteMain, getRouteSale } from '@/shared/constants/router';
 import { ProductCard } from '@/entities/Product';
 import ArrowIcon from '@/shared/assets/icon/arrow.svg?react';
 import { I_Product } from '@/entities/Product/model/types/product';

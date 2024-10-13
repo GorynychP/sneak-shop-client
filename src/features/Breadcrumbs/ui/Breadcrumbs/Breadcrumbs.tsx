@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import cls from './Breadcrumbs.module.scss';
 import { useLocation } from 'react-router-dom';
 import { AppLink } from '@/shared/ui/AppLink';
-import { getRouteMain } from '@/shared/const/router';
+import { getRouteMain } from '@/shared/constants/router';
 
 interface BreadcrumbsProps {
     className?: string;

@@ -1,4 +1,4 @@
-import {} from '@/shared/const/router';
+import {} from '@/shared/constants/router';
 // import { DropdownItem } from '@/shared/ui/Popups/ui/Dropdown/Dropdown';
 import { ListBoxItem } from '@/shared/ui/Popups/ui/ListBox/ListBox';
 

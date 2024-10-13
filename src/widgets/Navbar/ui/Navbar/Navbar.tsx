@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import clsx from 'clsx';
 import { AppLink } from '@/shared/ui/AppLink';
-import { getRouteCart, getRouteMain } from '@/shared/const/router';
+import { getRouteCart, getRouteMain } from '@/shared/constants/router';
 
 import AppSneakersImage from '@/shared/assets/icon/sneakers.svg';
 import CartImage from '@/shared/assets/icon/cart.svg';
@@ -11,13 +11,15 @@ import { Input } from '@/shared/ui/Input';
 import { ButtonFavorites } from '../../../Favorites/ButtonFavorites';
 import { AuthModal } from '@/features/AuthUser';
 import { AvatarDropdown } from '@/features/AvatarDropdown';
+import { useAppSelector } from '@/shared/model';
+import { selectUserAuthInited } from '@/entities/User';
 
 interface NavbarProps {
     className?: string;
 }
 
 export const Navbar = memo(({ className }: NavbarProps) => {
-    const auth = true;
+    const isAuth = useAppSelector(selectUserAuthInited);
 
     return (
         <header className={clsx('header', [className])}>
@@ -39,7 +41,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                         <img width={34} height={32} src={CartImage} />
                     </AppLink>
                     <ButtonFavorites />
-                    {auth ? <AvatarDropdown /> : <AuthModal />}
+                    {isAuth ? <AvatarDropdown /> : <AuthModal />}
                 </div>
             </div>
         </header>

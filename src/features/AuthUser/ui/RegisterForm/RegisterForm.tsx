@@ -6,12 +6,16 @@ import { useForm } from 'react-hook-form';
 import { regFormSchema, RegFormSchema } from '../../lib/formSchema/regFormSchema';
 import { Button } from '@/shared/ui/Button';
 import { VStack } from '@/shared/ui/Stack';
+import { useAuthForm } from '../../lib/hooks/useAuthForm';
 
 interface RegisterFormProps {
     className?: string;
+    onClick: () => void;
 }
 
-export const RegisterForm = memo(({ className }: RegisterFormProps) => {
+export const RegisterForm = memo(({ className, onClick }: RegisterFormProps) => {
+    const { onSubmit } = useAuthForm(true, onClick);
+
     const {
         register,
         setError,
@@ -26,9 +30,7 @@ export const RegisterForm = memo(({ className }: RegisterFormProps) => {
         },
         resolver: yupResolver(regFormSchema),
     });
-    const onSubmitHandler = ({ name, email, password }: RegFormSchema) => {
-        console.log(name, email, password);
-    };
+
     const errorMessageName = errors?.name?.message;
     const errorMessageEmail = errors?.email?.message;
     const errorMessagePassword = errors?.password?.message;
@@ -39,7 +41,7 @@ export const RegisterForm = memo(({ className }: RegisterFormProps) => {
 
     return (
         <div className={clsx(cls.RegisterForm, [className])}>
-            <form onSubmit={handleSubmit(onSubmitHandler)}>
+            <form onSubmit={handleSubmit(onSubmit)}>
                 <VStack gap="16" align="center">
                     <VStack className="field" gap="8" max>
                         <input

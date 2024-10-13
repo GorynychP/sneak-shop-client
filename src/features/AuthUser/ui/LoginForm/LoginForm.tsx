@@ -6,6 +6,7 @@ import { VStack } from '@/shared/ui/Stack';
 import clsx from 'clsx';
 import cls from './LoginForm.module.scss';
 import { Button } from '@/shared/ui/Button';
+import { useAuthForm } from '../../lib/hooks/useAuthForm';
 
 interface LoginFormProps {
     className?: string;
@@ -13,6 +14,7 @@ interface LoginFormProps {
 }
 
 export const LoginForm = memo(({ className, onClick }: LoginFormProps) => {
+    const { onSubmit } = useAuthForm(false, onClick);
     const {
         register,
         setError,
@@ -25,16 +27,16 @@ export const LoginForm = memo(({ className, onClick }: LoginFormProps) => {
         },
         resolver: yupResolver(loginFormSchema),
     });
-    const onSubmitHandler = ({ email, password }: LoginFormSchema) => {
-        onClick();
-        console.log(email, password);
-    };
+    // const onSubmitHandler = ({ email, password }: LoginFormSchema) => {
+    //     onClick();
+    //     console.log(email, password);
+    // };
     const errorMessageEmail = errors?.email?.message;
     const errorMessagePassword = errors?.password?.message;
     const errorMessage = errors?.email?.message || errors?.password?.message;
     return (
         <div className={clsx(cls.LoginForm, [className])}>
-            <form onSubmit={handleSubmit(onSubmitHandler)}>
+            <form onSubmit={handleSubmit(onSubmit)}>
                 <VStack gap="16" align="center" max>
                     <VStack className="field" gap="8" max>
                         <input

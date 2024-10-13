@@ -1,3 +1,4 @@
+import { UserRole } from '@/entities/User';
 import { CartPage } from '@/pages/CartPage';
 import { CatalogPage } from '@/pages/CatalogPage';
 import { MainPage } from '@/pages/MainPage';
@@ -18,7 +19,8 @@ import {
     getRouteCart,
     getRouteProfile,
     getRouteMyOrders,
-} from '@/shared/const/router';
+    getRouteAdmin,
+} from '@/shared/constants/router';
 
 export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     // Главная страница
@@ -30,11 +32,13 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     [AppRoutes.PROFILE]: {
         path: getRouteProfile(),
         element: <ProfilePage />,
+        authOnly: true,
     },
 
     [AppRoutes.ORDERS]: {
         path: getRouteMyOrders(),
         element: <OrdersPage />,
+        authOnly: true,
     },
 
     [AppRoutes.FOR_MEN]: {
@@ -66,6 +70,12 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     [AppRoutes.CART]: {
         path: getRouteCart(),
         element: <CartPage />,
+    },
+    [AppRoutes.ADMIN]: {
+        path: getRouteAdmin(),
+        element: <>Админ Панель</>,
+        authOnly: true,
+        roles: [UserRole.ADMIN, UserRole.MANAGER],
     },
 
     [AppRoutes.NOT_FOUND]: {

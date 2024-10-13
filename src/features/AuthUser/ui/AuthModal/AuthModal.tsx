@@ -31,7 +31,11 @@ export const AuthModal = memo(({ className, active = 'login' }: AuthModalProps) 
                 <Modal isOpen={isOpenModal} onClose={onCloseModal}>
                     <VStack gap="32" max className={clsx(cls.AuthModal, [className])}>
                         <Switch activeTab={activeTab} setActiveTab={setActiveTab} />
-                        {isLogin ? <LoginForm onClick={onCloseModal} /> : <RegisterForm />}
+                        {isLogin ? (
+                            <LoginForm onClick={onCloseModal} />
+                        ) : (
+                            <RegisterForm onClick={onCloseModal} />
+                        )}
                     </VStack>
                 </Modal>
             )}

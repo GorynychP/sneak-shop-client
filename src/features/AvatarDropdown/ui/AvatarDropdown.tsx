@@ -3,21 +3,32 @@ import clsx from 'clsx';
 import cls from './AvatarDropdown.module.scss';
 import { Dropdown } from '@/shared/ui/Popups';
 import AccountImage from '@/shared/assets/icon/account.svg';
-import { getRouteMain, getRouteMyOrders, getRouteProfile } from '@/shared/const/router';
+import { getRouteAdmin, getRouteMyOrders, getRouteProfile } from '@/shared/constants/router';
+import { useLogout } from '@/features/AuthUser';
+import { useAppSelector } from '@/shared/model';
+import { selectIsUserAdmin, selectIsUserManager } from '@/entities/User';
 
 interface AvatarDropdownProps {
     className?: string;
 }
 
 export const AvatarDropdown = memo(({ className }: AvatarDropdownProps) => {
-    const onLogout = () => {};
+    const isAdmin = useAppSelector(selectIsUserAdmin);
+    const isManager = useAppSelector(selectIsUserManager);
+    const isAccess = isAdmin || isManager;
+
+    const onLogout = useLogout();
 
     const items = [
-        {
-            content: 'Админка',
-            key: 1,
-            href: getRouteMain(),
-        },
+        ...(isAccess
+            ? [
+                  {
+                      content: 'Админка',
+                      key: 1,
+                      href: getRouteAdmin(),
+                  },
+              ]
+            : []),
         {
             content: 'Профиль',
             key: 2,

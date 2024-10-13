@@ -1,7 +1,9 @@
+import { UserRole } from '@/entities/User';
 import { RouteProps } from 'react-router-dom';
 
 export type AppRoutesProps = RouteProps & {
     authOnly?: boolean;
+    roles?: UserRole[];
 };
 
 export enum AppRoutes {
@@ -21,6 +23,8 @@ export enum AppRoutes {
 
     ORDERS = 'orders',
 
+    ADMIN = 'admin',
+
     NOT_FOUND = 'not_found',
 }
 
@@ -39,5 +43,7 @@ export const getRouteForWomenDetails = (id: string) => `/ForWomen/${id}`;
 export const getRouteSaleDetails = (id: string) => `/Sale/${id}`;
 
 export const getRouteCart = () => `/cart`;
+
+export const getRouteAdmin = () => '/admin';
 
 export const getRouteForbidden = () => '/forbidden';
