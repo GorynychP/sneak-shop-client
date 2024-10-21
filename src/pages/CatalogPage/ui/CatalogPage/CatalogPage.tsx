@@ -1,26 +1,61 @@
 import { Breadcrumb } from '@/features/Breadcrumbs';
 import { Page } from '@/widgets/Page';
-import { memo } from 'react';
+import { memo, useCallback, useEffect } from 'react';
 import { TitleCatalog } from '../components/TitleCatalog/TitleCatalog';
-import { SortDropdown, SortSize } from '@/features/sort';
+import {
+    filterActions,
+    I_FiltersProduct,
+    selectorFiltersProducts,
+    SortDropdown,
+    SortSize,
+} from '@/features/sort';
 import { HStack } from '@/shared/ui/Stack';
 import { SneakersList } from '@/widgets/Product/SneakersList';
-import { sneakersData } from '@/entities/Product';
+import { useManageProductsQuery } from '@/entities/Product/lib/hooks/useManageProductsQuery';
+import { useLocation, useSearchParams } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '@/shared/model';
+import { stringifyFilter } from '@/shared/lib/utils/format/stringifyFormat';
+import { getRouteForMen } from '@/shared/constants/router';
 
 const CatalogPagePage = memo(() => {
-    const products = sneakersData;
+    const [searchParams, setSearchParams] = useSearchParams();
+    const filtersProducts = useAppSelector(selectorFiltersProducts);
+    const location = useLocation();
+    const dispatch = useAppDispatch();
+    const { products, isPending, isError } = useManageProductsQuery();
+    const toStringFormat = stringifyFilter<I_FiltersProduct>(filtersProducts);
+
+    useEffect(() => {
+        dispatch(
+            filterActions.resetAndSetFilters({
+                gender: location.pathname === getRouteForMen() ? 'MALE' : 'FEMALE',
+            }),
+        );
+    }, [location.pathname, dispatch]);
+
+    useEffect(() => {
+        setSearchParams(toStringFormat);
+    }, [filtersProducts, searchParams, setSearchParams]);
+
+    const handleFilterChange = useCallback(
+        (newFilters: I_FiltersProduct) => {
+            dispatch(filterActions.setFilters(newFilters));
+        },
+        [dispatch],
+    );
+
+    const productsLength = products?.length;
     return (
         <Page className="CatalogPagePage">
             <Breadcrumb />
-
             <HStack align="center" justify="between">
-                <TitleCatalog countProduct={4} />
-                <SortDropdown />
+                <TitleCatalog countProduct={productsLength} />
+                <SortDropdown onChange={handleFilterChange} />
             </HStack>
 
             <HStack justify="between">
-                <SortSize />
-                <SneakersList products={products} />
+                <SortSize filterProducts={filtersProducts} />
+                <SneakersList isLoading={isPending} isError={isError} products={products} />
             </HStack>
         </Page>
     );

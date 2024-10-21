@@ -9,6 +9,8 @@ export type AppRoutesProps = RouteProps & {
 export enum AppRoutes {
     MAIN = 'main',
 
+    CATALOG = 'catalog',
+
     FOR_MEN = 'for-men',
     FOR_WOMEN = 'for-women',
     SALE = 'sale',
@@ -32,6 +34,10 @@ export enum AppRoutes {
 export const getRouteMain = () => '/';
 
 export const getRouteProfile = () => '/profile';
+
+export const getRouteCatalog = () => '/catalog';
+
+export const getRouteProductDetails = (id: string) => `/product/${id}`;
 
 export const getRouteMyOrders = () => '/orders';
 

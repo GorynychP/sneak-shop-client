@@ -2,10 +2,9 @@ import {} from '@/shared/constants/router';
 // import { DropdownItem } from '@/shared/ui/Popups/ui/Dropdown/Dropdown';
 import { ListBoxItem } from '@/shared/ui/Popups/ui/ListBox/ListBox';
 
-type Sort = 'rating' | 'price' | '-price' | 'new' | '-new';
 interface SortItem extends ListBoxItem<string> {
     value: string;
-    sortProperty: Sort;
+    sortProperty: 'asc' | 'desc';
 }
 export const getSortItems = () => {
     const sortItemsList: SortItem[] = [
@@ -13,32 +12,32 @@ export const getSortItems = () => {
             // key: 1,
             value: 'Сначала дорогие',
             content: 'Сначала дорогие',
-            sortProperty: 'price',
+            sortProperty: 'asc',
         },
         {
             // key: 2,
             value: 'Сначала дешевые',
             content: 'Сначала дешевые',
-            sortProperty: '-price',
+            sortProperty: 'desc',
         },
         {
             // key: 3,
             value: 'Сначала новые',
             content: 'Сначала новые',
-            sortProperty: 'new',
+            sortProperty: 'asc',
         },
         {
             // key: 4,
             value: 'Сначала старые',
             content: 'Сначала старые',
-            sortProperty: '-new',
+            sortProperty: 'desc',
         },
-        {
-            // key: 5,
-            value: 'Сначала популярные',
-            content: 'Сначала популярные',
-            sortProperty: 'rating',
-        },
+        // {
+        //     // key: 5,
+        //     value: 'Сначала популярные',
+        //     content: 'Сначала популярные',
+        //     sortProperty: 'rating',
+        // },
     ];
     return sortItemsList;
 };

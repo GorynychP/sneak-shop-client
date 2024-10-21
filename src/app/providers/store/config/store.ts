@@ -12,11 +12,12 @@ import {
 import storage from 'redux-persist/lib/storage';
 import { rootReducer } from './rootReducer';
 import { userSlice } from '@/entities/User';
+import { filtersSlice } from '@/features/sort';
 
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: [userSlice.name],
+    whitelist: [userSlice.name, filtersSlice.name],
 };
 
 export function createStore() {

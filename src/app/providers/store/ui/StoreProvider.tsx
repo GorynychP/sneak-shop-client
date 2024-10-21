@@ -3,7 +3,6 @@ import { ReactNode, useMemo } from 'react';
 import { Provider as ReduxProvider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { appStore, persistedStore } from '../config/store';
-import { Toaster } from 'react-hot-toast';
 
 export function StoreProvider({ children }: { children: ReactNode }) {
     const queryClient = useMemo(() => {
@@ -15,12 +14,12 @@ export function StoreProvider({ children }: { children: ReactNode }) {
             },
         });
     }, []);
+    // const queryClient = new QueryClient();
 
     return (
         <QueryClientProvider client={queryClient}>
             <ReduxProvider store={appStore}>
                 <PersistGate loading={null} persistor={persistedStore}>
-                    <Toaster />
                     {children}
                 </PersistGate>
             </ReduxProvider>

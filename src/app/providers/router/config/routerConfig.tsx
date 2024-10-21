@@ -20,6 +20,7 @@ import {
     getRouteProfile,
     getRouteMyOrders,
     getRouteAdmin,
+    getRouteCatalog,
 } from '@/shared/constants/router';
 
 export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
@@ -33,6 +34,11 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
         path: getRouteProfile(),
         element: <ProfilePage />,
         authOnly: true,
+    },
+
+    [AppRoutes.CATALOG]: {
+        path: getRouteCatalog(),
+        element: <CatalogPage />,
     },
 
     [AppRoutes.ORDERS]: {
