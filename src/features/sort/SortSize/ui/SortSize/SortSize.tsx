@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 import clsx from 'clsx';
 import cls from './SortSize.module.scss';
 import Slider from 'rc-slider';
@@ -7,6 +7,8 @@ import { HStack, VStack } from '@/shared/ui/Stack';
 import { I_FiltersProduct } from '@/features/sort/model/types/filterProduct';
 import { useAppDispatch } from '@/shared/model';
 import { filterActions } from '@/features/sort/model/slice/filtersProductsSlice';
+import { useLocation } from 'react-router-dom';
+
 interface SortSizeProps {
     className?: string;
     filterProducts: I_FiltersProduct;
@@ -18,17 +20,39 @@ const MIN = 2000;
 const MAX = 20000;
 
 export const SortSize = memo(({ className, filterProducts }: SortSizeProps) => {
-    const [values, setValues] = useState<RangeValues>([MIN, MAX]);
+    const location = useLocation();
+    const [price, setPrice] = useState<RangeValues>([MIN, MAX]);
+    const [sizeSearch, setSizeSearch] = useState<number[]>([]);
+    useEffect(() => {
+        setSizeSearch([]);
+        setPrice([MIN, MAX]);
+    }, [location.pathname]);
     const dispatch = useAppDispatch();
     const handleRangeChange = (values: RangeValues) => {
-        setValues(values);
+        setPrice(values);
+    };
+    const handleSizeSearch = (size: number) => {
+        if (sizeSearch.includes(size)) {
+            setSizeSearch((prev) => prev.filter((item) => item !== size));
+            return;
+        }
+        setSizeSearch((prev) => [...prev, size]);
     };
     const handleApply = () => {
-        if (Array.isArray(values))
-            dispatch(filterActions.setFilters({ priceFrom: values[0], priceTo: values[1] }));
+        const sizeArrayToString =
+            JSON.stringify(sizeSearch) === '[]' ? undefined : JSON.stringify(sizeSearch);
+        if (Array.isArray(price))
+            dispatch(
+                filterActions.setFilters({
+                    priceFrom: price[0],
+                    priceTo: price[1],
+                    sizes: sizeArrayToString,
+                }),
+            );
     };
     const handleReset = () => {
-        setValues([MIN, MAX]);
+        setPrice([MIN, MAX]);
+        setSizeSearch([]);
         dispatch(filterActions.resetAndSetFilters({ gender: filterProducts.gender }));
     };
     return (
@@ -37,7 +61,13 @@ export const SortSize = memo(({ className, filterProducts }: SortSizeProps) => {
                 <p className={cls.title}>Размер:</p>
                 <div className={cls.sizesNum}>
                     {sizes.map((num) => (
-                        <button key={num}>{num}</button>
+                        <button
+                            className={clsx({ [cls.btnActive]: sizeSearch.includes(num) })}
+                            onClick={() => handleSizeSearch(num)}
+                            key={num}
+                        >
+                            {num}
+                        </button>
                     ))}
                 </div>
             </VStack>
@@ -45,15 +75,15 @@ export const SortSize = memo(({ className, filterProducts }: SortSizeProps) => {
             <div className={cls.priceBlock}>
                 <p className={cls.title}>Стоимость:</p>
                 <HStack align="center" gap="4" justify="center">
-                    <p className={cls.price}>от: {Array.isArray(values) && values[0]} $.</p>
-                    <p className={cls.price}>до: {Array.isArray(values) && values[1]} $.</p>
+                    <p className={cls.price}>от: {Array.isArray(price) && price[0]} $.</p>
+                    <p className={cls.price}>до: {Array.isArray(price) && price[1]} $.</p>
                 </HStack>
 
                 <VStack align="center" gap="20">
                     <Slider
                         range
                         className={cls.slider}
-                        value={values}
+                        value={price}
                         onChange={handleRangeChange}
                         min={MIN}
                         max={MAX}

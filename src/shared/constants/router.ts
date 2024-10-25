@@ -18,6 +18,7 @@ export enum AppRoutes {
     PRODUCT_DETAILS_FOR_MEN = 'product-details-for-men',
     PRODUCT_DETAILS_FOR_WOMEN = 'product-details-for-women',
     PRODUCT_DETAILS_SALE = 'product-details-sale',
+    PRODUCT_DETAILS = 'product-details',
 
     PROFILE = 'profile',
 
@@ -41,12 +42,12 @@ export const getRouteProductDetails = (id: string) => `/product/${id}`;
 
 export const getRouteMyOrders = () => '/orders';
 
-export const getRouteForMen = () => '/ForMen';
-export const getRouteForWomen = () => '/ForWomen';
-export const getRouteSale = () => '/Sale';
-export const getRouteForMenDetails = (id: string) => `/ForMen/${id}`;
-export const getRouteForWomenDetails = (id: string) => `/ForWomen/${id}`;
-export const getRouteSaleDetails = (id: string) => `/Sale/${id}`;
+export const getRouteForMen = () => '/men';
+export const getRouteForWomen = () => '/women';
+export const getRouteSale = () => '/sale';
+export const getRouteForMenDetails = (id: string) => `/men/${id}`;
+export const getRouteForWomenDetails = (id: string) => `/women/${id}`;
+export const getRouteSaleDetails = (id: string) => `/sale/${id}`;
 
 export const getRouteCart = () => `/cart`;
 

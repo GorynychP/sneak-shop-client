@@ -1,10 +1,10 @@
-import { memo, useEffect } from 'react';
+import { memo } from 'react';
 import clsx from 'clsx';
 import cls from './Pagination.module.scss';
-import ArrowIcon from '@/shared/assets/icon/arrow.svg?react';
 import { useAppDispatch, useAppSelector } from '@/shared/model';
 import { filterActions, selectorGetFiltersPage } from '@/features/sort';
-import { useLocation } from 'react-router-dom';
+// import ArrowIcon from '@/shared/assets/icon/arrow.svg?react';
+// import { useLocation } from 'react-router-dom';
 
 interface PaginationProps {
     className?: string;
@@ -49,7 +49,6 @@ export const Pagination = memo(({ className }: PaginationProps) => {
     };
 
     const pages = generatePageNumbers();
-    console.log('pages', pages);
     return (
         <div className={clsx(cls.Pagination, [className])}>
             {/* <button onClick={handelSetPage(1)}>1</button>

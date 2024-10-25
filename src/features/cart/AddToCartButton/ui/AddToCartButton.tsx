@@ -18,7 +18,6 @@ export const AddToCartButton = memo(
         const navigate = useNavigate();
         const addToCart = () => {
             navigate(getRouteCart());
-            console.log('add to cart', productId);
         };
         return (
             <Button

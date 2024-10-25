@@ -22,7 +22,6 @@ interface NavbarProps {
 export const Navbar = memo(({ className }: NavbarProps) => {
     const isAuth = useAppSelector(selectUserAuthInited);
     const searchTerms = useAppSelector(selectorGetFiltersSearch);
-    console.log('searchTerms', searchTerms);
     const dispatch = useAppDispatch();
     const handelSearch = (value: string) => {
         dispatch(filterActions.setFilters({ searchTerm: value }));
@@ -35,8 +34,12 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                         <img src={AppSneakersImage} />
                     </AppLink>
                     <div className="header-left-block-links">
-                        <AppLink to={getRouteForMen()}>Мужские</AppLink>
-                        <AppLink to={getRouteForWomen()}>Женские</AppLink>
+                        <AppLink activeClassName="header-left-block-links-active" to={getRouteForMen()}>
+                            Мужские
+                        </AppLink>
+                        <AppLink activeClassName="header-left-block-links-active" to={getRouteForWomen()}>
+                            Женские
+                        </AppLink>
                     </div>
                 </div>
             </div>

@@ -9,25 +9,22 @@ import {
     selectorGetFiltersPage,
     selectorGetFiltersSearch,
 } from '@/features/sort';
-import { useLocation } from 'react-router-dom';
 
 export function useManageProductsQuery(quantity: number = 9) {
-    const location = useLocation();
     const filterProducts = useAppSelector(selectorFiltersProducts);
-    const filter = useAppSelector(selectorFilters);
+    const filterUniq = useAppSelector(selectorFilters);
     const searchTerms = useAppSelector(selectorGetFiltersSearch);
     const page = useAppSelector(selectorGetFiltersPage);
     const debouncedSearch = useDebounce(searchTerms, 1000);
-    const isOnHomePage = location.pathname === '/';
 
     const { data, isPending, isError } = useQuery<IPaginationResponse<I_Product>>({
-        queryKey: ['products', { debouncedSearch, page, filter }],
+        queryKey: ['products', { debouncedSearch, page, filter: filterUniq }],
         queryFn: () =>
             productService.getAll({
                 searchTerm: debouncedSearch,
                 skip: (page - 1) * quantity,
                 take: quantity,
-                ...(isOnHomePage ? {} : filterProducts),
+                ...filterProducts,
             }),
         // retry: false,
     });
@@ -40,6 +37,5 @@ export function useManageProductsQuery(quantity: number = 9) {
         isError,
         isHasMore: data?.isHasMore,
         totalCount: data?.totalCount,
-        // setPage,
     };
 }

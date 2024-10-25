@@ -15,7 +15,7 @@ import { useManageProductsQuery } from '@/entities/Product/lib/hooks/useManagePr
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '@/shared/model';
 import { stringifyFilter } from '@/shared/lib/utils/format/stringifyFormat';
-import { getRouteForMen } from '@/shared/constants/router';
+import { getRouteForMen, getRouteSale } from '@/shared/constants/router';
 
 const CatalogPagePage = memo(() => {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -24,13 +24,16 @@ const CatalogPagePage = memo(() => {
     const dispatch = useAppDispatch();
     const { products, isPending, isError } = useManageProductsQuery();
     const toStringFormat = stringifyFilter<I_FiltersProduct>(filtersProducts);
-
     useEffect(() => {
-        dispatch(
-            filterActions.resetAndSetFilters({
-                gender: location.pathname === getRouteForMen() ? 'MALE' : 'FEMALE',
-            }),
-        );
+        if (location.pathname === getRouteSale()) {
+            dispatch(filterActions.resetAndSetFilters({ isSale: true }));
+        } else {
+            dispatch(
+                filterActions.resetAndSetFilters({
+                    gender: location.pathname === getRouteForMen() ? 'MALE' : 'FEMALE',
+                }),
+            );
+        }
     }, [location.pathname, dispatch]);
 
     useEffect(() => {
@@ -40,6 +43,7 @@ const CatalogPagePage = memo(() => {
     const handleFilterChange = useCallback(
         (newFilters: I_FiltersProduct) => {
             dispatch(filterActions.setFilters(newFilters));
+            dispatch(filterActions.setFilters({ page: 1 }));
         },
         [dispatch],
     );

@@ -2,11 +2,18 @@ import { memo } from 'react';
 import { Header } from '../components/Header/Header';
 import { InfoStore } from '../components/InfoStore/InfoStore';
 import { ProductSwiperBlocks } from '@/widgets/Product/ProductSwiperBlocks';
-// import { useProducts } from '@/entities/Product';
-import { useManageProductsQuery } from '@/entities/Product/lib/hooks/useManageProductsQuery';
+import { useQuery } from '@tanstack/react-query';
+import { productService } from '@/entities/Product';
 
 const MainPage = memo(() => {
-    const { products, isPending, isError } = useManageProductsQuery(30);
+    const {
+        data: products,
+        isPending,
+        isError,
+    } = useQuery({
+        queryKey: ['products', 'popular'],
+        queryFn: () => productService.getPopular({ isRating: true }),
+    });
     return (
         <>
             <Header height="650px" />

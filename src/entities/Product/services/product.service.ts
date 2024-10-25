@@ -1,6 +1,7 @@
 import { axiosClassic } from '@/shared/api/api.interceptors';
 import { I_Product } from '../model/types/product';
 import { I_FiltersProduct } from '@/features/sort';
+import { I_PopularProduct } from '@/features/sort/model/types/filterProduct';
 
 export interface IPaginationResponse<T> {
     items: T[];
@@ -24,7 +25,15 @@ class ProductService {
     //     return data || [];
     // }
     async getAll(params?: I_FiltersProduct) {
-        const { data } = await axiosClassic.get<IPaginationResponse<I_Product>>(this.base, { params });
+        const { data } = await axiosClassic.get<IPaginationResponse<I_Product>>(this.base, {
+            params,
+        });
+        return data || [];
+    }
+    async getPopular(params?: I_PopularProduct) {
+        const { data } = await axiosClassic.get<I_Product[]>(`${this.base}/most-popular`, {
+            params,
+        });
         return data || [];
     }
     async getById(id: string) {

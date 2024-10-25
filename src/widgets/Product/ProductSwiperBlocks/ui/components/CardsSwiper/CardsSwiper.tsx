@@ -7,7 +7,15 @@ import { memo, useCallback } from 'react';
 import { Navigation, Pagination, A11y } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { AppLink } from '@/shared/ui/AppLink';
-import { getRouteForMen, getRouteForWomen, getRouteMain, getRouteSale } from '@/shared/constants/router';
+import {
+    getRouteForMen,
+    getRouteForMenDetails,
+    getRouteForWomen,
+    getRouteForWomenDetails,
+    getRouteMain,
+    getRouteSale,
+    getRouteSaleDetails,
+} from '@/shared/constants/router';
 import { ProductCard } from '@/entities/Product';
 import ArrowIcon from '@/shared/assets/icon/arrow.svg?react';
 import { I_Product } from '@/entities/Product/model/types/product';
@@ -29,6 +37,18 @@ export const CardsSwiper = memo(({ className, title, products }: CardsSwiperProp
                 return getRouteForMen();
             case 'FOR WOMEN':
                 return getRouteForWomen();
+            default:
+                return getRouteMain();
+        }
+    }, []);
+    const getLinkDetails = useCallback((title: T_Tile, id: string) => {
+        switch (title) {
+            case 'SALE':
+                return getRouteSaleDetails(id);
+            case 'FOR MEN':
+                return getRouteForMenDetails(id);
+            case 'FOR WOMEN':
+                return getRouteForWomenDetails(id);
             default:
                 return getRouteMain();
         }
@@ -58,10 +78,14 @@ export const CardsSwiper = memo(({ className, title, products }: CardsSwiperProp
                 >
                     {products.map((product) => (
                         <SwiperSlide key={product.id}>
-                            <ProductCard
-                                favoritesButton={<AddToFavoritesButton productId={product.id} borderNone />}
-                                product={product}
-                            />
+                            <AppLink to={getLinkDetails(title, product.id)}>
+                                <ProductCard
+                                    favoritesButton={
+                                        <AddToFavoritesButton productId={product.id} borderNone />
+                                    }
+                                    product={product}
+                                />
+                            </AppLink>
                         </SwiperSlide>
                     ))}
                 </Swiper>

@@ -18,7 +18,6 @@ export const ProductSwiperBlocks = memo(
         if (isError) return <div>Error</div>;
         if (!products) return null;
         const { productsDiscount, productsForMen, productsForWomen } = getFilterProduct(products);
-        console.log('products', products);
         return (
             <div className={clsx(cls.SneakersBlocks, [className])}>
                 <CardsSwiper products={productsDiscount} title="SALE" />

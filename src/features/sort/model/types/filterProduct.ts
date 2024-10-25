@@ -8,6 +8,13 @@ export interface I_FiltersProduct {
     sortOrder?: 'asc' | 'desc';
     priceFrom?: number;
     priceTo?: number;
+    isSale?: boolean;
     searchTerm?: string;
     page?: number;
+    sizes?: string;
+    // sizes?: number[];
+}
+
+export interface I_PopularProduct {
+    isRating?: boolean;
 }

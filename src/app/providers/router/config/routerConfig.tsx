@@ -21,6 +21,7 @@ import {
     getRouteMyOrders,
     getRouteAdmin,
     getRouteCatalog,
+    getRouteProductDetails,
 } from '@/shared/constants/router';
 
 export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
@@ -70,6 +71,10 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     },
     [AppRoutes.PRODUCT_DETAILS_SALE]: {
         path: getRouteSaleDetails(':id'),
+        element: <ProductDetailsPage />,
+    },
+    [AppRoutes.PRODUCT_DETAILS]: {
+        path: getRouteProductDetails(':id'),
         element: <ProductDetailsPage />,
     },
 

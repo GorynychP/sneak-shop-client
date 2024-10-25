@@ -1,11 +1,10 @@
-import { Dispatch, memo, SetStateAction } from 'react';
+import { memo } from 'react';
 import clsx from 'clsx';
 import cls from './SneakersList.module.scss';
 import { Pagination } from '@/features/Pagination';
 import { VStack } from '@/shared/ui/Stack';
 import { I_Product, ProductList } from '@/entities/Product';
 import { PageLoader } from '@/widgets/PageLoader';
-import { Loader } from '@/shared/ui/Loader';
 
 interface SneakersListProps {
     className?: string;

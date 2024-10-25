@@ -2,8 +2,8 @@ import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { I_FiltersProduct } from '../types/filterProduct';
 
 const initialState: I_FiltersProduct = {
-    priceFrom: 1000,
-    priceTo: 20000,
+    // priceFrom: 1000,
+    // priceTo: 20000,
 };
 
 export const filtersSlice = createSlice({
@@ -28,6 +28,7 @@ export const filtersSlice = createSlice({
 export const { actions: filterActions } = filtersSlice;
 
 export const selectorFiltersProducts = (state: RootState) => state.filters;
+
 export const selectorFilters = createSelector(selectorFiltersProducts, (filters) => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { page, searchTerm, ...restFilters } = filters;
