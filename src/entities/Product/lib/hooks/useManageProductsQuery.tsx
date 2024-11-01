@@ -19,6 +19,7 @@ export function useManageProductsQuery(quantity: number = 9) {
 
     const { data, isPending, isError } = useQuery<IPaginationResponse<I_Product>>({
         queryKey: ['products', { debouncedSearch, page, filter: filterUniq }],
+
         queryFn: () =>
             productService.getAll({
                 searchTerm: debouncedSearch,

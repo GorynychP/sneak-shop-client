@@ -1,7 +1,9 @@
 export type T_Gender = 'FEMALE' | 'MALE' | 'UNISEX';
 
+export type ProductId = Brand<Id, 'ProductId'>;
+
 export interface I_Product {
-    id: string;
+    id: ProductId;
     title: string;
     images: string[];
     gender: T_Gender;

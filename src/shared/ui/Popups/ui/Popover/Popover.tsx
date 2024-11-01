@@ -5,7 +5,6 @@ import { DropdownDirection } from '@/shared/types/ui';
 import { mapDirectionClass } from '../../styles/consts';
 import popupCls from '../../styles/popup.module.scss';
 import clsx from 'clsx';
-
 interface PopoverProps {
     className?: string;
     trigger: ReactNode;
@@ -22,8 +21,9 @@ export function Popover(props: PopoverProps) {
             <PopoverButton as="div" className={popupCls.trigger}>
                 {trigger}
             </PopoverButton>
-
-            <PopoverPanel className={clsx(cls.panel, {}, menuClasses)}>{children}</PopoverPanel>
+            <PopoverPanel transition className={clsx(cls.panel, {}, menuClasses)}>
+                {children}
+            </PopoverPanel>
         </HPopover>
     );
 }

@@ -11,8 +11,8 @@ export interface I_FiltersProduct {
     isSale?: boolean;
     searchTerm?: string;
     page?: number;
-    sizes?: string;
-    // sizes?: number[];
+    // sizes?: string;
+    sizes?: number[] | string;
 }
 
 export interface I_PopularProduct {

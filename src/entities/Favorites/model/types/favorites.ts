@@ -1,8 +1,5 @@
+import { I_Product } from '@/entities/Product';
+
 export interface I_Favorites {
-    id: string;
-    title: string;
-    price: number;
-    discountPercentage?: number;
-    discountedPrice?: number;
-    image: string;
+    wishlist: I_Product[];
 }

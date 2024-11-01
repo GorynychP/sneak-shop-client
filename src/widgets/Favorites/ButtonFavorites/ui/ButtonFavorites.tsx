@@ -22,12 +22,10 @@ export const ButtonFavorites = memo(({ className }: ButtonFavoritesProps) => {
             className={clsx(cls.ButtonFavorites, [className])}
         >
             <FavoritesList
-                buttonFavorite={(productId) => (
-                    <AddToFavoritesButton productId={productId} borderNone width={26} height={26} />
+                buttonFavorite={(product) => (
+                    <AddToFavoritesButton product={product} borderNone width={26} height={26} />
                 )}
-                buttonCart={(productId) => (
-                    <AddToCartButton className={cls.cartButton} productId={productId} />
-                )}
+                buttonCart={(product) => <AddToCartButton className={cls.cartButton} product={product} />}
             />
         </Popover>
     );

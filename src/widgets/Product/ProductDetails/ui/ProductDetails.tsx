@@ -26,10 +26,10 @@ export const ProductDetails = memo(({ className, product }: ProductDetailsProps)
                             addonLeft={<CartIcon className={cls.cartIcon} />}
                             theme="accent_button"
                             className={cls.cartButton}
-                            productId={product.id}
+                            product={product}
                         />
                     }
-                    buttonFavorite={<AddToFavoritesButton productId={product.id} />}
+                    buttonFavorite={<AddToFavoritesButton product={product} />}
                 />
             </HStack>
             <div className={cls.description}>

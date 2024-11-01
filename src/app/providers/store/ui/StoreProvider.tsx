@@ -1,22 +1,11 @@
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ReactNode, useMemo } from 'react';
+import { QueryClientProvider } from '@tanstack/react-query';
+import { ReactNode } from 'react';
 import { Provider as ReduxProvider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { appStore, persistedStore } from '../config/store';
+import { queryClient } from '@/shared/api/query-client';
 
 export function StoreProvider({ children }: { children: ReactNode }) {
-    const queryClient = useMemo(() => {
-        return new QueryClient({
-            defaultOptions: {
-                queries: {
-                    refetchOnWindowFocus: false,
-                    staleTime: 1000 * 60 * 5,
-                },
-            },
-        });
-    }, []);
-    // const queryClient = new QueryClient();
-
     return (
         <QueryClientProvider client={queryClient}>
             <ReduxProvider store={appStore}>

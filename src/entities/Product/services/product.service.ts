@@ -25,8 +25,9 @@ class ProductService {
     //     return data || [];
     // }
     async getAll(params?: I_FiltersProduct) {
+        const paramsSizesToString: I_FiltersProduct = { ...params, sizes: JSON.stringify(params?.sizes) };
         const { data } = await axiosClassic.get<IPaginationResponse<I_Product>>(this.base, {
-            params,
+            params: paramsSizesToString,
         });
         return data || [];
     }

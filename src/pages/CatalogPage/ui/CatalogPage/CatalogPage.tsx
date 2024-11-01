@@ -24,6 +24,7 @@ const CatalogPagePage = memo(() => {
     const dispatch = useAppDispatch();
     const { products, isPending, isError } = useManageProductsQuery();
     const toStringFormat = stringifyFilter<I_FiltersProduct>(filtersProducts);
+
     useEffect(() => {
         if (location.pathname === getRouteSale()) {
             dispatch(filterActions.resetAndSetFilters({ isSale: true }));

@@ -9,6 +9,8 @@ import { getRouteMain } from '@/shared/constants/router';
 import { AxiosError } from 'axios';
 import { useAppDispatch } from '@/shared/model';
 import { I_User, userActions } from '@/entities/User';
+// import { favoritesService } from '@/entities/Favorites/api/favoritesApi';
+// import { favoritesActions } from '@/entities/Favorites';
 
 type AuthFormData<T extends boolean> = T extends true ? RegFormSchema : LoginFormSchema;
 interface ErrorResponse {
@@ -18,7 +20,6 @@ interface ErrorResponse {
 export const useAuthForm = (isReg: boolean, onClick: () => void) => {
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
-
     const register = (data: RegFormSchema) => authService.register(data);
     const login = (data: LoginFormSchema) => authService.login(data);
 
@@ -32,10 +33,15 @@ export const useAuthForm = (isReg: boolean, onClick: () => void) => {
             return isReg ? register(data as RegFormSchema) : login(data as LoginFormSchema);
         },
 
-        onSuccess: (data) => {
+        onSuccess: async (data) => {
             onClick();
             dispatch(userActions.setAuthData(data));
             toast.success(isReg ? 'Успешная регистрация' : 'Успешная авторизация');
+
+            // const { wishlist } = await favoritesService.getAll();
+            // console.log('wishlist', wishlist);
+            // dispatch(favoritesActions.addProductsToFavorites(wishlist));
+            // dispatch(favoritesActions.addProductsToFavoritess(wishlist));
             navigate(getRouteMain());
         },
         onError(error) {

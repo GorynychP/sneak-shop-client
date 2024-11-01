@@ -78,14 +78,11 @@ export const CardsSwiper = memo(({ className, title, products }: CardsSwiperProp
                 >
                     {products.map((product) => (
                         <SwiperSlide key={product.id}>
-                            <AppLink to={getLinkDetails(title, product.id)}>
-                                <ProductCard
-                                    favoritesButton={
-                                        <AddToFavoritesButton productId={product.id} borderNone />
-                                    }
-                                    product={product}
-                                />
-                            </AppLink>
+                            <ProductCard
+                                link={getLinkDetails(title, product.id)}
+                                favoritesButton={<AddToFavoritesButton product={product} borderNone />}
+                                product={product}
+                            />
                         </SwiperSlide>
                     ))}
                 </Swiper>

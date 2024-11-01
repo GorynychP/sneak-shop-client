@@ -4,20 +4,25 @@ import cls from './AddToCartButton.module.scss';
 import { Button, ButtonTheme } from '@/shared/ui/Button';
 import { useNavigate } from 'react-router-dom';
 import { getRouteCart } from '@/shared/constants/router';
+import { useClose } from '@headlessui/react';
+import { I_Product } from '@/entities/Product';
 
 interface AddToCartButtonProps {
     className?: string;
-    productId: string;
+    product: I_Product;
     theme?: ButtonTheme;
     addonLeft?: ReactElement;
     addonRight?: ReactElement;
 }
 
 export const AddToCartButton = memo(
-    ({ className, productId, theme = 'filled', addonLeft, addonRight }: AddToCartButtonProps) => {
+    ({ className, product, theme = 'filled', addonLeft, addonRight }: AddToCartButtonProps) => {
         const navigate = useNavigate();
+        const close = useClose();
         const addToCart = () => {
+            console.log('product Добавлен в корзину', product.id);
             navigate(getRouteCart());
+            close();
         };
         return (
             <Button

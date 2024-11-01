@@ -7,11 +7,16 @@
 
     border-bottom: 1px solid var(--bg-dark);
     width: 450px;
-    img {
+
+    .imageLink {
         border-radius: 12px;
-        width: 100px;
         height: 100px;
+        img {
+            border-radius: 12px;
+            height: 100%;
+        }
     }
+
     .infoTop,
     .infoBottom {
         display: flex;
@@ -24,6 +29,9 @@
     .price {
         font-size: 20px;
         text-align: start;
+    }
+    .discountedPrice {
+        color: var(--text-accent);
     }
 
     .infoTop {

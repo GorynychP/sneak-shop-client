@@ -3,4 +3,13 @@
     position: absolute;
     z-index: var(--modal-z-index);
     padding: 15px;
+    .close {
+        top: 10px;
+        right: 10px;
+        width: 20px;
+        height: 20px;
+        background-color: red;
+        // z-index: 1000;
+        cursor: pointer;
+    }
 }

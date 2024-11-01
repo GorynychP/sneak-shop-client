@@ -3,28 +3,32 @@ import clsx from 'clsx';
 import cls from './ProductCard.module.scss';
 import { I_Product } from '../../model/types/product';
 import { discountPrice } from '../../lib/utils/getDiscountPrice';
+import { AppLink } from '@/shared/ui/AppLink';
 
 interface ProductCardProps {
     className?: string;
     product: I_Product;
     favoritesButton: ReactElement;
+    link?: string;
 }
 
 export const ProductCard = memo(
-    ({ className, product: productSneaker, favoritesButton }: ProductCardProps) => {
+    ({ className, product: productSneaker, favoritesButton, link }: ProductCardProps) => {
         const { title, images, price, discount, rating } = productSneaker || {};
         const ratingDefault = 5;
         const colorPrice = discount > 0 ? 'var(--text-accent)' : 'var(--text)';
         const ratingFormat = rating === 0 ? ratingDefault.toFixed(1) : rating.toFixed(1);
         return (
             <div className={clsx(cls.ProductCard, [className])}>
-                <div className={cls.cardImage}>
+                <AppLink to={link || productSneaker.id} className={cls.cardImage}>
                     <img src={images[0]} alt={title} />
                     <span className={cls.cardRating}>★ {ratingFormat}</span>
-                </div>
+                </AppLink>
 
                 <div className={cls.cardInfo}>
-                    <p className={cls.cardTitle}>{title}</p>
+                    <AppLink to={link || productSneaker.id} className={cls.cardTitle}>
+                        {title}
+                    </AppLink>
                     <div className={cls.cardLikeAndPrice}>
                         {favoritesButton}
                         <div className={cls.cardPrice}>

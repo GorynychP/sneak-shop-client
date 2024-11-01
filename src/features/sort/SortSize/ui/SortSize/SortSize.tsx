@@ -39,14 +39,13 @@ export const SortSize = memo(({ className, filterProducts }: SortSizeProps) => {
         setSizeSearch((prev) => [...prev, size]);
     };
     const handleApply = () => {
-        const sizeArrayToString =
-            JSON.stringify(sizeSearch) === '[]' ? undefined : JSON.stringify(sizeSearch);
+        const sizeArray = sizeSearch.length === 0 ? undefined : sizeSearch;
         if (Array.isArray(price))
             dispatch(
                 filterActions.setFilters({
                     priceFrom: price[0],
                     priceTo: price[1],
-                    sizes: sizeArrayToString,
+                    sizes: sizeArray,
                 }),
             );
     };

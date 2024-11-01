@@ -21,7 +21,7 @@ declare global {
 
     export type Email = string;
 
-    export type Id = number;
+    export type Id = string;
 
     export type DateIso = string;
 

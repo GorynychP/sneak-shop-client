@@ -38,7 +38,7 @@ export const getRouteProfile = () => '/profile';
 
 export const getRouteCatalog = () => '/catalog';
 
-export const getRouteProductDetails = (id: string) => `/product/${id}`;
+export const getRouteProductDetails = (id: string) => `/catalog/${id}`;
 
 export const getRouteMyOrders = () => '/orders';
 
