@@ -1,14 +1,20 @@
-export interface I_CartProduct extends I_CartProductBase {
-    title: string;
+import { I_Product } from '@/entities/Product';
+
+export interface I_CartItem {
+    id: string;
+    product: I_Product;
+    quantity: number;
     price: number;
-    total: number;
-    discountPercentage?: number;
-    discountedPrice?: number;
-    image: string;
-    size: number;
+    discount: number;
+    discountPrice: number;
 }
 
-export interface I_CartProductBase {
-    id: string;
-    quantity: number;
+export interface CartSliceState {
+    items: I_CartItem[];
+}
+
+export type IAddToCartPayload = Omit<I_CartItem, 'id'>;
+
+export interface IChangeQuantityPayload extends Pick<I_CartItem, 'id'> {
+    type: 'minus' | 'plus';
 }

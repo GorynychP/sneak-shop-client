@@ -15,11 +15,12 @@ import { userSlice } from '@/entities/User';
 import { filtersSlice } from '@/features/sort';
 import { favoritesSlice } from '@/entities/Favorites';
 import { routeConfig } from '../../router/config/routerConfig';
+import { cartSlice } from '@/entities/Cart';
 
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: [userSlice.name, filtersSlice.name, favoritesSlice.name],
+    whitelist: [userSlice.name, filtersSlice.name, favoritesSlice.name, cartSlice.name],
 };
 export const extraArgument = { routeConfig };
 export function createStore() {

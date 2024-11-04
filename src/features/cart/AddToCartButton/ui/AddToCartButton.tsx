@@ -6,6 +6,8 @@ import { useNavigate } from 'react-router-dom';
 import { getRouteCart } from '@/shared/constants/router';
 import { useClose } from '@headlessui/react';
 import { I_Product } from '@/entities/Product';
+import { useCartActions } from '@/entities/Cart';
+import { discountPrice } from '@/shared/lib/utils/format/getDiscountPrice';
 
 interface AddToCartButtonProps {
     className?: string;
@@ -19,8 +21,17 @@ export const AddToCartButton = memo(
     ({ className, product, theme = 'filled', addonLeft, addonRight }: AddToCartButtonProps) => {
         const navigate = useNavigate();
         const close = useClose();
-        const addToCart = () => {
-            console.log('product Добавлен в корзину', product.id);
+        const { addToCart } = useCartActions();
+
+        const handlerAddToCart = () => {
+            addToCart({
+                product,
+                quantity: 1,
+                price: product.price,
+                discountPrice: discountPrice(product.price, product.discount) || 0,
+                discount: product.discount,
+            });
+
             navigate(getRouteCart());
             close();
         };
@@ -28,7 +39,7 @@ export const AddToCartButton = memo(
             <Button
                 addonLeft={addonLeft}
                 addonRight={addonRight}
-                onClick={addToCart}
+                onClick={handlerAddToCart}
                 theme={theme}
                 className={clsx(cls.AddToCartButton, [className])}
             >

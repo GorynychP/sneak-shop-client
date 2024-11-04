@@ -3,9 +3,9 @@ import clsx from 'clsx';
 import cls from './AddToFavoritesButton.module.scss';
 import { Button } from '@/shared/ui/Button';
 import FavoritesIcon from '@/shared/assets/icon/favorites.svg?react';
-import { favoritesActions, selectIsInFavorites } from '@/entities/Favorites';
+import { selectIsInFavorites, useFavoritesAction } from '@/entities/Favorites';
 import { I_Product } from '@/entities/Product';
-import { useAppDispatch, useAppSelector } from '@/shared/model';
+import { useAppSelector } from '@/shared/model';
 
 interface AddToFavoritesButtonProps {
     className?: string;
@@ -18,13 +18,15 @@ interface AddToFavoritesButtonProps {
 export const AddToFavoritesButton = memo(
     ({ className, product, borderNone, width = 36, height = 36 }: AddToFavoritesButtonProps) => {
         const isInWishlist = useAppSelector((state) => selectIsInFavorites(state, product.id));
-        const dispatch = useAppDispatch();
+        const { toggleFavoritesProduct, deleteProductToFavorites, addProductToFavorites } =
+            useFavoritesAction();
+
         const onClickButtonFavorite = () => {
-            dispatch(favoritesActions.toggleFavoritesProduct(product.id));
+            toggleFavoritesProduct(product.id);
             if (isInWishlist) {
-                dispatch(favoritesActions.deleteProductToFavorites(product));
+                deleteProductToFavorites(product);
             } else {
-                dispatch(favoritesActions.addProductToFavorites(product));
+                addProductToFavorites(product);
             }
         };
         return (

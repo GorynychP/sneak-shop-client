@@ -1,3 +1,4 @@
+import { cartSlice } from '@/entities/Cart';
 import { favoritesSlice } from '@/entities/Favorites';
 import { userSlice } from '@/entities/User';
 import { filtersSlice } from '@/features/sort';
@@ -7,4 +8,5 @@ export const rootReducer = combineReducers({
     [userSlice.name]: userSlice.reducer,
     [filtersSlice.name]: filtersSlice.reducer,
     [favoritesSlice.name]: favoritesSlice.reducer,
+    [cartSlice.name]: cartSlice.reducer,
 });

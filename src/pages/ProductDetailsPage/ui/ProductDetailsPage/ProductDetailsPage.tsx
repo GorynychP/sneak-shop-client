@@ -10,7 +10,7 @@ const ProductDetailsPage = memo(() => {
     const params = useParams<{ id: string }>();
     const { data, isPending, isError } = useQuery<I_Product>({
         queryKey: ['product', params.id],
-        queryFn: () => productService.getById(params.id),
+        queryFn: () => productService.getById(params.id || ''),
 
         // retry: false,
     });

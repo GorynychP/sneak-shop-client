@@ -2,8 +2,8 @@ import { memo, ReactElement } from 'react';
 import clsx from 'clsx';
 import cls from './ProductCard.module.scss';
 import { I_Product } from '../../model/types/product';
-import { discountPrice } from '../../lib/utils/getDiscountPrice';
 import { AppLink } from '@/shared/ui/AppLink';
+import { discountPrice } from '@/shared/lib/utils/format/getDiscountPrice';
 
 interface ProductCardProps {
     className?: string;

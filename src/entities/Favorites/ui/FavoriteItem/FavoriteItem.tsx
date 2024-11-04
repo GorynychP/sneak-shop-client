@@ -2,10 +2,11 @@ import { memo, ReactNode } from 'react';
 import clsx from 'clsx';
 import cls from './FavoriteItem.module.scss';
 import { VStack } from '@/shared/ui/Stack';
-import { discountPrice } from '@/entities/Product/lib/utils/getDiscountPrice';
+
 import { I_Product } from '@/entities/Product';
 import { AppLink } from '@/shared/ui/AppLink';
 import { getRouteProductDetails } from '@/shared/constants/router';
+import { discountPrice } from '@/shared/lib/utils/format/getDiscountPrice';
 
 interface FavoriteItemProps {
     className?: string;

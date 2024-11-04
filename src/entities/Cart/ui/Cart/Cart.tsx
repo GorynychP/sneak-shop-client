@@ -3,25 +3,34 @@ import clsx from 'clsx';
 import cls from './Cart.module.scss';
 import { CartEmpty } from '../components/CartEmpty/CartEmpty';
 import { CartProductCard } from '../components/CartProductCard/CartProductCard';
-import { productCartData } from '../../data/productCartData';
+// import { productCartData } from '../../data/productCartData';
 import { CartTotal } from '../components/CartTotal/CartTotal';
+import { useCart } from '../../model/hooks/useCart';
+import { useCartActions } from '../../model/hooks/useCartActions';
+import { HStack } from '@/shared/ui/Stack';
 
 interface CartProps {
     className?: string;
 }
 
 export const Cart = memo(({ className }: CartProps) => {
-    const products = productCartData;
+    const { cartItems, totalPrice, discountTotalPrice, discount, count } = useCart();
+    const { clearCart } = useCartActions();
 
     const content =
-        products.length !== 0 ? (
+        cartItems.length !== 0 ? (
             <div className="between-start">
                 <div className={cls.ProductListCart}>
-                    {products.map((product) => (
-                        <CartProductCard key={product.id} product={product} />
+                    {cartItems.map((item) => (
+                        <CartProductCard key={item.id} cartItem={item} />
                     ))}
                 </div>
-                <CartTotal />
+                <CartTotal
+                    totalPrice={totalPrice}
+                    discountTotalPrice={discountTotalPrice}
+                    discount={discount}
+                    count={count}
+                />
             </div>
         ) : (
             <CartEmpty />
@@ -29,7 +38,12 @@ export const Cart = memo(({ className }: CartProps) => {
 
     return (
         <div className={clsx(cls.Cart, [className])}>
-            <h3>Корзина</h3>
+            <HStack align="center" gap="24">
+                <h3>Корзина</h3>
+                <span className={cls.clear} onClick={() => clearCart()}>
+                    Очистить корзину
+                </span>
+            </HStack>
             {content}
         </div>
     );

@@ -2,10 +2,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    // justify-content: space-around;
     gap: 22px;
     border: 1px solid var(--bg-dark);
     border-radius: 14px;
     min-width: 330px;
+    // min-height: 430px;
     // max-width: 330px;
     padding: 24px 20px;
     h3,
@@ -15,6 +17,18 @@
     .borderBottom {
         padding-bottom: 14px;
         border-bottom: 1px solid var(--bg-dark);
+        .discount {
+            color: var(--text-accent);
+        }
+    }
+    .totalPrice {
+        color: var(--text-accent);
+        font-size: 24px;
+    }
+    .textTotal {
+        color: var(--text-accent);
+        font-size: 24px;
+        font-weight: bold;
     }
     .items {
         // padding-left: 20px;

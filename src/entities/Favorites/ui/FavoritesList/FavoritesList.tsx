@@ -4,15 +4,13 @@ import cls from './FavoritesList.module.scss';
 import { FavoriteItem } from '../FavoriteItem/FavoriteItem';
 import { VStack } from '@/shared/ui/Stack';
 import { Button } from '@/shared/ui/Button';
-import { useAppDispatch } from '@/shared/model';
-import { favoritesActions } from '../../model/slice/favoritesSlice';
 
 import { I_Product } from '@/entities/Product';
 import { getRouteForMen } from '@/shared/constants/router';
 import { useNavigate } from 'react-router-dom';
 import { useClose } from '@headlessui/react';
-import { PageLoader } from '@/widgets/PageLoader';
-import { useCreateFavorites } from '../../api/useCreateFavorites';
+import { useLocalFavorites } from '../../api/useLocalFavorites';
+import { useFavoritesAction } from '../../model/hooks/useFavoritesAction';
 
 interface FavoritesListProps {
     className?: string;
@@ -23,10 +21,10 @@ interface FavoritesListProps {
 
 export const FavoritesList = memo(({ className, buttonFavorite, buttonCart }: FavoritesListProps) => {
     const navigate = useNavigate();
-    const dispatch = useAppDispatch();
     const closePopover = useClose();
 
-    const { favorites, isPending } = useCreateFavorites();
+    const { favorites } = useLocalFavorites();
+    const { clearFavoritesData } = useFavoritesAction();
 
     const getFavoriteSlot = useCallback(
         (favorite: I_Product) => {
@@ -51,7 +49,7 @@ export const FavoritesList = memo(({ className, buttonFavorite, buttonCart }: Fa
     );
 
     const clearFavoritesList = () => {
-        dispatch(favoritesActions.clearFavoritesData());
+        clearFavoritesData();
     };
 
     const handlerClosePopover = () => {
@@ -62,9 +60,7 @@ export const FavoritesList = memo(({ className, buttonFavorite, buttonCart }: Fa
     return (
         <VStack align="end" justify="between" gap="44" className={clsx(cls.FavoritesList, [className])}>
             <VStack gap="20" max className={cls.list}>
-                {isPending ? (
-                    <PageLoader className={cls.loader} />
-                ) : favorites.length > 0 ? (
+                {favorites.length > 0 ? (
                     favorites.map((favorite) => (
                         <FavoriteItem
                             buttonFavorite={getFavoriteSlot(favorite)}
@@ -87,7 +83,7 @@ export const FavoritesList = memo(({ className, buttonFavorite, buttonCart }: Fa
                     </div>
                 )}
             </VStack>
-            <Button disabled={isPending} onClick={clearFavoritesList} theme="filled">
+            <Button onClick={clearFavoritesList} theme="filled">
                 Убрать все
             </Button>
         </VStack>
