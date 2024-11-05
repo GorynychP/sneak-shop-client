@@ -11,39 +11,49 @@ interface ProductInfoProps {
     product: I_Product;
     buttonFavorite: ReactElement;
     buttonCart: ReactElement;
+    handleClick: (num: number) => void;
+    size?: number;
 }
 
-export const ProductInfo = memo(({ className, product, buttonFavorite, buttonCart }: ProductInfoProps) => {
-    const { rating, sizes, discount, price } = product;
-    return (
-        <div className={clsx(cls.ProductInfo, [className])}>
-            <h2 className={cls.title}>{product.title}</h2>
-            <span className={cls.rating}>★ {rating.toFixed(1)}</span>
-            {discount > 0 ? (
-                <HStack className={cls.discountBlock} align="end" gap="20">
-                    <b className={cls.discountedPrice}>{discountPrice(price, discount)} $.</b>
-                    <VStack align="center">
-                        <p className={cls.discount}>-{discount}%</p>
-                        <b className={cls.oldPrice}>{price} $.</b>
-                    </VStack>
-                </HStack>
-            ) : (
-                <b className={cls.price}>{price} $.</b>
-            )}
+export const ProductInfo = memo(
+    ({ className, product, buttonFavorite, buttonCart, handleClick, size }: ProductInfoProps) => {
+        const { rating, sizes, discount, price } = product;
+        return (
+            <div className={clsx(cls.ProductInfo, [className])}>
+                <h2 className={cls.title}>{product.title}</h2>
+                <span className={cls.rating}>★ {rating.toFixed(1)}</span>
+                {discount > 0 ? (
+                    <HStack className={cls.discountBlock} align="end" gap="20">
+                        <b className={cls.discountedPrice}>{discountPrice(price, discount)} $.</b>
+                        <VStack align="center">
+                            <p className={cls.discount}>-{discount}%</p>
+                            <b className={cls.oldPrice}>{price} $.</b>
+                        </VStack>
+                    </HStack>
+                ) : (
+                    <b className={cls.price}>{price} $.</b>
+                )}
 
-            <VStack gap="16" className={cls.sizes}>
-                <p>Размер:</p>
-                <div className={cls.sizesNum}>
-                    {sizes?.map((num) => (
-                        <button key={num}>{num}</button>
-                    ))}
-                </div>
-            </VStack>
-            <StatusTag className={cls.existence} text="В наличии" />
-            <HStack gap="8">
-                {buttonCart}
-                {buttonFavorite}
-            </HStack>
-        </div>
-    );
-});
+                <VStack gap="16" className={cls.sizes}>
+                    <p>Размер:</p>
+                    <div className={cls.sizesNum}>
+                        {sizes?.map((num) => (
+                            <button
+                                className={clsx({ [cls.btnActive]: size === num })}
+                                onClick={() => handleClick(num)}
+                                key={num}
+                            >
+                                {num}
+                            </button>
+                        ))}
+                    </div>
+                </VStack>
+                <StatusTag className={cls.existence} text="В наличии" />
+                <HStack gap="8">
+                    {buttonCart}
+                    {buttonFavorite}
+                </HStack>
+            </div>
+        );
+    },
+);

@@ -50,6 +50,7 @@ const CatalogPagePage = memo(() => {
     );
 
     const productsLength = products?.length;
+
     return (
         <Page className="CatalogPagePage">
             <Breadcrumb />

@@ -53,7 +53,11 @@ export const Navbar = memo(({ className }: NavbarProps) => {
                     addonRight={<img src={SearchImage} />}
                 />
                 <div className="header-right-block">
-                    <AppLink className="header-right-block-link" to={getRouteCart()}>
+                    <AppLink
+                        className="header-right-block-link"
+                        activeClassName="header-right-block-link-active"
+                        to={getRouteCart()}
+                    >
                         <img width={34} height={32} src={CartImage} />
                     </AppLink>
                     <ButtonFavorites />

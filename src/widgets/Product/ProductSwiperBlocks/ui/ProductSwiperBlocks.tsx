@@ -20,9 +20,21 @@ export const ProductSwiperBlocks = memo(
         const { productsDiscount, productsForMen, productsForWomen } = getFilterProduct(products);
         return (
             <div className={clsx(cls.SneakersBlocks, [className])}>
-                <CardsSwiper products={productsDiscount} title="SALE" />
-                <CardsSwiper products={productsForMen} title="FOR MEN" />
-                <CardsSwiper products={productsForWomen} title="FOR WOMEN" />
+                <CardsSwiper
+                    products={productsDiscount}
+                    title="SALE"
+                    autoplay={{ delay: 4000, disableOnInteraction: true }}
+                />
+                <CardsSwiper
+                    products={productsForMen}
+                    title="FOR MEN"
+                    autoplay={{ delay: 4000, disableOnInteraction: true, reverseDirection: true }}
+                />
+                <CardsSwiper
+                    products={productsForWomen}
+                    title="FOR WOMEN"
+                    autoplay={{ delay: 4000, disableOnInteraction: true }}
+                />
             </div>
         );
     },

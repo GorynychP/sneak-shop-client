@@ -13,7 +13,13 @@ export const cartSlice = createSlice({
         },
         addToCart: (state, action: PayloadAction<IAddToCartPayload>) => {
             const isExist = state.items.some((item) => item.product.id === action.payload.product.id);
-            if (isExist) return;
+            if (isExist) {
+                const isSize = state.items.some((item) => item.size === action.payload.size);
+                if (!isSize) {
+                    state.items.unshift({ ...action.payload, id: generateShortId() });
+                }
+                return;
+            }
             state.items.unshift({ ...action.payload, id: generateShortId() });
         },
         removeFromCart: (state, action: PayloadAction<{ id: string }>) => {

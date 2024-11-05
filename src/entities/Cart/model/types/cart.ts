@@ -7,6 +7,7 @@ export interface I_CartItem {
     price: number;
     discount: number;
     discountPrice: number;
+    size: number;
 }
 
 export interface CartSliceState {

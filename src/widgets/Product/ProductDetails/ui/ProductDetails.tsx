@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, useState } from 'react';
 import clsx from 'clsx';
 import cls from './ProductDetails.module.scss';
 import { ProductGallery } from './components/ProductGallery/ProductGallery';
@@ -15,6 +15,11 @@ interface ProductDetailsProps {
 }
 
 export const ProductDetails = memo(({ className, product }: ProductDetailsProps) => {
+    const [sizeNum, setSizeNum] = useState<undefined | number>(undefined);
+    const handleClick = (numSize: number) => {
+        setSizeNum(numSize);
+    };
+
     return (
         <VStack align="start" gap="44" className={clsx(cls.SneakersDetails, [className])}>
             <HStack align="center" gap="44">
@@ -27,9 +32,12 @@ export const ProductDetails = memo(({ className, product }: ProductDetailsProps)
                             theme="accent_button"
                             className={cls.cartButton}
                             product={product}
+                            size={sizeNum}
                         />
                     }
                     buttonFavorite={<AddToFavoritesButton product={product} />}
+                    handleClick={handleClick}
+                    size={sizeNum}
                 />
             </HStack>
             <div className={cls.description}>

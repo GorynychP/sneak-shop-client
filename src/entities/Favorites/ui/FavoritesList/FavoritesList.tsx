@@ -6,7 +6,7 @@ import { VStack } from '@/shared/ui/Stack';
 import { Button } from '@/shared/ui/Button';
 
 import { I_Product } from '@/entities/Product';
-import { getRouteForMen } from '@/shared/constants/router';
+import { getRouteCatalog } from '@/shared/constants/router';
 import { useNavigate } from 'react-router-dom';
 import { useClose } from '@headlessui/react';
 import { useLocalFavorites } from '../../api/useLocalFavorites';
@@ -53,7 +53,7 @@ export const FavoritesList = memo(({ className, buttonFavorite, buttonCart }: Fa
     };
 
     const handlerClosePopover = () => {
-        navigate(getRouteForMen());
+        navigate(getRouteCatalog());
         closePopover();
     };
 

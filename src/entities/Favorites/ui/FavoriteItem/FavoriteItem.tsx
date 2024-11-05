@@ -16,36 +16,30 @@ interface FavoriteItemProps {
     close: () => void;
 }
 
-export const FavoriteItem = memo(
-    ({ className, favorite, buttonFavorite, buttonCart, close }: FavoriteItemProps) => {
-        const { title, images, price, discount } = favorite;
+export const FavoriteItem = memo(({ className, favorite, buttonFavorite, close }: FavoriteItemProps) => {
+    const { title, images, price, discount } = favorite;
 
-        return (
-            <div className={clsx(cls.FavoriteItem, [className])}>
-                <AppLink onClick={close} className={cls.imageLink} to={getRouteProductDetails(favorite.id)}>
-                    <img src={images[0]} alt={title} />
-                </AppLink>
-                <VStack justify="between" max>
-                    <div className={cls.infoTop}>
-                        <AppLink
-                            onClick={close}
-                            to={getRouteProductDetails(favorite.id)}
-                            className={cls.title}
-                        >
-                            {title}
-                        </AppLink>
-                        {buttonFavorite}
-                    </div>
-                    <div className={cls.infoBottom}>
-                        {discount > 0 ? (
-                            <span className={cls.discountedPrice}>{discountPrice(price, discount)}$.</span>
-                        ) : (
-                            <span className={cls.price}>{price}$.</span>
-                        )}
-                        {buttonCart}
-                    </div>
-                </VStack>
-            </div>
-        );
-    },
-);
+    return (
+        <div className={clsx(cls.FavoriteItem, [className])}>
+            <AppLink onClick={close} className={cls.imageLink} to={getRouteProductDetails(favorite.id)}>
+                <img src={images[0]} alt={title} />
+            </AppLink>
+            <VStack justify="between" max>
+                <div className={cls.infoTop}>
+                    <AppLink onClick={close} to={getRouteProductDetails(favorite.id)} className={cls.title}>
+                        {title}
+                    </AppLink>
+                    {buttonFavorite}
+                </div>
+                <div className={cls.infoBottom}>
+                    {discount > 0 ? (
+                        <span className={cls.discountedPrice}>{discountPrice(price, discount)}$.</span>
+                    ) : (
+                        <span className={cls.price}>{price}$.</span>
+                    )}
+                    {/* {buttonCart} */}
+                </div>
+            </VStack>
+        </div>
+    );
+});

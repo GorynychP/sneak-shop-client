@@ -14,8 +14,8 @@ interface CartProductCardProps {
 }
 
 export const CartProductCard = memo(({ className, cartItem }: CartProductCardProps) => {
-    const { quantity, discountPrice } = cartItem;
-    const { title, discount, images, sizes, price } = cartItem.product;
+    const { quantity, discountPrice, size } = cartItem;
+    const { title, discount, images, price } = cartItem.product;
     const { changeQuantity, removeFromCart } = useCartActions();
     const priceFormatted = formatUSD(price);
     function totalPriceOneProduct(price: number) {
@@ -32,12 +32,10 @@ export const CartProductCard = memo(({ className, cartItem }: CartProductCardPro
                     <AppLink to={getRouteProductDetails(cartItem.product.id)}>
                         <h3>{title}</h3>{' '}
                     </AppLink>
-                    <p style={{ display: 'flex' }}>
-                        Размер:{' '}
-                        {sizes?.map((size) => (
-                            <p>{size}, </p>
-                        ))}
-                    </p>
+                    <HStack align="center" gap="8">
+                        <p> Размер:</p>
+                        <p> {size}</p>
+                    </HStack>
                 </div>
                 <div className="column gap-xxs">
                     <HStack max align="center" justify="between" gap="8">

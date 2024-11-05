@@ -6,6 +6,7 @@ import FavoritesIcon from '@/shared/assets/icon/favorites.svg?react';
 import { selectIsInFavorites, useFavoritesAction } from '@/entities/Favorites';
 import { I_Product } from '@/entities/Product';
 import { useAppSelector } from '@/shared/model';
+import toast from 'react-hot-toast';
 
 interface AddToFavoritesButtonProps {
     className?: string;
@@ -26,6 +27,7 @@ export const AddToFavoritesButton = memo(
             if (isInWishlist) {
                 deleteProductToFavorites(product);
             } else {
+                toast.success('Добавлено в избранное');
                 addProductToFavorites(product);
             }
         };

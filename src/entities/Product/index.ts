@@ -5,5 +5,6 @@ export { ProductList } from '../../widgets/Product/ProductList/ProductList';
 export type { I_Product, T_Gender, ProductId } from './model/types/product';
 
 export { sneakersData } from './api/sneakersData';
-export { useProducts } from './lib/hooks/useProducts';
 export { productService } from './services/product.service';
+export { useProducts } from './lib/hooks/useProducts';
+export { useOneProduct } from './lib/hooks/useOneProduct';
