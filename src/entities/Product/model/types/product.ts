@@ -1,3 +1,5 @@
+import { I_Comment } from '@/entities/Comment';
+
 export type T_Gender = 'FEMALE' | 'MALE' | 'UNISEX';
 
 export type ProductId = Brand<Id, 'ProductId'>;
@@ -12,4 +14,5 @@ export interface I_Product {
     price: number;
     rating: number;
     discount: number;
+    review: I_Comment[];
 }

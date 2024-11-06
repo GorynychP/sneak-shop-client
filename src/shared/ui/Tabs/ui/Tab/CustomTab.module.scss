@@ -1,0 +1,13 @@
+.Tab {
+    cursor: pointer;
+    font-size: 22px;
+    border: 2px solid var(--bg-dark);
+    background-color: var(--bg);
+    border-radius: 12px;
+    color: var(--text);
+}
+.Tab:hover {
+    border: 2px solid var(--text-accent);
+    color: var(--text-accent);
+    transform: scale(1.1);
+}

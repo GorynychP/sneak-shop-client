@@ -8,6 +8,16 @@ import { I_Product } from '@/entities/Product';
 import { AddToFavoritesButton } from '@/features/Favorites/AddToFavoritesButton';
 import { AddToCartButton } from '@/features/cart/AddToCartButton';
 import CartIcon from '@/shared/assets/icon/shopping-cart.svg?react';
+import { Tabs } from '@/shared/ui/Tabs';
+
+import { CommentContainer } from './components/Tabs/CommentContainer/CommentContainer';
+import { DescriptionContainer } from './components/Tabs/DescriptionContainer/DescriptionContainer';
+import { CharacteristicsContainer } from './components/Tabs/CharacteristicsContainer/CharacteristicsContainer';
+import {
+    renderProductContent,
+    renderProductTabs,
+    T_ContentProductTabs,
+} from './components/Tabs/renderTabs/renderProductTabs';
 
 interface ProductDetailsProps {
     className?: string;
@@ -19,6 +29,26 @@ export const ProductDetails = memo(({ className, product }: ProductDetailsProps)
     const handleClick = (numSize: number) => {
         setSizeNum(numSize);
     };
+
+    const categories: T_ContentProductTabs[] = [
+        {
+            name: 'Описание',
+            type: 'description',
+            textComponent: <DescriptionContainer text={product.description} />,
+        },
+        {
+            name: 'Отзывы',
+            type: 'comments',
+            count: product.review.length,
+            commentsComponent: <CommentContainer comments={product.review} />,
+        },
+
+        {
+            name: 'Характеристики',
+            type: 'characteristics',
+            characteristicsComponent: <CharacteristicsContainer />,
+        },
+    ];
 
     return (
         <VStack align="start" gap="44" className={clsx(cls.SneakersDetails, [className])}>
@@ -40,10 +70,11 @@ export const ProductDetails = memo(({ className, product }: ProductDetailsProps)
                     size={sizeNum}
                 />
             </HStack>
-            <div className={cls.description}>
-                <h3 className={cls.title}>Описание:</h3>
-                <p className={cls.text}>{product.description}</p>
-            </div>
+            <Tabs<T_ContentProductTabs>
+                renderTabs={renderProductTabs}
+                categories={categories}
+                renderContent={renderProductContent}
+            />
         </VStack>
     );
 });

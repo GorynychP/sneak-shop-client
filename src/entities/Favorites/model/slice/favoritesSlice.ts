@@ -28,9 +28,7 @@ export const favoritesSlice = createSlice({
         deleteProductToFavorites: (state, action: PayloadAction<I_Product>) => {
             state.favorites = state.favorites.filter((product) => product.id !== action.payload.id);
         },
-        // removeProductFromWishlist: (state, action: PayloadAction<ProductId>) => {
-        //     state.favorites = state.favorites.filter((product) => product.id !== action.payload);
-        // },
+
         toggleFavoritesProduct: (state, action: PayloadAction<ProductId>) => {
             if (state.productsIds[action.payload]) {
                 // state.productsIds[action.payload] = false;
