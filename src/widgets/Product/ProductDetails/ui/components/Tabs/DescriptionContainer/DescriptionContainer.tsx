@@ -13,11 +13,7 @@ export const DescriptionContainer = memo(({ className, text }: DescriptionContai
     if (!text) {
         content = <div>Описание отсутствует</div>;
     } else {
-        content = (
-            <p style={{ fontSize: '26px' }} className={cls.text}>
-                {text}
-            </p>
-        );
+        content = <p className={cls.text}>{text}</p>;
     }
     return (
         <div className={clsx(cls.DescriptionContainer, [className])}>

@@ -9,5 +9,6 @@ export const useOneProduct = (params: { id: string }) => {
 
         // retry: false,
     });
+
     return { product: data, isPending, isError };
 };

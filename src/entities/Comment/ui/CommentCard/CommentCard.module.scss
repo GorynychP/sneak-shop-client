@@ -1,0 +1,28 @@
+.CommentCard {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid var(--bg-dark);
+    background: var(--bg);
+    border-radius: 12px;
+    padding: 20px 25px;
+    width: 100%;
+    .comment {
+        background-color: var(--bg-light);
+        border-radius: 14px;
+        padding: 15px;
+        margin: 10px 0px 15px;
+    }
+    .infoUser {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .deleteComment {
+        fill: var(--text);
+        cursor: pointer;
+    }
+    .deleteComment:hover {
+        fill: var(--text-accent);
+        transform: scale(1.2);
+    }
+}

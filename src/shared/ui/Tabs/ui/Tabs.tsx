@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useState } from 'react';
 import { TabGroup, TabList, TabPanels } from '@headlessui/react';
 import clsx from 'clsx';
 import cls from './Tabs.module.scss';
@@ -18,12 +18,13 @@ export const Tabs = <T extends T_ContentCategories>({
     renderContent,
     renderTabs,
 }: TabsProps<T>) => {
+    const [selectedIndex, setSelectedIndex] = useState(0);
     const content = categories?.map(renderContent);
     const tabs = categories?.map(renderTabs);
-
+    console.log('selectedIndex', selectedIndex);
     return (
         <div className={clsx(cls.Tabs, [className])}>
-            <TabGroup>
+            <TabGroup selectedIndex={selectedIndex} onChange={setSelectedIndex}>
                 <TabList className={cls.tabs} as="aside">
                     {tabs}
                 </TabList>

@@ -1,13 +1,18 @@
 import { ProductDetails, useOneProduct } from '@/entities/Product';
 import { Breadcrumb } from '@/features/Breadcrumbs';
+import { useAddCommentAction } from '@/features/comment';
 import { VStack } from '@/shared/ui/Stack';
 import { Page } from '@/widgets/Page';
 import { PageLoader } from '@/widgets/PageLoader';
-import { memo } from 'react';
+import { memo, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 const ProductDetailsPage = memo(() => {
     const params = useParams<{ id: string }>();
+    const { setProductId } = useAddCommentAction();
+    useEffect(() => {
+        setProductId(params.id || '');
+    });
     const { product, isPending } = useOneProduct({ id: params.id || '' });
 
     const content = isPending ? (

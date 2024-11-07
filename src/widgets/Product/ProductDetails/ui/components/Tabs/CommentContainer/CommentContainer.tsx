@@ -1,7 +1,10 @@
 import { memo } from 'react';
 import clsx from 'clsx';
 import cls from './CommentContainer.module.scss';
-import { I_Comment } from '@/entities/Comment';
+import { CommentList, I_Comment } from '@/entities/Comment';
+import { AddCommentForm } from '@/features/comment';
+import { useAppSelector } from '@/shared/model';
+import { selectUserAuthInited } from '@/entities/User';
 
 interface CommentContainerProps {
     className?: string;
@@ -9,6 +12,8 @@ interface CommentContainerProps {
 }
 
 export const CommentContainer = memo(({ className, comments }: CommentContainerProps) => {
+    const isAuth = useAppSelector(selectUserAuthInited);
+
     let content;
 
     if (!comments) {
@@ -16,19 +21,18 @@ export const CommentContainer = memo(({ className, comments }: CommentContainerP
     } else if (comments.length === 0) {
         content = <div>Отзывов пока еще нет</div>;
     } else {
-        content = (
-            <>
-                {comments.map((comment) => (
-                    <div key={comment.id}>
-                        <p>{comment.text}</p>
-                    </div>
-                ))}
-            </>
-        );
+        content = <CommentList comments={comments} />;
     }
 
     return (
         <div className={clsx(cls.CommentContainer, [className])}>
+            {isAuth ? (
+                <AddCommentForm />
+            ) : (
+                <div className={cls.noAuth}>
+                    <h3>Для того, чтобы оставить отзыв, нужно авторизоваться</h3>
+                </div>
+            )}
             <h3>Отзывы:</h3>
             {content}
         </div>

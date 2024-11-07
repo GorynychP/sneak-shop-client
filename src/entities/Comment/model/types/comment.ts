@@ -4,7 +4,13 @@ export interface I_Comment {
     id: string;
     text: string;
     rating?: number;
-    createdAt?: Date;
-    updatedAt?: Date;
+    createdAt: string;
+    updatedAt?: string;
     user?: I_User;
+    userId?: string;
+}
+
+export interface I_AddComment {
+    text: string;
+    rating?: number;
 }
