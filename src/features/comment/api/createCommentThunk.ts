@@ -5,7 +5,7 @@ import { MutationObserver } from '@tanstack/react-query';
 import toast from 'react-hot-toast';
 import { addCommentActions } from '../model/slice/addCommentSlice';
 
-export const createComment = (): AppThunk => async (dispatch, getState) => {
+export const createCommentThunk = (): AppThunk => async (dispatch, getState) => {
     const productId = getState().addComment.productId;
     const comment = getState().addComment.text;
     const rating = getState().addComment.rating;
@@ -14,12 +14,13 @@ export const createComment = (): AppThunk => async (dispatch, getState) => {
         toast('Комментарий не может быть пустым');
         return;
     }
-    if (!rating) {
-        toast('Выберите рейтинг');
+
+    if (rating === 0) {
+        toast('Поставьте свою оценку');
         return;
     }
 
-    const addCommentResult = await new MutationObserver(queryClient, {
+    await new MutationObserver(queryClient, {
         mutationFn: () => {
             return commentService.create(productId, {
                 text: comment,
@@ -31,5 +32,4 @@ export const createComment = (): AppThunk => async (dispatch, getState) => {
         },
     }).mutate();
     dispatch(addCommentActions.reset());
-    console.log('addCommentResult', addCommentResult);
 };

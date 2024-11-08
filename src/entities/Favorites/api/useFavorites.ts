@@ -19,7 +19,6 @@ export function useFavorites() {
         },
         enabled: IsInitedUser,
     });
-    console.log('favoritesData', favoritesData);
     const favorites = favoritesData?.wishlist || localFavorites || [];
     return { favorites, isPending: isLoading };
 }

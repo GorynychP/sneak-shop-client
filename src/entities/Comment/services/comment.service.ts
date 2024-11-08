@@ -5,12 +5,12 @@ class CommentService {
     private base = 'reviews';
 
     async getAll() {
-        const { data } = await axiosClassic.get<I_Comment[]>(this.base);
+        const { data } = await axiosWithAuth.get<I_Comment[]>(this.base);
         return { comments: data };
     }
     async getAllForProductId(productId: string) {
         const { data } = await axiosClassic.get<I_Comment[]>(`${this.base}/${productId}`);
-        return { comments: data };
+        return data || [];
     }
 
     async create(productId: string, body?: I_AddComment) {

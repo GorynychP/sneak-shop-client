@@ -1,10 +1,11 @@
-import { memo } from 'react';
+import { memo, useCallback } from 'react';
 import clsx from 'clsx';
 import cls from './AddCommentForm.module.scss';
 import { Button } from '@/shared/ui/Button';
 import { useAddCommentAction } from '../../model/hooks/useAddCommentAction';
-import { createComment } from '../../api/createComment';
+import { createCommentThunk } from '../../api/createCommentThunk';
 import { useAppDispatch, useAppSelector } from '@/shared/model';
+import { StarRating } from '@/shared/ui/StarRating';
 
 interface AddCommentFormProps {
     className?: string;
@@ -12,6 +13,7 @@ interface AddCommentFormProps {
 
 export const AddCommentForm = memo(({ className }: AddCommentFormProps) => {
     const text = useAppSelector((state) => state.addComment.text);
+    const rating = useAppSelector((state) => state.addComment.rating);
     const { setTextComment, setRatingComment } = useAddCommentAction();
     const dispatch = useAppDispatch();
     const onChangeComment = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -19,12 +21,18 @@ export const AddCommentForm = memo(({ className }: AddCommentFormProps) => {
         e.stopPropagation();
         setTextComment(e.target.value);
     };
+    const onSelectStars = useCallback(
+        (selectedStarsCount: number) => {
+            setRatingComment(selectedStarsCount);
+        },
+        [setRatingComment],
+    );
     const onSubmit = () => {
-        setRatingComment(2);
-        dispatch(createComment());
+        dispatch(createCommentThunk());
     };
     return (
         <div className={clsx(cls.AddCommentForm, [className])}>
+            <StarRating size={30} selectedStars={rating} onSelect={onSelectStars} />
             <textarea
                 value={text}
                 placeholder="Ваш комментарий"

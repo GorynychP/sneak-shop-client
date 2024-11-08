@@ -1,0 +1,19 @@
+.StarRating {
+    .hovered {
+        fill: var(--text-accent);
+    }
+}
+
+.starIcon {
+    cursor: pointer;
+    color: var(--text-accent);
+    padding-right: 10px;
+}
+
+.normal {
+    fill: none;
+}
+
+.fixed {
+    cursor: auto;
+}

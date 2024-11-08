@@ -21,7 +21,6 @@ export const Tabs = <T extends T_ContentCategories>({
     const [selectedIndex, setSelectedIndex] = useState(0);
     const content = categories?.map(renderContent);
     const tabs = categories?.map(renderTabs);
-    console.log('selectedIndex', selectedIndex);
     return (
         <div className={clsx(cls.Tabs, [className])}>
             <TabGroup selectedIndex={selectedIndex} onChange={setSelectedIndex}>

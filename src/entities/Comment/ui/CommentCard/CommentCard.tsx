@@ -9,6 +9,7 @@ import DeleteImage from '@/shared/assets/icon/trash-solid.svg?react';
 import { useAppDispatch, useAppSelector } from '@/shared/model';
 import { deleteCommentThunk } from '../../api/deleteCommentThunk';
 import { selectIsUserAdmin, selectUserData } from '@/entities/User';
+import { StarRating } from '@/shared/ui/StarRating';
 
 interface CommentCardProps {
     className?: string;
@@ -24,7 +25,8 @@ export const CommentCard = memo(({ className, comment }: CommentCardProps) => {
     return (
         <div className={clsx(cls.CommentCard, [className])}>
             <HStack align="center" gap="12" justify="between">
-                <div className={cls.rating}>★ {comment.rating}</div>
+                <StarRating size={24} fixed selectedStars={comment.rating} />
+
                 {isShow && (
                     <DeleteImage
                         onClick={() => dispatch(deleteCommentThunk(comment.id))}

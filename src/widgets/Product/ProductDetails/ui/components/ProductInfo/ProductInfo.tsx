@@ -21,7 +21,7 @@ export const ProductInfo = memo(
         return (
             <div className={clsx(cls.ProductInfo, [className])}>
                 <h2 className={cls.title}>{product.title}</h2>
-                <span className={cls.rating}>★ {rating.toFixed(1)}</span>
+                <span className={cls.rating}>★ {rating > 0 && rating.toFixed(1)}</span>
                 {discount > 0 ? (
                     <HStack className={cls.discountBlock} align="end" gap="20">
                         <b className={cls.discountedPrice}>{discountPrice(price, discount)} $.</b>

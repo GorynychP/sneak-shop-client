@@ -4,7 +4,7 @@ import { AddCommentSchema } from '../types/addComment';
 const initialState: AddCommentSchema = {
     productId: '',
     text: '',
-    rating: null,
+    rating: 0,
 };
 
 export const addCommentSlice = createSlice({
@@ -13,7 +13,7 @@ export const addCommentSlice = createSlice({
     reducers: {
         reset: (state) => {
             state.text = '';
-            state.rating = null;
+            state.rating = 0;
         },
         setTextComment: (state, action: PayloadAction<string>) => {
             state.text = action.payload;

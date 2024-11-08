@@ -39,7 +39,7 @@ export const ProductDetails = memo(({ className, product }: ProductDetailsProps)
         {
             name: 'Отзывы',
             type: 'comments',
-            count: product.review.length,
+            count: product?.review?.length || 0,
             commentsComponent: <CommentContainer comments={product.review} />,
         },
 

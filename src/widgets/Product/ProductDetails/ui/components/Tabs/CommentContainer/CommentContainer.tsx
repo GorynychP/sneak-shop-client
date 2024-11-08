@@ -1,8 +1,8 @@
-import { memo } from 'react';
+import { memo, useEffect } from 'react';
 import clsx from 'clsx';
 import cls from './CommentContainer.module.scss';
 import { CommentList, I_Comment } from '@/entities/Comment';
-import { AddCommentForm } from '@/features/comment';
+import { AddCommentForm, useAddCommentAction } from '@/features/comment';
 import { useAppSelector } from '@/shared/model';
 import { selectUserAuthInited } from '@/entities/User';
 
@@ -13,6 +13,11 @@ interface CommentContainerProps {
 
 export const CommentContainer = memo(({ className, comments }: CommentContainerProps) => {
     const isAuth = useAppSelector(selectUserAuthInited);
+    const { reset } = useAddCommentAction();
+
+    useEffect(() => {
+        reset();
+    }, [reset]);
 
     let content;
 
