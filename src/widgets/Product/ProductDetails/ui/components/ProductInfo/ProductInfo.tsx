@@ -49,7 +49,7 @@ export const ProductInfo = memo(
                     </div>
                 </VStack>
                 <StatusTag className={cls.existence} text="В наличии" />
-                <HStack gap="8">
+                <HStack gap="24">
                     {buttonCart}
                     {buttonFavorite}
                 </HStack>

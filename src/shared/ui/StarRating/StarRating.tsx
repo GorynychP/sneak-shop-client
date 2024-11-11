@@ -22,7 +22,6 @@ export const StarRating = memo((props: StarRatingProps) => {
         }
     }, [isSelected, selectedStars]);
     const onHover = (starsCount: number) => () => {
-        console.log('starsCount', starsCount);
         setCurrentStarsCount(starsCount);
     };
     const onLeave = () => {

@@ -20,7 +20,7 @@ export const createCommentThunk = (): AppThunk => async (dispatch, getState) => 
         return;
     }
 
-    await new MutationObserver(queryClient, {
+    new MutationObserver(queryClient, {
         mutationFn: () => {
             return commentService.create(productId, {
                 text: comment,
@@ -29,7 +29,8 @@ export const createCommentThunk = (): AppThunk => async (dispatch, getState) => 
         },
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ['product'] });
+            toast.success('Комментарий успешно добавлен');
+            dispatch(addCommentActions.reset());
         },
     }).mutate();
-    dispatch(addCommentActions.reset());
 };

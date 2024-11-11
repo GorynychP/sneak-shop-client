@@ -16,6 +16,7 @@ export const AddCommentForm = memo(({ className }: AddCommentFormProps) => {
     const rating = useAppSelector((state) => state.addComment.rating);
     const { setTextComment, setRatingComment } = useAddCommentAction();
     const dispatch = useAppDispatch();
+
     const onChangeComment = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         e.preventDefault();
         e.stopPropagation();
@@ -40,7 +41,7 @@ export const AddCommentForm = memo(({ className }: AddCommentFormProps) => {
                 className={cls.commentField}
                 name="comment"
             />
-            <Button onClick={onSubmit} className={cls.commentButton} theme="accent_button">
+            <Button type="submit" onClick={onSubmit} className={cls.commentButton} theme="accent_button">
                 Отправить
             </Button>
         </div>

@@ -1,5 +1,6 @@
 import { cartSlice } from '@/entities/Cart';
 import { favoritesSlice } from '@/entities/Favorites';
+import { profileSlice } from '@/entities/Profile';
 import { userSlice } from '@/entities/User';
 import { addCommentSlice } from '@/features/comment';
 import { filtersSlice } from '@/features/sort';
@@ -11,4 +12,5 @@ export const rootReducer = combineReducers({
     [favoritesSlice.name]: favoritesSlice.reducer,
     [cartSlice.name]: cartSlice.reducer,
     [addCommentSlice.name]: addCommentSlice.reducer,
+    [profileSlice.name]: profileSlice.reducer,
 });
