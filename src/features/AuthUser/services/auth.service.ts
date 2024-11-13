@@ -2,7 +2,7 @@ import { axiosClassic } from '@/shared/api/api.interceptors';
 import { LoginFormSchema } from '../lib/formSchema/loginFormSchema';
 import { RegFormSchema } from '../lib/formSchema/regFormSchema';
 import { I_AuthResponse } from '../model/types/auth';
-import { removeFromStorage, saveTokenStorage } from '@/shared/lib/auth/auth-token.serice';
+import { removeFromStorage, saveTokenStorage } from '@/shared/lib/auth/auth-token.helper';
 
 class AuthService {
     async login(data: LoginFormSchema) {
@@ -21,7 +21,7 @@ class AuthService {
         const response = await axiosClassic<I_AuthResponse>({
             method: 'POST',
             url: '/auth/register',
-            data: { name: data.email, email: data.email, password: data.password },
+            data: { name: data.name, email: data.email, password: data.password },
         });
 
         if (response.data.accessToken) {
@@ -36,7 +36,6 @@ class AuthService {
         });
 
         if (response.data) removeFromStorage();
-
         return response;
     }
 }

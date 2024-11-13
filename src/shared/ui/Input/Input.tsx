@@ -66,6 +66,8 @@ export const Input = forwardRef((props: InputProps, ref: ForwardedRef<HTMLInputE
         setIsFocused(true);
     };
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+        e.preventDefault();
+        e.stopPropagation();
         onChangeSecondary?.(e.target.value);
     };
 

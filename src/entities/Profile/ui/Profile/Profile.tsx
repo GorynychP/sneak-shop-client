@@ -42,6 +42,13 @@ export const Profile = memo(({ className }: ProfileProps) => {
         [updateProfile],
     );
 
+    const onChangeAddress = useCallback(
+        (value?: string) => {
+            updateProfile({ address: value });
+        },
+        [updateProfile],
+    );
+
     if (isLoading) {
         return <PageLoader />;
     }
@@ -54,6 +61,7 @@ export const Profile = memo(({ className }: ProfileProps) => {
                 onChangePhone={onChangePhone}
                 onChangeCountry={onChangeCountry}
                 onChangeCity={onChangeCity}
+                onChangeAddress={onChangeAddress}
             />
         </div>
     );

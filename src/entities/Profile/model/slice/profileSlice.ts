@@ -1,7 +1,18 @@
 import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { I_Profile, I_ProfileSchema } from '../types/profile';
 
-const initialState: I_ProfileSchema = { form: undefined, profile: undefined };
+const initialState: I_ProfileSchema = {
+    form: {
+        id: '',
+        email: '',
+        address: '',
+        city: '',
+        country: '',
+        name: '',
+        phone: '',
+    },
+    profile: {},
+};
 
 export const profileSlice = createSlice({
     name: 'profile',

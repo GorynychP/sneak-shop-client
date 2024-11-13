@@ -9,6 +9,6 @@ export interface I_Profile {
 }
 
 export interface I_ProfileSchema {
-    profile?: I_Profile;
-    form?: I_Profile;
+    profile: I_Profile;
+    form: I_Profile;
 }

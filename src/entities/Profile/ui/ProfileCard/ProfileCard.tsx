@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, useState } from 'react';
 import clsx from 'clsx';
 import cls from './ProfileCard.module.scss';
 import { Input } from '@/shared/ui/Input';
@@ -20,7 +20,7 @@ export enum Country {
 }
 interface ProfileCardProps {
     className?: string;
-    profile?: I_Profile;
+    profile: I_Profile;
     error?: string;
     isLoading?: boolean;
     readonly?: boolean;
@@ -30,11 +30,21 @@ interface ProfileCardProps {
     onChangeCity?: (value?: string) => void;
     onChangePhone?: (value?: string) => void;
     onChangeCountry?: (value: string) => void;
+    onChangeAddress?: (value: string) => void;
     // onChangeCurrency?: (value: Currency) => void;
 }
 
 export const ProfileCard = memo((props: ProfileCardProps) => {
-    const { className, profile, onChangeFirstName, onChangePhone, onChangeCountry, onChangeCity } = props;
+    const {
+        className,
+        profile,
+        onChangeFirstName,
+        onChangePhone,
+        onChangeCountry,
+        onChangeCity,
+        onChangeAddress,
+    } = props;
+    const [text, setText] = useState('');
     const { resetEditProfile } = useProfileActions();
     const isEdit = useAppSelector(selectIsEditProfile);
     const dispatch = useAppDispatch();
@@ -52,18 +62,18 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
                 <h2>Профиль</h2>
             </HStack>
             <HStack gap="16">
-                <Input disabled className={cls.input} label="E-mail:" value={'ivan@mail.ru'} />
+                <Input disabled className={cls.input} label="E-mail:" value={profile?.email} />
                 <Button theme="outline_cancel">Изменить</Button>
             </HStack>
-            <HStack gap="16">
-                <Input type="password" disabled className={cls.input} label="Password:" value={'123456789'} />
-                <Button theme="outline_cancel">Изменить</Button>
+            <HStack gap="16" style={{ margin: '0 0 0 auto' }}>
+                <Button theme="outline_cancel">Запросить изменение пароля</Button>
+                {/* <Input type="password" disabled className={cls.input} label="Password:" value={'123456789'} /> */}
             </HStack>
             <Input
                 onChangeSecondary={onChangeFirstName}
                 className={cls.input}
                 label="Имя:"
-                value={profile?.name}
+                value={profile.name}
                 placeholder="Name"
             />
             <Input
@@ -85,8 +95,16 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
             <Input
                 onChangeSecondary={onChangeCity}
                 type="text"
+                placeholder="Istanbul"
+                value={profile?.city === 'Не указана' ? '' : profile?.city}
+                className={cls.input}
+                label="Город:"
+            />
+            <Input
+                onChangeSecondary={onChangeAddress}
+                type="text"
                 placeholder="с. Istanbul, str. Gentling, bg. 20, ap. 24"
-                value={profile?.address}
+                value={profile?.address === 'Не указан' ? '' : profile?.address}
                 className={cls.input}
                 label="Адрес:"
             />

@@ -21,6 +21,7 @@ export const useProfile = () => {
             phone: profile?.phone,
             country: profile?.country,
             city: profile?.city,
+            address: profile?.address,
         });
     }, [initialProfile, profile]);
 
