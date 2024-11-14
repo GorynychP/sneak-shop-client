@@ -6,6 +6,7 @@ import { NotFoundPage } from '@/pages/NotFoundPage';
 import { OrdersPage } from '@/pages/OrdersPage';
 import { ProductDetailsPage } from '@/pages/ProductDetailsPage';
 import { ProfilePage } from '@/pages/ProfilePage';
+import { ThanksPage } from '@/pages/ThanksPage';
 import {
     AppRoutes,
     getRouteMain,
@@ -22,6 +23,7 @@ import {
     getRouteAdmin,
     getRouteCatalog,
     getRouteProductDetails,
+    getRouteThanks,
 } from '@/shared/constants/router';
 
 export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
@@ -89,6 +91,11 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
         roles: [UserRole.ADMIN, UserRole.MANAGER],
     },
 
+    [AppRoutes.THANKS]: {
+        path: getRouteThanks(),
+        element: <ThanksPage />,
+        authOnly: true,
+    },
     [AppRoutes.NOT_FOUND]: {
         path: '*',
         element: <NotFoundPage />,

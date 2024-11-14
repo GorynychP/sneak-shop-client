@@ -4,6 +4,10 @@ import cls from './CartTotal.module.scss';
 import { Button } from '@/shared/ui/Button';
 import { formatUSD } from '@/shared/lib/utils/format/currency';
 import { HStack, VStack } from '@/shared/ui/Stack';
+import { useCheckout } from '../../../model/hooks/useCheckout';
+import { useAppSelector } from '@/shared/model';
+import { selectUserAuthInited } from '@/entities/User';
+import toast from 'react-hot-toast';
 
 interface CartTotalProps {
     className?: string;
@@ -15,6 +19,16 @@ interface CartTotalProps {
 
 export const CartTotal = memo(
     ({ className, totalPrice, discountTotalPrice, discount, count }: CartTotalProps) => {
+        const { createPayment, isLoadingCreate } = useCheckout();
+        const isAuth = useAppSelector(selectUserAuthInited);
+        const handleClick = () => {
+            if (isAuth) {
+                createPayment();
+            } else {
+                toast.error('Вы не авторизованы');
+            }
+        };
+
         return (
             <div className={clsx(cls.CartTotal, [className])}>
                 <VStack max gap="8">
@@ -50,7 +64,9 @@ export const CartTotal = memo(
                     <b className={cls.totalPrice}>{formatUSD(discountTotalPrice)}</b>
                 </div>
 
-                <Button theme="accent_button">Оформить</Button>
+                <Button onClick={handleClick} disabled={isLoadingCreate} theme="accent_button">
+                    Оформить
+                </Button>
             </div>
         );
     },

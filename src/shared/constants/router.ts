@@ -28,6 +28,7 @@ export enum AppRoutes {
 
     ADMIN = 'admin',
 
+    THANKS = 'thanks',
     NOT_FOUND = 'not_found',
 }
 
@@ -53,4 +54,5 @@ export const getRouteCart = () => `/cart`;
 
 export const getRouteAdmin = () => '/admin';
 
+export const getRouteThanks = () => '/thanks';
 export const getRouteForbidden = () => '/forbidden';
