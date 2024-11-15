@@ -1,3 +1,5 @@
+import { I_Order } from '@/entities/Orders';
+
 export enum UserRole {
     USER = 'USER',
     PREMIUM = 'PREMIUM',
@@ -12,7 +14,7 @@ export interface I_User {
     avatarPath: string;
     rights: UserRole[];
     // favorites: IProduct[]
-    // orders: IOrder[]
+    orders: I_Order[];
 }
 
 export interface I_UserSchema {
