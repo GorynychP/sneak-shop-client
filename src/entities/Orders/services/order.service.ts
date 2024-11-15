@@ -1,6 +1,6 @@
 import { axiosWithAuth } from '@/shared/api/api.interceptors';
 
-import { EnumOrderStatus, IPaymentResponse } from '../model/types/order';
+import { EnumOrderStatus, I_Order, IPaymentResponse } from '../model/types/order';
 
 type TypeData = {
     status?: EnumOrderStatus;
@@ -12,6 +12,14 @@ type TypeData = {
 };
 
 class OrderService {
+    async getAllForUser() {
+        const { data: order } = await axiosWithAuth<I_Order[]>({
+            url: 'orders',
+            method: 'GET',
+        });
+        return order;
+    }
+
     async place(data: TypeData) {
         const { data: order } = await axiosWithAuth<IPaymentResponse>({
             url: 'orders/place',

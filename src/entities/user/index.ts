@@ -7,4 +7,6 @@ export {
     selectIsUserAdmin,
     selectIsUserManager,
 } from './model/slice/userSlice';
-export { userService } from './api/user.service';
+export { userService } from './services/user.service';
+
+export { useUser } from './api/hooks/useUser';

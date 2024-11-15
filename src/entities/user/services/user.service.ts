@@ -11,6 +11,14 @@ class UserService {
 
         return data;
     }
+    async getUser() {
+        const { data } = await axiosWithAuth<I_User>({
+            url: 'users/profile',
+            method: 'GET',
+        });
+
+        return data;
+    }
     async updateProfile(data?: I_Profile) {
         const { data: profile } = await axiosWithAuth<I_Profile>({
             url: 'users/profile',

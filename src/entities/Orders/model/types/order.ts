@@ -2,8 +2,8 @@ import { I_CartItem } from '@/entities/Cart/model/types/cart';
 import { I_User } from '@/entities/User/model/types/user';
 
 export enum EnumOrderStatus {
-    PENDING = 'Pending',
-    PAYED = 'Payed',
+    PENDING = 'PENDING',
+    PAYED = 'PAYED',
 }
 interface IAmount {
     value: string;

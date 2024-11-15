@@ -1,6 +1,9 @@
 .Orders {
     display: flex;
     flex-direction: column;
+    .OrderDataTable {
+        height: 680px;
+    }
     .OrderListCart {
         display: flex;
         flex-direction: column;

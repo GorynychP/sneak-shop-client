@@ -15,8 +15,11 @@
         }
     }
 
-    p {
+    .text {
         color: var(--text-accent);
         font-size: 14px;
+    }
+    .completed {
+        color: var(--text);
     }
 }
