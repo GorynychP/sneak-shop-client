@@ -5,13 +5,17 @@
     background-color: var(--bg);
     border: 1px solid var(--bg-dark);
     border-radius: 12px;
-    max-width: 580px;
+    // max-width: 580px;
 
-    h3,
+    h4,
     p {
         margin: 0;
     }
-    .status {
-        background-color: #f3ddae;
-    }
+    // .status {
+    //     background-color: #f3ddae;
+    // }
+}
+
+.OrderCard:hover {
+    border: 1px solid var(--text-accent);
 }

@@ -1,33 +1,24 @@
 import { memo } from 'react';
+import { I_CartItem } from '@/entities/Cart/model/types/cart';
+import { VStack } from '@/shared/ui/Stack';
 import clsx from 'clsx';
 import cls from './OrderCard.module.scss';
-import { EnumOrderStatus } from '../../../model/types/order';
-import { I_CartProduct } from '@/entities/Cart/model/types/cart';
-import { StatusTag } from '@/shared/ui/StatusTag';
-import { VStack } from '@/shared/ui/Stack';
 
 interface OrderCardProps {
     className?: string;
-    order: I_CartProduct;
-    status: EnumOrderStatus;
+    order: I_CartItem;
 }
 
 export const OrderCard = memo(({ className, order }: OrderCardProps) => {
-    const { image, title, size } = order;
+    const { product, size, quantity } = order;
+    const { images, title } = product;
     return (
         <div className={clsx(cls.OrderCard, [className])}>
-            <img src={image} alt="sneaker" width={186} height={167} />
+            <img src={images[0]} alt="sneaker" width={100} height={100} />
             <VStack gap="8" className={cls.productInfo}>
                 <div className="column gap-xxs">
-                    <h3>{title}</h3> <p>Размер: {size}</p>
+                    <h4>{title}</h4> <p>Размер: {size}</p> <p>Количество: {quantity}</p>
                 </div>
-                <VStack align="start" justify="between" maxHeight>
-                    <StatusTag className={cls.status} text="оплачен" />
-                    <div>
-                        Ожидаемая дата доставки:
-                        <span>28 мая</span>
-                    </div>
-                </VStack>
             </VStack>
         </div>
     );

@@ -11,10 +11,14 @@ import {
 } from '@tanstack/react-table';
 import clsx from 'clsx';
 import cls from './OrderDataTable.module.scss';
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import { Input } from '@/shared/ui/Input';
 import { Button } from '@/shared/ui/Button';
-import { HStack } from '@/shared/ui/Stack';
+import { HStack, VStack } from '@/shared/ui/Stack';
+import { OrderCard } from '../OrderCard/OrderCard';
+import { I_OrderColumn } from '../OrderColumns.tsx/OrderColumns';
+import { AppLink } from '@/shared/ui/AppLink';
+import { getRouteProductDetails } from '@/shared/constants/router';
 
 interface OrderDataTableProps<TData, TValue> {
     className?: string;
@@ -31,6 +35,7 @@ export const OrderDataTable = <TData, TValue>({
 }: OrderDataTableProps<TData, TValue>) => {
     const [sorting, setSorting] = useState<SortingState>([]);
     const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
+    const [expandedRowId, setExpandedRowId] = useState<string | null>(null);
     const [pagination, setPagination] = useState({
         pageIndex: 0, //initial page index
         pageSize: 10, //default page size
@@ -52,6 +57,11 @@ export const OrderDataTable = <TData, TValue>({
             columnFilters,
         },
     });
+    // Функция для переключения состояния строки
+    const handleRowClick = (rowId: string) => {
+        setExpandedRowId((prevRowId) => (prevRowId === rowId ? null : rowId));
+    };
+
     return (
         <div className={clsx(cls.OrderDataTableWrapper, className)}>
             {filterKey && (
@@ -79,13 +89,32 @@ export const OrderDataTable = <TData, TValue>({
                 </thead>
                 <tbody>
                     {table.getRowModel().rows.map((row) => (
-                        <tr key={row.id} data-state={row.getIsSelected() && 'selected'}>
-                            {row.getVisibleCells().map((cell) => (
-                                <td key={cell.id}>
-                                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                                </td>
-                            ))}
-                        </tr>
+                        <Fragment key={row.id}>
+                            <tr
+                                onClick={() => handleRowClick(row.id)}
+                                key={row.id}
+                                data-state={row.getIsSelected() && 'selected'}
+                            >
+                                {row.getVisibleCells().map((cell) => (
+                                    <td key={cell.id}>
+                                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                                    </td>
+                                ))}
+                            </tr>
+                            {expandedRowId === row.id && (
+                                <tr className={cls.ExpandedRow}>
+                                    <td colSpan={row.getVisibleCells().length}>
+                                        <VStack gap="8" className={cls.OrderListCart}>
+                                            {(row.original as I_OrderColumn).items.map((order) => (
+                                                <AppLink to={getRouteProductDetails(order.product.id)}>
+                                                    <OrderCard order={order} key={order.id} />
+                                                </AppLink>
+                                            ))}
+                                        </VStack>
+                                    </td>
+                                </tr>
+                            )}
+                        </Fragment>
                     ))}
                 </tbody>
             </table>

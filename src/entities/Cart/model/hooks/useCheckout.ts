@@ -21,10 +21,13 @@ export const useCheckout = () => {
                     price: item.discount > 0 ? item.discountPrice : item.price,
                     quantity: item.quantity,
                     productId: item.product.id,
+                    size: item.size,
                 })),
             }),
         onSuccess(data: IPaymentResponse) {
-            window.location.href = data.confirmation.confirmation_url;
+            window.open(data.confirmation.confirmation_url, '_blank', 'noopener,noreferrer');
+
+            // window.location.href = data.confirmation.confirmation_url;
             reset();
         },
         onError() {

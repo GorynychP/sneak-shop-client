@@ -1,4 +1,4 @@
-import { memo, useState } from 'react';
+import { memo } from 'react';
 import clsx from 'clsx';
 import cls from './ProfileCard.module.scss';
 import { Input } from '@/shared/ui/Input';
@@ -44,7 +44,6 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
         onChangeCity,
         onChangeAddress,
     } = props;
-    const [text, setText] = useState('');
     const { resetEditProfile } = useProfileActions();
     const isEdit = useAppSelector(selectIsEditProfile);
     const dispatch = useAppDispatch();
@@ -96,7 +95,7 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
                 onChangeSecondary={onChangeCity}
                 type="text"
                 placeholder="Istanbul"
-                value={profile?.city === 'Не указана' ? '' : profile?.city}
+                value={profile?.city === 'Не указан' ? '' : profile?.city}
                 className={cls.input}
                 label="Город:"
             />

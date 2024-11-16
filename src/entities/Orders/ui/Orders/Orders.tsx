@@ -33,6 +33,7 @@ export const Orders = memo(({ className }: OrdersProps) => {
             ),
         total: formatUSD(order.total),
         deliveryDate: dataFormatter(order.createdAt),
+        items: order.items,
     }));
 
     // let content;
@@ -55,7 +56,11 @@ export const Orders = memo(({ className }: OrdersProps) => {
         <div className={clsx(cls.Orders, [className])}>
             <h3>Мои заказы</h3>
             {/* {content} */}
-            <OrderDataTable className={cls.OrderDataTable} columns={orderColumns} data={formattedOrders} />
+            <OrderDataTable<I_OrderColumn, string>
+                className={cls.OrderDataTable}
+                columns={orderColumns}
+                data={formattedOrders}
+            />
         </div>
     );
 });

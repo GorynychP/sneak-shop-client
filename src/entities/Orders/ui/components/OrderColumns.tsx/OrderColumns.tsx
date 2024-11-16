@@ -1,5 +1,6 @@
 'use client';
 
+import { I_CartItem } from '@/entities/Cart/model/types/cart';
 import { Button } from '@/shared/ui/Button';
 import { Column, ColumnDef } from '@tanstack/react-table';
 import { ReactElement } from 'react';
@@ -10,6 +11,7 @@ export interface I_OrderColumn {
     // status: string;
     status: ReactElement;
     total: string;
+    items: I_CartItem[];
 }
 
 const onSorted = (column: Column<I_OrderColumn, unknown>) => () => {
