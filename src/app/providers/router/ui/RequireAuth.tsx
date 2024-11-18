@@ -1,8 +1,9 @@
 import { UserRole, selectUserData } from '@/entities/User';
 import { useMemo } from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
-import { getRouteForbidden, getRouteMain } from '@/shared/constants/router';
+import { getRouteMain } from '@/shared/constants/router';
 import { useAppSelector } from '@/shared/model';
+import { NotFoundPage } from '@/pages/NotFoundPage';
 
 interface RequireAuthProps {
     children: JSX.Element;
@@ -28,7 +29,8 @@ export function RequireAuth({ children, roles }: RequireAuthProps) {
         return <Navigate to={getRouteMain()} state={{ from: location }} replace />;
     }
     if (!hasRequiredRoles) {
-        return <Navigate to={getRouteForbidden()} state={{ from: location }} replace />;
+        // return <Navigate to={getRouteNotFound()} state={{ from: location }} replace />;
+        return <NotFoundPage />;
     }
     return children;
 }

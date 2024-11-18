@@ -20,12 +20,13 @@ import {
     getRouteCart,
     getRouteProfile,
     getRouteMyOrders,
-    getRouteAdmin,
     getRouteCatalog,
     getRouteProductDetails,
     getRouteThanks,
+    ADMIN_URL,
 } from '@/shared/constants/router';
-
+// import { createBrowserRouter } from 'react-router-dom';
+// createBrowserRouter
 export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
     // Главная страница
     [AppRoutes.MAIN]: {
@@ -84,12 +85,23 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
         path: getRouteCart(),
         element: <CartPage />,
     },
+
     [AppRoutes.ADMIN]: {
-        path: getRouteAdmin(),
+        path: ADMIN_URL.root(),
         element: <>Админ Панель</>,
         authOnly: true,
         roles: [UserRole.ADMIN, UserRole.MANAGER],
+        children: [
+            { path: ADMIN_URL.products(), element: <>Продукты Админ Панель</> },
+            { path: ADMIN_URL.reviews(), element: <>комментарии Админ Панель</> },
+        ],
     },
+    // [AppRoutes.ADMIN_PRODUCTS]: {
+    //     path: ADMIN_URL.products(),
+    //     element: <>Продукты Админ Панель</>,
+    //     authOnly: true,
+    //     roles: [UserRole.ADMIN, UserRole.MANAGER],
+    // },
 
     [AppRoutes.THANKS]: {
         path: getRouteThanks(),

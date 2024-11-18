@@ -18,7 +18,10 @@ export const Background = memo(({ className, children, height = '100%' }: Backgr
         <div className={clsx(cls.Background, [className])}>
             <div style={{ height, background: background1 }} className={cls.background1}></div>
             <div
-                style={{ height: IsLocationPathHome ? '590px' : '100%', background: background2 }}
+                style={{
+                    height: IsLocationPathHome ? '590px' : '100%',
+                    background: background2,
+                }}
                 className={cls.background2}
             ></div>
             {children}
