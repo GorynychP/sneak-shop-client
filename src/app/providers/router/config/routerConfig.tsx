@@ -96,12 +96,6 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
             { path: ADMIN_URL.reviews(), element: <>комментарии Админ Панель</> },
         ],
     },
-    // [AppRoutes.ADMIN_PRODUCTS]: {
-    //     path: ADMIN_URL.products(),
-    //     element: <>Продукты Админ Панель</>,
-    //     authOnly: true,
-    //     roles: [UserRole.ADMIN, UserRole.MANAGER],
-    // },
 
     [AppRoutes.THANKS]: {
         path: getRouteThanks(),
