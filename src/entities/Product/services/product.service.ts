@@ -11,19 +11,7 @@ export interface IPaginationResponse<T> {
 
 class ProductService {
     private base = 'products';
-    // async getAll(params?: IPaginationParams) {
-    //     const { data } = await axiosClassic<I_Product[]>({
-    //         url: 'products',
-    //         method: 'GET',
-    //         params: params
-    //             ? {
-    //                   params,
-    //               }
-    //             : {},
-    //     });
-    //     console.log('data', data);
-    //     return data || [];
-    // }
+
     async getAll(params?: I_FiltersProduct) {
         const paramsSizesToString: I_FiltersProduct = { ...params, sizes: JSON.stringify(params?.sizes) };
         const { data } = await axiosClassic.get<IPaginationResponse<I_Product>>(this.base, {

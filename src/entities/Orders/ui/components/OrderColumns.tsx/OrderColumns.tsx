@@ -3,6 +3,7 @@
 import { I_CartItem } from '@/entities/Cart/model/types/cart';
 import { Button } from '@/shared/ui/Button';
 import { Column, ColumnDef } from '@tanstack/react-table';
+import { ArrowUpDown } from 'lucide-react';
 import { ReactElement } from 'react';
 
 export interface I_OrderColumn {
@@ -22,19 +23,31 @@ export const orderColumns: ColumnDef<I_OrderColumn>[] = [
     {
         accessorKey: 'createdAt',
         header: ({ column }) => {
-            return <Button onClick={onSorted(column)}>Дата оплаты</Button>;
+            return (
+                <Button onClick={onSorted(column)}>
+                    Дата оплаты <ArrowUpDown />
+                </Button>
+            );
         },
     },
     {
         accessorKey: 'deliveryDate',
         header: ({ column }) => {
-            return <Button onClick={onSorted(column)}>Дата доставки</Button>;
+            return (
+                <Button onClick={onSorted(column)}>
+                    Дата доставки <ArrowUpDown />
+                </Button>
+            );
         },
     },
     {
         accessorKey: 'status',
         header: ({ column }) => {
-            return <Button onClick={onSorted(column)}> Статус</Button>;
+            return (
+                <Button onClick={onSorted(column)}>
+                    Статус <ArrowUpDown />
+                </Button>
+            );
         },
         cell: ({ getValue }) => getValue() as React.ReactNode,
         sortingFn: (rowA, rowB) => {
@@ -48,7 +61,11 @@ export const orderColumns: ColumnDef<I_OrderColumn>[] = [
     {
         accessorKey: 'total',
         header: ({ column }) => {
-            return <Button onClick={onSorted(column)}>Сумма</Button>;
+            return (
+                <Button onClick={onSorted(column)}>
+                    Сумма <ArrowUpDown />
+                </Button>
+            );
         },
     },
 ];

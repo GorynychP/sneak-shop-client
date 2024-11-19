@@ -1,0 +1,9 @@
+.AdminSettingsSidebar {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+    border-right: 2px solid var(--bg-dark);
+    height: 100vh;
+}

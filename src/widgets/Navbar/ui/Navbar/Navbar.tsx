@@ -31,7 +31,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
             <div className="header-left">
                 <div className="header-left-block">
                     <AppLink to={getRouteMain()}>
-                        <img src={AppSneakersImage} />
+                        <img width={82} height={82} src={AppSneakersImage} />
                     </AppLink>
                     <div className="header-left-block-links">
                         <AppLink activeClassName="header-left-block-links-active" to={getRouteForMen()}>

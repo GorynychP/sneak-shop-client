@@ -1,7 +1,8 @@
 .Background {
+    --headerHeight: 85px;
     position: relative;
     width: 100%;
-    min-height: 100vh;
+    min-height: calc(100vh - var(--headerHeight));
     .background1 {
         position: absolute;
         width: 600px;

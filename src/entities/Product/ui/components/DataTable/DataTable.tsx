@@ -10,32 +10,27 @@ import {
     useReactTable,
 } from '@tanstack/react-table';
 import clsx from 'clsx';
-import cls from './OrderDataTable.module.scss';
+import cls from './DataTable.module.scss';
 import { Fragment, useState } from 'react';
 import { Input } from '@/shared/ui/Input';
 import { Button } from '@/shared/ui/Button';
-import { HStack, VStack } from '@/shared/ui/Stack';
-import { OrderCard } from '../OrderCard/OrderCard';
-import { I_OrderColumn } from '../OrderColumns.tsx/OrderColumns';
-import { AppLink } from '@/shared/ui/AppLink';
-import { getRouteProductDetails } from '@/shared/constants/router';
+import { HStack } from '@/shared/ui/Stack';
 
-interface OrderDataTableProps<TData, TValue> {
+interface DataTableProps<TData, TValue> {
     className?: string;
     columns: ColumnDef<TData, TValue>[];
     data: TData[];
     filterKey?: string;
 }
 
-export const OrderDataTable = <TData, TValue>({
+export const DataTable = <TData, TValue>({
     className,
     columns,
     data,
     filterKey,
-}: OrderDataTableProps<TData, TValue>) => {
+}: DataTableProps<TData, TValue>) => {
     const [sorting, setSorting] = useState<SortingState>([]);
     const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
-    const [expandedRowId, setExpandedRowId] = useState<string | null>(null);
     const [pagination, setPagination] = useState({
         pageIndex: 0, //initial page index
         pageSize: 10, //default page size
@@ -57,13 +52,9 @@ export const OrderDataTable = <TData, TValue>({
             columnFilters,
         },
     });
-    // Функция для переключения состояния строки
-    const handleRowClick = (rowId: string) => {
-        setExpandedRowId((prevRowId) => (prevRowId === rowId ? null : rowId));
-    };
 
     return (
-        <div className={clsx(cls.OrderDataTableWrapper, className)}>
+        <div className={clsx(cls.DataTableWrapper, className)}>
             {filterKey && (
                 <div>
                     <Input
@@ -73,7 +64,7 @@ export const OrderDataTable = <TData, TValue>({
                     />
                 </div>
             )}
-            <table className={cls.OrderTable}>
+            <table className={cls.Table}>
                 <thead>
                     {table.getHeaderGroups().map((headerGroup) => (
                         <tr key={headerGroup.id}>
@@ -90,33 +81,13 @@ export const OrderDataTable = <TData, TValue>({
                 <tbody>
                     {table.getRowModel().rows.map((row) => (
                         <Fragment key={row.id}>
-                            <tr
-                                onClick={() => handleRowClick(row.id)}
-                                key={row.id}
-                                data-state={row.getIsSelected() && 'selected'}
-                            >
+                            <tr key={row.id} data-state={row.getIsSelected() && 'selected'}>
                                 {row.getVisibleCells().map((cell) => (
                                     <td key={cell.id}>
                                         {flexRender(cell.column.columnDef.cell, cell.getContext())}
                                     </td>
                                 ))}
                             </tr>
-                            {expandedRowId === row.id && (
-                                <tr className={cls.ExpandedRow}>
-                                    <td colSpan={row.getVisibleCells().length}>
-                                        <VStack gap="8" className={cls.OrderListCart}>
-                                            {(row.original as I_OrderColumn).items.map((order) => (
-                                                <AppLink
-                                                    key={order.id}
-                                                    to={getRouteProductDetails(order.product.id)}
-                                                >
-                                                    <OrderCard order={order} />
-                                                </AppLink>
-                                            ))}
-                                        </VStack>
-                                    </td>
-                                </tr>
-                            )}
                         </Fragment>
                     ))}
                 </tbody>

@@ -70,7 +70,7 @@ export const ProductDetails = memo(({ className, product }: ProductDetailsProps)
                     size={sizeNum}
                 />
             </HStack>
-            <Tabs<T_ContentProductTabs>
+            <Tabs
                 renderTabs={renderProductTabs}
                 categories={categories}
                 renderContent={renderProductContent}

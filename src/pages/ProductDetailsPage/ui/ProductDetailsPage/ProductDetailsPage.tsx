@@ -1,9 +1,10 @@
-import { ProductDetails, useOneProduct } from '@/entities/Product';
+import { useOneProduct } from '@/entities/Product';
 import { Breadcrumb } from '@/features/Breadcrumbs';
 import { useAddCommentAction } from '@/features/comment';
 import { VStack } from '@/shared/ui/Stack';
 import { Page } from '@/widgets/Page';
 import { PageLoader } from '@/widgets/PageLoader';
+import { ProductDetails } from '@/widgets/Product/ProductDetails';
 import { memo, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 

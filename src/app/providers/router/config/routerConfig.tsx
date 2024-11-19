@@ -1,4 +1,5 @@
 import { UserRole } from '@/entities/User';
+import { ReviewAdminPage, ProductsAdminPage, StatisticsAdminPage, UsersAdminPage } from '@/pages/Admin';
 import { CartPage } from '@/pages/CartPage';
 import { CatalogPage } from '@/pages/CatalogPage';
 import { MainPage } from '@/pages/MainPage';
@@ -92,8 +93,10 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
         authOnly: true,
         roles: [UserRole.ADMIN, UserRole.MANAGER],
         children: [
-            { path: ADMIN_URL.products(), element: <>Продукты Админ Панель</> },
-            { path: ADMIN_URL.reviews(), element: <>комментарии Админ Панель</> },
+            { path: ADMIN_URL.statistics(), element: <StatisticsAdminPage /> },
+            { path: ADMIN_URL.products(), element: <ProductsAdminPage /> },
+            { path: ADMIN_URL.reviews(), element: <ReviewAdminPage /> },
+            { path: ADMIN_URL.users(), element: <UsersAdminPage /> },
         ],
     },
 

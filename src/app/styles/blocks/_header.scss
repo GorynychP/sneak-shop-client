@@ -29,6 +29,7 @@
                         border-radius: 50%;
                     }
                 }
+
                 &-active {
                     background: var(--bg-light);
                     border-radius: 50%;
@@ -61,5 +62,15 @@
                 }
             }
         }
+    }
+}
+
+.hover-avatar-dropdown {
+    @include flex-center;
+    @include square(42px);
+
+    @include hover() {
+        background: var(--bg-dark);
+        border-radius: 50%;
     }
 }

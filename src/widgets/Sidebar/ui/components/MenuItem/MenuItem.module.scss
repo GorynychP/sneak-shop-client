@@ -1,0 +1,11 @@
+.MenuItem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.active {
+    color: var(--text-accent);
+}

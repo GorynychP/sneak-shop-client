@@ -70,6 +70,8 @@ export const ADMIN_URL = {
     categoryEdit: (id = '') => ADMIN_URL.root(`/categories/${id}`),
 
     reviews: () => ADMIN_URL.root(`/reviews`),
+    statistics: () => ADMIN_URL.root(`/statistics`),
+    users: () => ADMIN_URL.root(`/users`),
 
     settings: () => ADMIN_URL.root(`/settings`),
 };

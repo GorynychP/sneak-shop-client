@@ -1,0 +1,9 @@
+.AdminSettingsNavbar {
+    padding-right: 30px;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    justify-content: flex-end;
+    border-bottom: 2px solid var(--bg-dark);
+    background-color: var(--bg-light-30);
+}

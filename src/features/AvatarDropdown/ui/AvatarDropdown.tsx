@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import cls from './AvatarDropdown.module.scss';
 import { Dropdown } from '@/shared/ui/Popups';
 import AccountImage from '@/shared/assets/icon/account.svg';
-import { getRouteAdmin, getRouteMyOrders, getRouteProfile } from '@/shared/constants/router';
+import { ADMIN_URL, getRouteMyOrders, getRouteProfile } from '@/shared/constants/router';
 import { useLogout } from '@/features/AuthUser';
 import { useAppSelector } from '@/shared/model';
 import { selectIsUserAdmin, selectIsUserManager } from '@/entities/User';
@@ -25,7 +25,7 @@ export const AvatarDropdown = memo(({ className }: AvatarDropdownProps) => {
                   {
                       content: 'Админка',
                       key: 1,
-                      href: getRouteAdmin(),
+                      href: ADMIN_URL.statistics(),
                   },
               ]
             : []),
@@ -47,7 +47,7 @@ export const AvatarDropdown = memo(({ className }: AvatarDropdownProps) => {
             direction="bottom left"
             onClick
             trigger={
-                <div className="header-right-block-link">
+                <div className="hover-avatar-dropdown">
                     <img width={26} height={28} src={AccountImage} alt="account" />
                 </div>
             }

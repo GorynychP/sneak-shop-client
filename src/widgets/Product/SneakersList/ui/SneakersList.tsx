@@ -3,8 +3,9 @@ import clsx from 'clsx';
 import cls from './SneakersList.module.scss';
 import { Pagination } from '@/features/Pagination';
 import { VStack } from '@/shared/ui/Stack';
-import { I_Product, ProductList } from '@/entities/Product';
+import { I_Product } from '@/entities/Product';
 import { PageLoader } from '@/widgets/PageLoader';
+import { ProductList } from '../../ProductList/ProductList';
 
 interface SneakersListProps {
     className?: string;
