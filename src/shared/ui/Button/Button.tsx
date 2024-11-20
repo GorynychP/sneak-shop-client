@@ -11,7 +11,8 @@ export type ButtonTheme =
     | 'filled'
     | 'outline'
     | 'outline_cancel'
-    | 'outline_save';
+    | 'outline_save'
+    | 'reset';
 
 export enum ButtonSize {
     M = 'size_m',

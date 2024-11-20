@@ -1,5 +1,11 @@
 import { UserRole } from '@/entities/User';
-import { ReviewAdminPage, ProductsAdminPage, StatisticsAdminPage, UsersAdminPage } from '@/pages/Admin';
+import {
+    ReviewAdminPage,
+    ProductsAdminPage,
+    StatisticsAdminPage,
+    UsersAdminPage,
+    ProductsEditPage,
+} from '@/pages/Admin';
 import { CartPage } from '@/pages/CartPage';
 import { CatalogPage } from '@/pages/CatalogPage';
 import { MainPage } from '@/pages/MainPage';
@@ -95,6 +101,8 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
         children: [
             { path: ADMIN_URL.statistics(), element: <StatisticsAdminPage /> },
             { path: ADMIN_URL.products(), element: <ProductsAdminPage /> },
+            { path: ADMIN_URL.productCreate(), element: <ProductsEditPage /> },
+            { path: ADMIN_URL.productEdit(':id'), element: <ProductsEditPage /> },
             { path: ADMIN_URL.reviews(), element: <ReviewAdminPage /> },
             { path: ADMIN_URL.users(), element: <UsersAdminPage /> },
         ],

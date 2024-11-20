@@ -92,7 +92,7 @@ export const OrderDataTable = <TData, TValue>({
                         <Fragment key={row.id}>
                             <tr
                                 onClick={() => handleRowClick(row.id)}
-                                key={row.id}
+                                // key={row.id}
                                 data-state={row.getIsSelected() && 'selected'}
                             >
                                 {row.getVisibleCells().map((cell) => (

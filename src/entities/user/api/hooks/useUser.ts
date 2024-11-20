@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { useEffect } from 'react';
 import { useAppDispatch } from '@/shared/model';
 
-export const useUser = () => {
+export const useUser = (enabled?: boolean) => {
     const dispatch = useAppDispatch();
 
     const { data: user, isLoading } = useQuery({
@@ -12,6 +12,7 @@ export const useUser = () => {
         gcTime: 1000 * 60 * 10,
 
         retry: false,
+        enabled,
     });
     useEffect(() => {
         if (!user) return;

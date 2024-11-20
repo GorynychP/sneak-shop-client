@@ -19,6 +19,13 @@ class ProductService {
         });
         return data || [];
     }
+    async getAllProducts(params?: I_FiltersProduct) {
+        const paramsSizesToString: I_FiltersProduct = { ...params, sizes: JSON.stringify(params?.sizes) };
+        const { data } = await axiosClassic.get<I_Product[]>(`${this.base}/all`, {
+            params: paramsSizesToString,
+        });
+        return data || [];
+    }
     async getPopular(params?: I_PopularProduct) {
         const { data } = await axiosClassic.get<I_Product[]>(`${this.base}/most-popular`, {
             params,

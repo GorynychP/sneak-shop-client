@@ -6,7 +6,7 @@ import { AdminSettingsNavbar, Navbar } from '@/widgets/Navbar';
 import { Footer } from '@/widgets/Footer';
 import { StoreSettingsLayout } from '@/shared/layouts/StoreSettingsLayout';
 import { useAppSelector } from '@/shared/model';
-import { selectIsUserAdmin } from '@/entities/User';
+import { selectIsUserAdmin, useUser } from '@/entities/User';
 import { useLocation } from 'react-router-dom';
 import { AdminSettingsSidebar } from '@/widgets/Sidebar';
 
@@ -15,21 +15,26 @@ function App() {
     const isAdmin = useAppSelector(selectIsUserAdmin);
     const isLocationPathAdmin = location.pathname.includes('admin');
     const isAdminLayout = isAdmin && isLocationPathAdmin;
+    useUser(isLocationPathAdmin);
 
     const { theme } = useTheme();
 
-    return (
-        <div id="app" className={clsx('sneak-shop', [theme, 'container-small-layout'])}>
-            {!isAdminLayout ? (
-                <MainLayout header={<Navbar />} content={<AppRouter />} footer={<Footer />} />
-            ) : (
+    if (isAdminLayout) {
+        return (
+            <div id="app" className={clsx('sneak-shop', [theme])}>
                 <StoreSettingsLayout
                     header={<AdminSettingsNavbar />}
                     sidebar={<AdminSettingsSidebar />}
                     content={<AppRouter />}
                     footer={<Footer />}
                 />
-            )}
+            </div>
+        );
+    }
+
+    return (
+        <div id="app" className={clsx('sneak-shop', [theme, 'container-small-layout'])}>
+            <MainLayout header={<Navbar />} content={<AppRouter />} footer={<Footer />} />
         </div>
     );
 }

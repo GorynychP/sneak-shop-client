@@ -4,7 +4,7 @@ import cls from './ProductsTable.module.scss';
 import { I_Product } from '../../model/types/product';
 import { I_ProductColumn, productColumns } from '../components/ProductColumns/ProductColumns';
 import { formatUSD } from '@/shared/lib/utils/format/currency';
-import { DataTable } from '../components/DataTable/DataTable';
+import { DataTable } from '@/shared/ui/DataTable/DataTable';
 
 interface ProductsTableProps {
     className?: string;
@@ -21,9 +21,10 @@ export const ProductsTable = memo(({ className, products }: ProductsTableProps) 
               rating: product.rating,
           }))
         : [];
+
     return (
         <div className={clsx(cls.ProductsTable, [className])}>
-            <DataTable columns={productColumns} data={formattedProducts} />
+            <DataTable filterKey="title" columns={productColumns} data={formattedProducts} />
         </div>
     );
 });

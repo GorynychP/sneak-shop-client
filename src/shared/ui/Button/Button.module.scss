@@ -10,6 +10,14 @@
     //     color: var(--text-accent);
     // }
 }
+.reset {
+    border: none;
+    outline: none;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+}
 
 .filled {
     background: var(--bg-light);

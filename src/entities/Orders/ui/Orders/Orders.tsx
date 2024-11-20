@@ -56,11 +56,7 @@ export const Orders = memo(({ className }: OrdersProps) => {
         <div className={clsx(cls.Orders, [className])}>
             <h3>Мои заказы</h3>
             {/* {content} */}
-            <OrderDataTable<I_OrderColumn, string>
-                className={cls.OrderDataTable}
-                columns={orderColumns}
-                data={formattedOrders}
-            />
+            <OrderDataTable className={cls.OrderDataTable} columns={orderColumns} data={formattedOrders} />
         </div>
     );
 });

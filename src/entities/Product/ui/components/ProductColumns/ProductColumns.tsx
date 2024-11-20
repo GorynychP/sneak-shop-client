@@ -1,8 +1,8 @@
-import { getRouteProductDetails } from '@/shared/constants/router';
+import { ADMIN_URL, getRouteProductDetails } from '@/shared/constants/router';
 import { Button } from '@/shared/ui/Button';
 import { Dropdown } from '@/shared/ui/Popups';
 import { ColumnDef } from '@tanstack/react-table';
-import { ArrowUpDown, ExternalLink, MoreHorizontal, Pencil } from 'lucide-react';
+import { ArrowUpDown, ExternalLink, MoreHorizontal, Pencil, Trash2 } from 'lucide-react';
 
 export interface I_ProductColumn {
     id: string;
@@ -87,6 +87,7 @@ export const productColumns: ColumnDef<I_ProductColumn>[] = [
         header: 'Действия',
         cell: ({ row }) => (
             <Dropdown
+                direction="center"
                 onClick
                 trigger={
                     <Button className="size-8 p-0">
@@ -95,17 +96,31 @@ export const productColumns: ColumnDef<I_ProductColumn>[] = [
                 }
                 items={[
                     {
-                        content: 'Страница с продуктом',
+                        content: (
+                            <div className="center gap-min">
+                                <ExternalLink /> Страница с продуктом
+                            </div>
+                        ),
                         href: getRouteProductDetails(row.original.id),
                         key: 1,
                     },
                     {
-                        content: 'Редактировать',
-                        href: 'editing',
+                        content: (
+                            <div className="center gap-min">
+                                <Pencil />
+                                Редактировать
+                            </div>
+                        ),
+                        href: ADMIN_URL.productEdit(row.original.id),
                         key: 2,
                     },
                     {
-                        content: 'Удалить',
+                        content: (
+                            <div className="center gap-min">
+                                <Trash2 />
+                                Удалить
+                            </div>
+                        ),
                         href: 'deleting',
                         key: 3,
                     },

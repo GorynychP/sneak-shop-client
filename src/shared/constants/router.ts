@@ -63,7 +63,7 @@ export const ADMIN_URL = {
 
     products: () => ADMIN_URL.root(`/products`),
     productCreate: () => ADMIN_URL.root(`/products/create`),
-    productEdit: (id = '') => ADMIN_URL.root(`/products/${id}`),
+    productEdit: (id = '') => ADMIN_URL.root(`/products/edit/${id}`),
 
     categories: () => ADMIN_URL.root(`/categories`),
     categoryCreate: () => ADMIN_URL.root(`/categories/create`),

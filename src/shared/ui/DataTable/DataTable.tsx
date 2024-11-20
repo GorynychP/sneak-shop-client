@@ -15,6 +15,7 @@ import { Fragment, useState } from 'react';
 import { Input } from '@/shared/ui/Input';
 import { Button } from '@/shared/ui/Button';
 import { HStack } from '@/shared/ui/Stack';
+import { ChevronFirst, ChevronLast, ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface DataTableProps<TData, TValue> {
     className?: string;
@@ -56,7 +57,7 @@ export const DataTable = <TData, TValue>({
     return (
         <div className={clsx(cls.DataTableWrapper, className)}>
             {filterKey && (
-                <div>
+                <div className="flex">
                     <Input
                         placeholder="Поиск"
                         value={(table.getColumn(filterKey)?.getFilterValue() as string) ?? ''}
@@ -94,33 +95,36 @@ export const DataTable = <TData, TValue>({
             </table>
             {table.getPageCount() > 1 && (
                 <HStack className={cls.pagination} align="center" gap="16" max justify="center">
+                    <span>
+                        Страниц {table.getState().pagination.pageIndex + 1} из {table.getPageCount()}
+                    </span>
                     <Button
                         theme="accent_button"
                         onClick={() => table.firstPage()}
                         disabled={!table.getCanPreviousPage()}
                     >
-                        {'<<'} В начало
+                        <ChevronFirst />
                     </Button>
                     <Button
                         theme="accent_button"
                         onClick={() => table.previousPage()}
                         disabled={!table.getCanPreviousPage()}
                     >
-                        {'<'} Предыдущая
+                        <ChevronLeft />
                     </Button>
                     <Button
                         theme="accent_button"
                         onClick={() => table.nextPage()}
                         disabled={!table.getCanNextPage()}
                     >
-                        Следующая {'>'}
+                        <ChevronRight />
                     </Button>
                     <Button
                         theme="accent_button"
                         onClick={() => table.lastPage()}
                         disabled={!table.getCanNextPage()}
                     >
-                        В конец {'>>'}
+                        <ChevronLast />
                     </Button>
                 </HStack>
             )}
