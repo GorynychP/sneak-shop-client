@@ -5,6 +5,7 @@ import { I_Product } from '../../model/types/product';
 import { AppLink } from '@/shared/ui/AppLink';
 import { discountPrice } from '@/shared/lib/utils/format/getDiscountPrice';
 import { HStack } from '@/shared/ui/Stack';
+import { getImageUrl } from '@/shared/lib/utils/format/getImageUrl';
 
 interface ProductCardProps {
     className?: string;
@@ -22,7 +23,7 @@ export const ProductCard = memo(
         return (
             <div className={clsx(cls.ProductCard, [className])}>
                 <AppLink to={link || productSneaker.id} className={cls.cardImage}>
-                    <img src={images[0]} alt={title} />
+                    <img src={getImageUrl(images[0])} alt={title} />
                     <span className={cls.cardRating}>★ {ratingFormat}</span>
                 </AppLink>
 

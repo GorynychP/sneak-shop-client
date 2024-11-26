@@ -11,6 +11,7 @@ export interface DropdownItem {
     content?: ReactNode;
     onClick?: () => void;
     href?: string;
+    target?: '_blank' | '_self' | '_parent' | '_top';
     key: number;
 }
 interface DropdownProps {
@@ -77,6 +78,7 @@ export function Dropdown(props: DropdownProps) {
                                                 as={AppLink}
                                                 to={item.href}
                                                 key={item.href}
+                                                target={item.target || '_self'}
                                                 disabled={item.disabled}
                                             >
                                                 {content}

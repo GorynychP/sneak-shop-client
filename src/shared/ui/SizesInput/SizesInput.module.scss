@@ -1,0 +1,58 @@
+.SizesInput {
+    position: relative;
+    width: 300px;
+    user-select: none;
+    .selectedSizes {
+        border: 2px solid var(--bg-dark);
+        padding: 10px;
+        border-radius: 48px;
+        cursor: pointer;
+    }
+    .active {
+        border: 2px solid var(--text-accent);
+    }
+
+    .dropdown {
+        position: absolute;
+        top: 110%;
+        left: 0;
+        width: 100%;
+        border: 2px solid var(--bg-dark);
+        background: var(--bg);
+        border-radius: 5px;
+        z-index: var(--dropdown-z-index);
+        padding: 14px;
+        .title {
+            margin: 0 0 10px 0;
+        }
+        .resetOrAllButton {
+            margin-bottom: 10px;
+        }
+        .resetOrAllButton:hover {
+            color: var(--text-accent);
+        }
+        .sizes {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            gap: 10px;
+        }
+        .sizeButton {
+            cursor: pointer;
+            width: 50px;
+            height: 42px;
+            font-size: 23px;
+            border: 1px solid var(--bg-dark);
+            background-color: var(--bg);
+            border-radius: 13px;
+        }
+        .sizeButton:hover {
+            border: 1px solid var(--text-accent);
+            color: var(--text-accent);
+        }
+        .selected {
+            border: 1px solid var(--text-accent);
+            color: var(--text-accent);
+        }
+    }
+}

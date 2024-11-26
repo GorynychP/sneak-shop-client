@@ -2,6 +2,7 @@ import { memo, useState } from 'react';
 import clsx from 'clsx';
 import cls from './ProductGallery.module.scss';
 import { I_Product } from '../../../../../../entities/Product/model/types/product';
+import { getImageUrl } from '@/shared/lib/utils/format/getImageUrl';
 
 interface ProductGalleryProps {
     className?: string;
@@ -20,12 +21,12 @@ export const ProductGallery = memo(({ className, product }: ProductGalleryProps)
                         onClick={() => setCurrentIndex(index)}
                         className={clsx(cls.item, index === currentIndex ? cls.active : '')}
                     >
-                        <img src={image} alt={product.title} width={100} height={100} />
+                        <img src={getImageUrl(image)} alt={product.title} width={100} height={100} />
                     </button>
                 ))}
             </div>
             <img
-                src={product.images[currentIndex]}
+                src={getImageUrl(product.images[currentIndex])}
                 alt={product.title}
                 width={500}
                 height={500}

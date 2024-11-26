@@ -31,7 +31,7 @@ TabsProps<T>) => {
                     {/* {tabs} */}
                     {categories?.map((content) => (
                         <Tab
-                            className={clsx({
+                            className={clsx(cls.tab, {
                                 [cls.activeTab]: selectedIndex === categories.indexOf(content),
                             })}
                             as={content?.TabAs || CustomTab}

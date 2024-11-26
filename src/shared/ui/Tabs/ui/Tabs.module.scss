@@ -4,6 +4,9 @@
     .tabs {
         display: flex;
         gap: 30px;
+        .tab:focus-visible {
+            outline: none;
+        }
     }
     .activeTab {
         color: var(--text-accent);

@@ -16,7 +16,7 @@ const logoutMiddlewareStartListening = logoutMiddleware.startListening as TypedL
 // Слушаем событие apiAccessTokenIsBrokenEvent и вызываем logout
 logoutMiddlewareStartListening({
     actionCreator: apiAccessTokenIsBrokenEvent,
-    effect: async (action, listenerApi) => {
+    effect: async (_, listenerApi) => {
         try {
             listenerApi.dispatch(logoutThunk());
         } catch (error) {

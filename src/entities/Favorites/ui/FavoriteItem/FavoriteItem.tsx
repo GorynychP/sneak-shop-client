@@ -7,6 +7,7 @@ import { I_Product } from '@/entities/Product';
 import { AppLink } from '@/shared/ui/AppLink';
 import { getRouteProductDetails } from '@/shared/constants/router';
 import { discountPrice } from '@/shared/lib/utils/format/getDiscountPrice';
+import { getImageUrl } from '@/shared/lib/utils/format/getImageUrl';
 
 interface FavoriteItemProps {
     className?: string;
@@ -22,7 +23,7 @@ export const FavoriteItem = memo(({ className, favorite, buttonFavorite, close }
     return (
         <div className={clsx(cls.FavoriteItem, [className])}>
             <AppLink onClick={close} className={cls.imageLink} to={getRouteProductDetails(favorite.id)}>
-                <img src={images[0]} alt={title} />
+                <img src={getImageUrl(images[0])} alt={title} />
             </AppLink>
             <VStack justify="between" max>
                 <div className={cls.infoTop}>

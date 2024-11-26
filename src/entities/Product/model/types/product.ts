@@ -10,9 +10,12 @@ export interface I_Product {
     images: string[];
     gender: T_Gender;
     description: string;
-    sizes?: number[];
+    sizes: number[];
     price: number;
     rating: number;
     discount: number;
     review: I_Comment[];
 }
+
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
+export interface I_ProductInput extends Omit<I_Product, 'id' | 'review' | 'rating' | 'sizes' | 'images'> {}

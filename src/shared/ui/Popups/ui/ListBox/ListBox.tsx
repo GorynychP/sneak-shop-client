@@ -54,7 +54,13 @@ export function ListBox<T extends string>(props: ListBoxProps<T>) {
                 onChange={onChange}
             >
                 <ListboxButton as="div" className={popupCls.trigger}>
-                    <Button onClick={onClick} theme="filled" disabled={readonly} addonRight={addonRight}>
+                    <Button
+                        type="button"
+                        onClick={onClick}
+                        theme="filled"
+                        disabled={readonly}
+                        addonRight={addonRight}
+                    >
                         {selectedItem?.content ?? defaultValue}
                     </Button>
                 </ListboxButton>

@@ -8,6 +8,7 @@ import { HStack } from '@/shared/ui/Stack';
 import { formatUSD } from '@/shared/lib/utils/format/currency';
 import { AppLink } from '@/shared/ui/AppLink';
 import { getRouteProductDetails } from '@/shared/constants/router';
+import { getImageUrl } from '@/shared/lib/utils/format/getImageUrl';
 interface CartProductCardProps {
     className?: string;
     cartItem: I_CartItem;
@@ -25,7 +26,7 @@ export const CartProductCard = memo(({ className, cartItem }: CartProductCardPro
     return (
         <div className={clsx(cls.CartProductCard, [className])}>
             <AppLink to={getRouteProductDetails(cartItem.product.id)}>
-                <img src={images[0]} alt="sneaker" width={186} height={167} />
+                <img src={getImageUrl(images[0])} alt="sneaker" width={186} height={167} />
             </AppLink>
             <div className={cls.productInfo}>
                 <div className="column gap-xxs">

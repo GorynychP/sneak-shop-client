@@ -1,22 +1,19 @@
 import { memo } from 'react';
 import clsx from 'clsx';
 import cls from './ProductsEditPage.module.scss';
-import { useParams } from 'react-router-dom';
+import { ProductEdit } from '@/entities/Product';
+import { Page } from '@/widgets/Page';
 
 interface ProductsEditPageProps {
     className?: string;
 }
 
 export const ProductsEditPage = memo(({ className }: ProductsEditPageProps) => {
-    const { id } = useParams<{ id: string }>();
-
-    if (id)
-        return (
-            <div className={clsx(cls.ProductsEditPage, [className])}>
-                Страница редактирования продукта {id}
-            </div>
-        );
-    return <div className={clsx(cls.ProductsEditPage, [className])}>Страница создания продукта</div>;
+    return (
+        <Page padding="small" className={clsx(cls.ProductsEditPage, [className])}>
+            <ProductEdit />
+        </Page>
+    );
 });
 
 export default ProductsEditPage;

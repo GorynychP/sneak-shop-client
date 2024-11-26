@@ -1,5 +1,5 @@
-import { axiosClassic } from '@/shared/api/api.interceptors';
-import { I_Product } from '../model/types/product';
+import { axiosClassic, axiosWithAuth } from '@/shared/api/api.interceptors';
+import { I_Product, I_ProductInput } from '../model/types/product';
 import { I_FiltersProduct } from '@/features/sort';
 import { I_PopularProduct } from '@/features/sort/model/types/filterProduct';
 
@@ -11,6 +11,32 @@ export interface IPaginationResponse<T> {
 
 class ProductService {
     private base = 'products';
+
+    async create(data: I_ProductInput) {
+        const { data: createdProduct } = await axiosWithAuth<I_Product>({
+            url: this.base,
+            method: 'POST',
+            data,
+        });
+
+        return createdProduct;
+    }
+
+    async update(id: string, data: I_ProductInput) {
+        const { data: updatedProduct } = await axiosWithAuth<I_Product>({
+            url: `${this.base}/${id}`,
+            method: 'PUT',
+            data,
+        });
+
+        return updatedProduct;
+    }
+    async delete(id: string) {
+        await axiosWithAuth({
+            url: `${this.base}/${id}`,
+            method: 'DELETE',
+        });
+    }
 
     async getAll(params?: I_FiltersProduct) {
         const paramsSizesToString: I_FiltersProduct = { ...params, sizes: JSON.stringify(params?.sizes) };
@@ -34,11 +60,11 @@ class ProductService {
     }
     async getById(id: string) {
         const { data } = await axiosClassic<I_Product>({
-            url: `products/${id}`,
+            url: `${this.base}/by-id/${id}`,
             method: 'GET',
         });
 
-        return data || [];
+        return data;
     }
 }
 

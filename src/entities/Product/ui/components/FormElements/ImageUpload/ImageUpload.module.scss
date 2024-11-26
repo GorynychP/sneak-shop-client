@@ -1,0 +1,23 @@
+.ImageUpload {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .imageContainer {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+
+        .image_wrapper {
+            width: 300px;
+            height: auto;
+        }
+    }
+
+    .upload {
+        border: 2px solid var(--bg-dark);
+        padding: 10px;
+        background-color: var(--bg);
+        border-radius: 10px;
+    }
+}

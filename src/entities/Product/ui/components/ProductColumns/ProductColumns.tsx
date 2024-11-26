@@ -2,7 +2,8 @@ import { ADMIN_URL, getRouteProductDetails } from '@/shared/constants/router';
 import { Button } from '@/shared/ui/Button';
 import { Dropdown } from '@/shared/ui/Popups';
 import { ColumnDef } from '@tanstack/react-table';
-import { ArrowUpDown, ExternalLink, MoreHorizontal, Pencil, Trash2 } from 'lucide-react';
+import { ArrowUpDown, ExternalLink, MoreHorizontal, Pencil } from 'lucide-react';
+import { DeleteAction } from './DeleteAction';
 
 export interface I_ProductColumn {
     id: string;
@@ -87,7 +88,7 @@ export const productColumns: ColumnDef<I_ProductColumn>[] = [
         header: 'Действия',
         cell: ({ row }) => (
             <Dropdown
-                direction="center"
+                direction="bottom left"
                 onClick
                 trigger={
                     <Button className="size-8 p-0">
@@ -102,6 +103,7 @@ export const productColumns: ColumnDef<I_ProductColumn>[] = [
                             </div>
                         ),
                         href: getRouteProductDetails(row.original.id),
+                        target: '_blank',
                         key: 1,
                     },
                     {
@@ -115,13 +117,7 @@ export const productColumns: ColumnDef<I_ProductColumn>[] = [
                         key: 2,
                     },
                     {
-                        content: (
-                            <div className="center gap-min">
-                                <Trash2 />
-                                Удалить
-                            </div>
-                        ),
-                        href: 'deleting',
+                        content: <DeleteAction id={row.original.id} />,
                         key: 3,
                     },
                 ]}

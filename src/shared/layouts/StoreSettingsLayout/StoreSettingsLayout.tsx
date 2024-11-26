@@ -17,9 +17,9 @@ export const StoreSettingsLayout = memo(
             <div className={clsx(cls.StoreSettingsLayout, [className])}>
                 {sidebar && <div className={cls.sidebar}>{sidebar}</div>}
                 <div className={cls.header}>{header}</div>
-                <Background>
-                    <div className={cls.content}>{content}</div>
-                </Background>
+                <div className={cls.content}>
+                    <Background>{content}</Background>
+                </div>
                 {footer && <div className={cls.footer}>{footer}</div>}
             </div>
         );
