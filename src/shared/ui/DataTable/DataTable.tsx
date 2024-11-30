@@ -32,6 +32,7 @@ export const DataTable = <TData, TValue>({
 }: DataTableProps<TData, TValue>) => {
     const [sorting, setSorting] = useState<SortingState>([]);
     const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
+
     const [pagination, setPagination] = useState({
         pageIndex: 0, //initial page index
         pageSize: 10, //default page size
@@ -53,6 +54,11 @@ export const DataTable = <TData, TValue>({
             columnFilters,
         },
     });
+    const onChangeSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+        event.preventDefault();
+        event.stopPropagation();
+        if (filterKey) table.getColumn(filterKey)?.setFilterValue(event.target.value);
+    };
 
     return (
         <div className={clsx(cls.DataTableWrapper, className)}>
@@ -61,10 +67,11 @@ export const DataTable = <TData, TValue>({
                     <Input
                         placeholder="Поиск"
                         value={(table.getColumn(filterKey)?.getFilterValue() as string) ?? ''}
-                        onChange={(event) => table.getColumn(filterKey)?.setFilterValue(event.target.value)}
+                        onChange={onChangeSearch}
                     />
                 </div>
             )}
+
             <table className={cls.Table}>
                 <thead>
                     {table.getHeaderGroups().map((headerGroup) => (

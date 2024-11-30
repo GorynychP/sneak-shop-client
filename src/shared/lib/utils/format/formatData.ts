@@ -1,5 +1,5 @@
 // Форматируем дату
-export function dataFormatter(date: string): string {
+export function formatData(date: string): string {
     return new Intl.DateTimeFormat('ru-Ru', {
         day: '2-digit',
         month: '2-digit',

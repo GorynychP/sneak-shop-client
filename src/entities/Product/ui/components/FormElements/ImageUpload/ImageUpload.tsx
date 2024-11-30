@@ -10,14 +10,19 @@ interface ImageUploadProps {
     isDisabled: boolean;
     onChange: (value: string[]) => void;
     value: string[];
+    // onChangePlus: (value: FormData) => void;
+    // isUploading: boolean;
 }
 
 export function ImageUpload({ isDisabled, onChange, value }: ImageUploadProps) {
-    const { handleButtonClick, isUploading, fileInputRef, handleFileChange } = useUpload(onChange);
+    const { handleButtonClick, fileInputRef, handleFileChange, isUploading } = useUpload({
+        onChange,
+    });
+
     return (
         <div className={cls.ImageUpload}>
             <div className={cls.imageContainer}>
-                {value?.map((url) => {
+                {value.map((url) => {
                     return (
                         <div key={url} className={cls.image_wrapper}>
                             <img src={getImageUrl(url)} alt="Картинка" />
@@ -30,9 +35,7 @@ export function ImageUpload({ isDisabled, onChange, value }: ImageUploadProps) {
                 theme="reset"
                 disabled={isDisabled || isUploading}
                 onClick={handleButtonClick}
-                className={clsx(cls.upload, {
-                    'mt-4': value.length,
-                })}
+                className={clsx(cls.upload)}
             >
                 <ImagePlus />
                 Загрузить картинки

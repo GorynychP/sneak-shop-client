@@ -1,13 +1,9 @@
 import { axiosClassic, axiosWithAuth } from '@/shared/api/api.interceptors';
 import { I_AddComment, I_Comment } from '../model/types/comment';
 
-class CommentService {
-    private base = 'reviews';
+export class CommentService {
+    protected base = 'reviews';
 
-    async getAll() {
-        const { data } = await axiosWithAuth.get<I_Comment[]>(this.base);
-        return { comments: data };
-    }
     async getAllForProductId(productId: string) {
         const { data } = await axiosClassic.get<I_Comment[]>(`${this.base}/${productId}`);
         return data || [];

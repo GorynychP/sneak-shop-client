@@ -26,11 +26,9 @@ export const SizesInput = memo(({ className, onChange, value }: SizesInputProps)
 
     useEffect(() => {
         document.addEventListener('mousedown', handleClickOutside);
-        console.log('монтировании');
 
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
-            console.log('размонтировании');
         };
     }, []);
 

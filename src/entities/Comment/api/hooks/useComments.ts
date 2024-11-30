@@ -6,7 +6,7 @@ import { I_Comment } from '../../model/types/comment';
 export const useCommentsForProduct = () => {
     const params = useParams();
     const { data: comments } = useQuery<I_Comment[]>({
-        queryKey: ['comments', { id: params.id }],
+        queryKey: ['comments for product', { id: params.id }],
         queryFn: () => commentService.getAllForProductId(params.id || ''),
     });
     return { comments };

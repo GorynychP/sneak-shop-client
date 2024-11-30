@@ -18,4 +18,6 @@ export interface I_Product {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-object-type
-export interface I_ProductInput extends Omit<I_Product, 'id' | 'review' | 'rating' | 'sizes' | 'images'> {}
+export interface I_ProductInput extends Omit<I_Product, 'id' | 'review' | 'rating' | 'sizes' | 'images'> {
+    sizes?: number[];
+}

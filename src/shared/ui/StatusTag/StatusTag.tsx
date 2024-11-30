@@ -6,9 +6,10 @@ interface StatusTagProps {
     className?: string;
     text: string;
     isCompleted?: boolean;
+    imageComponent?: React.ReactNode;
 }
 
-export const StatusTag = memo(({ className, text, isCompleted = true }: StatusTagProps) => {
+export const StatusTag = memo(({ className, text, isCompleted = true, imageComponent }: StatusTagProps) => {
     return (
         <div className={clsx(cls.StatusTag, [className])}>
             {isCompleted && (
@@ -23,6 +24,7 @@ export const StatusTag = memo(({ className, text, isCompleted = true }: StatusTa
                     <path d="M7 12l3 3 7-7" fill="none" className={cls.customStrokeCheck} strokeWidth="2" />
                 </svg>
             )}
+            {imageComponent}
             <p className={clsx(cls.text, { [cls.completed]: !isCompleted })}>{text}</p>
         </div>
     );

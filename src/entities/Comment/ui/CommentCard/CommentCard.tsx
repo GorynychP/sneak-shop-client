@@ -4,7 +4,7 @@ import cls from './CommentCard.module.scss';
 import { I_Comment } from '../../model/types/comment';
 import { HStack } from '@/shared/ui/Stack';
 import AccountImage from '@/shared/assets/icon/account.svg';
-import { dataFormatter } from '@/shared/lib/utils/format/formatData';
+import { formatData } from '@/shared/lib/utils/format/formatData';
 import DeleteImage from '@/shared/assets/icon/trash-solid.svg?react';
 import { useAppDispatch, useAppSelector } from '@/shared/model';
 import { deleteCommentThunk } from '../../api/deleteCommentThunk';
@@ -40,7 +40,7 @@ export const CommentCard = memo(({ className, comment }: CommentCardProps) => {
             <div className={cls.infoUser}>
                 <img src={AccountImage} alt="avatar" width={25} height={25} />
                 <span>{comment?.user?.name}</span>
-                <span>{dataFormatter(comment?.createdAt)}</span>
+                <span>{formatData(comment?.createdAt)}</span>
             </div>
         </div>
     );

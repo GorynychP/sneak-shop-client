@@ -2,7 +2,7 @@ import { Trash2 } from 'lucide-react';
 import { useDeleteProduct } from '../../../lib/hooks/useDeleteProduct';
 
 export const DeleteAction = ({ id }: { id: string }) => {
-    const { deleteProduct } = useDeleteProduct(); // Вызываем хук на верхнем уровне
+    const { deleteProduct } = useDeleteProduct();
 
     const handleDelete = async () => {
         const confirmed = confirm('Вы уверены, что хотите удалить продукт?');

@@ -20,6 +20,8 @@ interface ProductFormProps {
 }
 
 export function ProductForm({ product }: ProductFormProps) {
+    // const [formData, setFormData] = useState<FormData>();
+    // const [imgValue, setImgValue] = useState<string[]>([]);
     const { createProduct, isLoadingCreate } = useCreateProduct();
     const { updateProduct, isLoadingUpdate } = useUpdateProduct();
     const { deleteProduct, isLoadingDelete } = useDeleteProduct();
@@ -29,7 +31,7 @@ export function ProductForm({ product }: ProductFormProps) {
     const action = product ? 'Сохранить' : 'Создать';
 
     const form = useForm<CreateFormSchema>({
-        mode: 'onChange',
+        mode: 'onSubmit',
         values: {
             title: product?.title || '',
             description: product?.description || '',
@@ -54,6 +56,8 @@ export function ProductForm({ product }: ProductFormProps) {
     };
 
     const onSubmit: SubmitHandler<I_ProductInput> = (data) => {
+        // if (formData) uploadFiles(formData);
+
         if (product) updateProduct(data);
         else createProduct(data);
     };

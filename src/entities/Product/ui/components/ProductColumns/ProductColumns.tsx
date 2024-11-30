@@ -11,9 +11,6 @@ export interface I_ProductColumn {
     price: string;
     discount: number;
     rating: number;
-    // category: string;
-    // color: string;
-    // storeId: string;
 }
 
 export const productColumns: ColumnDef<I_ProductColumn>[] = [
@@ -61,28 +58,6 @@ export const productColumns: ColumnDef<I_ProductColumn>[] = [
             );
         },
     },
-    // {
-    //     accessorKey: 'color',
-    //     header: ({ column }) => {
-    //         return (
-    //             <Button onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}>
-    //                 Цвет
-    //                 <ArrowUpDown />
-    //             </Button>
-    //         );
-    //     },
-    //     cell: ({ row }) => (
-    //         <div className="flex items-center gap-x-3">
-    //             {row.original.color}
-    //             <div
-    //                 className="size-5 rounded-full border"
-    //                 style={{
-    //                     backgroundColor: row.original.color,
-    //                 }}
-    //             />
-    //         </div>
-    //     ),
-    // },
     {
         accessorKey: 'actions',
         header: 'Действия',

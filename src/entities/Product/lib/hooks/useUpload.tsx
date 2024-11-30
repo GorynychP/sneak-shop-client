@@ -1,46 +1,43 @@
-import { useMutation } from '@tanstack/react-query';
-import { ChangeEvent, useMemo, useRef } from 'react';
-import toast from 'react-hot-toast';
-import { fileService } from '../../services/file.service';
+import { ChangeEvent, useCallback, useMemo, useRef } from 'react';
+import { useFiles } from './useUploadFiles';
 
-export function useUpload(onChange: (value: string[]) => void) {
+interface UploadProps {
+    onChange: (value: string[]) => void;
+    // onChangePlus: (value: FormData) => void;
+}
+
+export function useUpload(props: UploadProps) {
+    const { onChange } = props;
+    const { uploadFiles, isUploading } = useFiles(onChange);
     const fileInputRef = useRef<HTMLInputElement>(null);
 
-    const { mutate: uploadFiles, isPending: isUploading } = useMutation({
-        mutationKey: ['upload files'],
-        mutationFn: (formData: FormData) => fileService.upload(formData),
-        onSuccess(data) {
-            onChange(data.map((file) => file.url));
+    const handleFileChange = useCallback(
+        (event: ChangeEvent<HTMLInputElement>) => {
+            const selectedFiles = event.target.files;
+            if (selectedFiles) {
+                const fileArray = Array.from(selectedFiles);
+
+                const formData = new FormData();
+                fileArray.forEach((file) => formData.append('files', file));
+                // const previewUrls = fileArray.map((file) => URL.createObjectURL(file));
+
+                uploadFiles(formData);
+            }
         },
-        onError() {
-            toast.error('Ошибка при загрузки файлов');
-        },
-    });
+        [uploadFiles],
+    );
 
-    const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
-        const selectedFiles = event.target.files;
-
-        if (selectedFiles) {
-            const fileArray = Array.from(selectedFiles);
-
-            const formData = new FormData();
-            fileArray.forEach((file) => formData.append('files', file));
-
-            uploadFiles(formData);
-        }
-    };
-
-    const handleButtonClick = () => {
+    const handleButtonClick = useCallback(() => {
         fileInputRef.current?.click();
-    };
+    }, [fileInputRef]);
 
     return useMemo(
         () => ({
             handleButtonClick,
-            isUploading,
             fileInputRef,
             handleFileChange,
+            isUploading,
         }),
-        [handleButtonClick, isUploading, fileInputRef, handleFileChange],
+        [handleButtonClick, fileInputRef, handleFileChange, isUploading],
     );
 }

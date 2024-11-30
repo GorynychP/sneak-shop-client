@@ -12,7 +12,9 @@ export const useUpdateProduct = () => {
 
     const { mutate: updateProduct, isPending: isLoadingUpdate } = useMutation({
         mutationKey: ['update product'],
-        mutationFn: (data: I_ProductInput) => productService.update(params.id || '', data),
+        mutationFn: async (data: I_ProductInput) => {
+            return productService.update(params.id || '', data);
+        },
         onSuccess() {
             queryClient.invalidateQueries({
                 queryKey: ['products'],

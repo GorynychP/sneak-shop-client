@@ -1,13 +1,13 @@
 import { axiosWithAuth } from '@/shared/api/api.interceptors';
 
-interface IFile {
+export interface I_File {
     url: string;
     name: string;
 }
 
 class FileService {
     async upload(file: FormData, folder?: string) {
-        const { data } = await axiosWithAuth<IFile[]>({
+        const { data } = await axiosWithAuth<I_File[]>({
             url: '/files',
             method: 'POST',
             data: file,

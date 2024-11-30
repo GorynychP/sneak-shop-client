@@ -1,0 +1,33 @@
+/* Базовый стиль для чекбокса */
+.checkbox {
+    display: block;
+    width: 1.3rem; /* equivalent to size-4 */
+    height: 1.3rem;
+    border-radius: 0.25rem; /* rounded */
+    border: 1px solid; /* Assuming there is a border style */
+    background-color: white;
+}
+
+.disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.unchecked {
+    background: #ffffff;
+}
+.checked {
+    background-color: #3b82f6;
+}
+.checkedDisabled {
+    background-color: #6b7280;
+}
+.icon {
+    stroke: #ffffff;
+    .visible {
+        opacity: 1;
+    }
+    .hidden {
+        opacity: 0;
+    }
+}

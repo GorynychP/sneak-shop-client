@@ -8,6 +8,7 @@ export interface I_Comment {
     updatedAt?: string;
     user?: I_User;
     userId?: string;
+    productId: string;
 }
 
 export interface I_AddComment {

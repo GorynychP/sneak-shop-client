@@ -6,11 +6,12 @@ import { OrdersEmpty } from '../components/OrdersEmpty/OrdersEmpty';
 import { EnumOrderStatus } from '../../model/types/order';
 import { useOrders } from '../../api/hooks/useOrders';
 import { PageLoader } from '@/widgets/PageLoader';
-import { dataFormatter } from '@/shared/lib/utils/format/formatData';
+import { formatData } from '@/shared/lib/utils/format/formatData';
 import { formatUSD } from '@/shared/lib/utils/format/currency';
 import { I_OrderColumn, orderColumns } from '../components/OrderColumns.tsx/OrderColumns';
 import { OrderDataTable } from '../components/OrderDataTable/OrderDataTable';
 import { StatusTag } from '@/shared/ui/StatusTag';
+import { Clock } from 'lucide-react';
 
 interface OrdersProps {
     className?: string;
@@ -24,15 +25,19 @@ export const Orders = memo(({ className }: OrdersProps) => {
     if (orders.length === 0) return <OrdersEmpty />;
 
     const formattedOrders: I_OrderColumn[] = orders.map((order) => ({
-        createdAt: dataFormatter(order.createdAt),
+        createdAt: formatData(order.createdAt),
         status:
             order.status === EnumOrderStatus.PENDING ? (
-                <StatusTag isCompleted={false} text="В ожидании" />
+                <StatusTag
+                    imageComponent={<Clock style={{ width: '18px' }} />}
+                    isCompleted={false}
+                    text="В ожидании"
+                />
             ) : (
                 <StatusTag text="Оплачен" />
             ),
         total: formatUSD(order.total),
-        deliveryDate: dataFormatter(order.createdAt),
+        deliveryDate: formatData(order.createdAt),
         items: order.items,
     }));
 
