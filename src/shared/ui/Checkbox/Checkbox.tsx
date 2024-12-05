@@ -1,17 +1,11 @@
-import { Checkbox } from '@headlessui/react';
-import { Fragment } from 'react';
+import { Checkbox, CheckboxProps } from '@headlessui/react';
 import cls from './Checkbox.module.scss';
 import clsx from 'clsx';
 
-export function CheckboxItem({
-    enabled,
-    setEnabled,
-}: {
-    enabled: boolean;
-    setEnabled: (enabled: boolean) => void;
-}) {
+export function CheckboxItem(props: CheckboxProps) {
+    const { checked: enabled, onChange, disabled, onClick } = props;
     return (
-        <Checkbox checked={enabled} onChange={setEnabled} as={Fragment}>
+        <Checkbox onClick={onClick} checked={enabled} disabled={disabled} onChange={onChange} as="div">
             {({ checked, disabled }) => (
                 <span
                     className={clsx(

@@ -2,7 +2,7 @@ import { axiosWithAuth } from '@/shared/api/api.interceptors';
 import { I_User } from '../model/types/user';
 import { I_Profile } from '@/entities/Profile';
 
-class UserService {
+export class UserService {
     async getProfile() {
         const { data } = await axiosWithAuth<I_Profile>({
             url: 'users/profile',

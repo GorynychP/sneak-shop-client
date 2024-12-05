@@ -1,36 +1,31 @@
-import { memo, useState } from 'react';
-import clsx from 'clsx';
-import cls from './ChangeRole.module.scss';
-import { Pencil } from 'lucide-react';
-import { ListBox } from '@/shared/ui/Popups';
+import { memo, useEffect, useState } from 'react';
+import { CheckboxGroup, CheckboxItem } from '@/shared/ui/CheckboxGroup';
+import { UserRole } from '@/entities/User';
+import { useChangeRoles } from '../../../api/hooks/useChangeRoles';
 
 interface ChangeRoleProps {
-    className?: string;
+    rights: UserRole[];
+    userId: string;
 }
+const rolesInitial: CheckboxItem<UserRole>[] = [
+    { id: 1, name: 'Админ', enabled: false, type: UserRole.ADMIN, disabled: true },
+    { id: 2, name: 'Менеджер', enabled: false, type: UserRole.MANAGER, disabled: false },
+    { id: 3, name: 'Пользователь', enabled: false, type: UserRole.USER, disabled: false },
+];
+export const ChangeRole = memo(({ rights, userId }: ChangeRoleProps) => {
+    const [roles, setRoles] = useState<CheckboxItem[]>(rolesInitial);
+    useChangeRoles(roles, userId);
 
-export const ChangeRole = memo(({ className }: ChangeRoleProps) => {
-    const [isOpenList, setIsOpenList] = useState(false);
-    return (
-        <div className={clsx(cls.ChangeRole, [className])}>
-            <div className="center gap-min" onClick={() => setIsOpenList(!isOpenList)}>
-                <Pencil />
-                Сменить роль
-            </div>
-            {isOpenList && (
-                <ListBox
-                    className={clsx(cls.ListBox, {})}
-                    items={[
-                        { value: 'ADMIN', content: 'Aдмин' },
-                        { value: 'MANAGER', content: 'Менеджер' },
-                        { value: 'USER', content: 'Пользователь' },
-                    ]}
-                    // value={field.value}
-                    // onChange={field.onChange}
-                    defaultValue="Выберите роль"
-                    direction="bottom left"
-                    // addonRight={<ChevronDown />}
-                />
-            )}
-        </div>
-    );
+    useEffect(() => {
+        setRoles((prev) => {
+            return prev.map((item) => {
+                return {
+                    ...item,
+                    enabled: rights.includes(item.type as UserRole),
+                };
+            });
+        });
+    }, [rights]);
+
+    return <CheckboxGroup items={roles} setItems={setRoles} />;
 });

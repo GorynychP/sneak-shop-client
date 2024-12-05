@@ -1,10 +1,10 @@
 import { I_User } from '@/entities/User';
-import { ADMIN_URL, getRouteProductDetails } from '@/shared/constants/router';
+import { getRouteProductDetails } from '@/shared/constants/router';
 import { Button } from '@/shared/ui/Button';
 import { Dropdown } from '@/shared/ui/Popups';
 import { StarRating } from '@/shared/ui/StarRating';
 import { ColumnDef } from '@tanstack/react-table';
-import { ArrowUpDown, ExternalLink, MoreHorizontal, Pencil } from 'lucide-react';
+import { ArrowUpDown, ExternalLink, MoreHorizontal } from 'lucide-react';
 import { DeleteActionComment } from './DeleteAction';
 
 export interface I_CommentColumn {
@@ -84,7 +84,7 @@ export const commentColumns: ColumnDef<I_CommentColumn>[] = [
         cell: ({ row }) => (
             <Dropdown
                 direction="bottom left"
-                onClick
+                isClick
                 trigger={
                     <Button className="size-8 p-0">
                         <MoreHorizontal className="size-4" />
@@ -101,16 +101,16 @@ export const commentColumns: ColumnDef<I_CommentColumn>[] = [
                         target: '_blank',
                         key: 1,
                     },
-                    {
-                        content: (
-                            <div className="center gap-min">
-                                <Pencil />
-                                Редактировать
-                            </div>
-                        ),
-                        href: ADMIN_URL.productEdit(row.original.id),
-                        key: 2,
-                    },
+                    // {
+                    //     content: (
+                    //         <div className="center gap-min">
+                    //             <Pencil />
+                    //             Редактировать
+                    //         </div>
+                    //     ),
+                    //     href: ADMIN_URL.productEdit(row.original.id),
+                    //     key: 2,
+                    // },
                     {
                         content: <DeleteActionComment id={row.original.id} />,
                         key: 3,

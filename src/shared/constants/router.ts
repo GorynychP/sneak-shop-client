@@ -4,6 +4,7 @@ import { RouteObject /*/ RouteProps */ } from 'react-router-dom';
 export type AppRoutesProps = RouteObject & {
     authOnly?: boolean;
     roles?: UserRole[];
+    children?: AppRoutesProps[];
 };
 
 export enum AppRoutes {
@@ -30,6 +31,7 @@ export enum AppRoutes {
     // ADMIN_PRODUCTS = 'admin/products',
 
     THANKS = 'thanks',
+    FORBIDDEN = 'forbidden',
     NOT_FOUND = 'not_found',
 }
 
@@ -74,4 +76,5 @@ export const ADMIN_URL = {
     users: () => ADMIN_URL.root(`/users`),
 
     settings: () => ADMIN_URL.root(`/settings`),
+    forbidden: () => ADMIN_URL.root(`/forbidden`),
 };

@@ -23,7 +23,7 @@ export const AvatarDropdown = memo(({ className }: AvatarDropdownProps) => {
         ...(isAccess
             ? [
                   {
-                      content: 'Админка',
+                      content: isAdmin ? 'Админка (Admin)' : 'Админка (Менеджер)',
                       key: 1,
                       href: ADMIN_URL.statistics(),
                   },
@@ -45,7 +45,7 @@ export const AvatarDropdown = memo(({ className }: AvatarDropdownProps) => {
     return (
         <Dropdown
             direction="bottom left"
-            onClick
+            isClick
             trigger={
                 <div className="hover-avatar-dropdown">
                     <img width={26} height={28} src={AccountImage} alt="account" />

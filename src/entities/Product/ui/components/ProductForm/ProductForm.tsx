@@ -121,6 +121,7 @@ export function ProductForm({ product }: ProductFormProps) {
 
                                     <Input
                                         placeholder="Цена товара"
+                                        type="number"
                                         disabled={isLoadingCreate || isLoadingUpdate}
                                         {...field}
                                         value={+field.value === 0 ? '' : field.value}
@@ -141,6 +142,7 @@ export function ProductForm({ product }: ProductFormProps) {
 
                                     <Input
                                         placeholder="Скидка в процентах"
+                                        type="number"
                                         disabled={isLoadingCreate || isLoadingUpdate}
                                         {...field}
                                         value={+field.value === 0 ? '' : field.value}
@@ -193,6 +195,7 @@ export function ProductForm({ product }: ProductFormProps) {
                             <FormItem className={cls.FormItemDescription}>
                                 <h3>Описание</h3>
                                 <textarea
+                                    spellCheck={true}
                                     className={cls.descriptionField}
                                     placeholder="Описание магазина"
                                     disabled={isLoadingCreate || isLoadingUpdate}

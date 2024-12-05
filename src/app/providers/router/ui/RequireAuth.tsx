@@ -29,7 +29,7 @@ export function RequireAuth({ children, roles }: RequireAuthProps) {
         return <Navigate to={getRouteMain()} state={{ from: location }} replace />;
     }
     if (!hasRequiredRoles) {
-        // return <Navigate to={getRouteNotFound()} state={{ from: location }} replace />;
+        // return <Navigate to={} state={{ from: location }} replace />;
         return <NotFoundPage />;
     }
     return children;

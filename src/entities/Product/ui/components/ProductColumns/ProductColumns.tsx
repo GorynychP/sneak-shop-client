@@ -64,7 +64,7 @@ export const productColumns: ColumnDef<I_ProductColumn>[] = [
         cell: ({ row }) => (
             <Dropdown
                 direction="bottom left"
-                onClick
+                isClick
                 trigger={
                     <Button className="size-8 p-0">
                         <MoreHorizontal className="size-4" />

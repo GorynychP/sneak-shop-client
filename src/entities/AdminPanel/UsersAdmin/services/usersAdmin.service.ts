@@ -1,40 +1,22 @@
 import { axiosWithAuth } from '@/shared/api/api.interceptors';
-import { I_User } from '@/entities/User/model/types/user';
+import { I_User, UserRole } from '@/entities/User/model/types/user';
+import { UserService } from '@/entities/User';
 
-import { I_Profile } from '@/entities/Profile';
-
-class UsersAdminService {
+class UsersAdminService extends UserService {
     async getAllUsers() {
         const { data } = await axiosWithAuth<I_User[]>({
             url: 'users/list',
             method: 'GET',
         });
-        console.log('data', data);
         return data;
     }
-    async getUser() {
+    async changeRole(userId: string, rights: UserRole[]) {
         const { data } = await axiosWithAuth<I_User>({
-            url: 'users/profile',
-            method: 'GET',
+            url: `users/edit/${userId}`,
+            method: 'PATCH',
+            data: { rights },
         });
-
         return data;
-    }
-    async updateProfile(data?: I_Profile) {
-        const { data: profile } = await axiosWithAuth<I_Profile>({
-            url: 'users/profile',
-            method: 'PATCH',
-            data,
-        });
-
-        return profile;
-    }
-
-    async toggleRole(productId: string) {
-        return axiosWithAuth<I_User>({
-            url: `users/profile/favorites/${productId}`,
-            method: 'PATCH',
-        });
     }
 }
 

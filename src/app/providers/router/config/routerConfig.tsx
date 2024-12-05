@@ -104,7 +104,10 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
             { path: ADMIN_URL.productCreate(), element: <ProductsEditPage /> },
             { path: ADMIN_URL.productEdit(':id'), element: <ProductsEditPage /> },
             { path: ADMIN_URL.reviews(), element: <ReviewAdminPage /> },
-            { path: ADMIN_URL.users(), element: <UsersAdminPage /> },
+            {
+                path: ADMIN_URL.users(),
+                element: <UsersAdminPage />,
+            },
         ],
     },
 
@@ -112,6 +115,12 @@ export const routeConfig: Record<AppRoutes, AppRoutesProps> = {
         path: getRouteThanks(),
         element: <ThanksPage />,
         authOnly: true,
+    },
+    [AppRoutes.FORBIDDEN]: {
+        path: ADMIN_URL.forbidden(),
+        element: <div>Недостаточно прав</div>,
+        authOnly: true,
+        roles: [UserRole.MANAGER],
     },
     [AppRoutes.NOT_FOUND]: {
         path: '*',

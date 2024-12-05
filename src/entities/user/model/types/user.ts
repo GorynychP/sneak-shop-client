@@ -2,9 +2,9 @@ import { I_Order } from '@/entities/Orders';
 
 export enum UserRole {
     USER = 'USER',
-    PREMIUM = 'PREMIUM',
-    MANAGER = 'MANAGER',
     ADMIN = 'ADMIN',
+    MANAGER = 'MANAGER',
+    PREMIUM = 'PREMIUM',
 }
 
 export interface I_User {

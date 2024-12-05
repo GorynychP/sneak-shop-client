@@ -20,23 +20,23 @@ interface DropdownProps {
     trigger: ReactNode;
     direction?: DropdownDirection;
     checkbox?: boolean;
-    onClick?: boolean;
+    isClick?: boolean;
 }
 
 export function Dropdown(props: DropdownProps) {
-    const { className, items, trigger, direction = 'bottom right', onClick = false, checkbox } = props;
+    const { className, items, trigger, direction = 'bottom right', isClick = false, checkbox } = props;
     const menuClasses = [mapDirectionClass[direction], popupCls.menu];
     const [isOpen, setIsOpen] = useState(false);
 
     return (
         <Menu as="div" className={clsx(cls.Dropdown, {}, [className, popupCls.popup])}>
             {({ open }) => {
-                const clickIsOpen = !onClick ? isOpen : open;
+                const clickIsOpen = !isClick ? isOpen : open;
                 return (
                     <>
                         <MenuButton
-                            onMouseLeave={!onClick ? () => setIsOpen(false) : () => {}}
-                            onMouseEnter={!onClick ? () => setIsOpen(true) : () => {}}
+                            onMouseLeave={!isClick ? () => setIsOpen(false) : () => {}}
+                            onMouseEnter={!isClick ? () => setIsOpen(true) : () => {}}
                             as="div"
                             className={popupCls.trigger}
                         >
@@ -45,9 +45,9 @@ export function Dropdown(props: DropdownProps) {
 
                         {clickIsOpen && (
                             <MenuItems
-                                static={!onClick}
-                                onMouseLeave={!onClick ? () => setIsOpen(false) : () => {}}
-                                onMouseEnter={!onClick ? () => setIsOpen(true) : () => {}}
+                                static={!isClick}
+                                onMouseLeave={!isClick ? () => setIsOpen(false) : () => {}}
+                                onMouseEnter={!isClick ? () => setIsOpen(true) : () => {}}
                                 className={clsx(cls.menu, {}, menuClasses)}
                             >
                                 {items.map((item) => {

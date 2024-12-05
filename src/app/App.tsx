@@ -6,20 +6,22 @@ import { AdminSettingsNavbar, Navbar } from '@/widgets/Navbar';
 import { Footer } from '@/widgets/Footer';
 import { StoreSettingsLayout } from '@/shared/layouts/StoreSettingsLayout';
 import { useAppSelector } from '@/shared/model';
-import { selectIsUserAdmin, useUser } from '@/entities/User';
+import { selectIsUserAdmin, selectIsUserManager, useUser } from '@/entities/User';
 import { useLocation } from 'react-router-dom';
 import { AdminSettingsSidebar } from '@/widgets/Sidebar';
 
 function App() {
     const location = useLocation();
     const isAdmin = useAppSelector(selectIsUserAdmin);
+    const isManager = useAppSelector(selectIsUserManager);
     const isLocationPathAdmin = location.pathname.includes('admin');
     const isAdminLayout = isAdmin && isLocationPathAdmin;
+    const isManagerLayout = isManager && isLocationPathAdmin;
     useUser(isLocationPathAdmin);
 
     const { theme } = useTheme();
 
-    if (isAdminLayout) {
+    if (isAdminLayout || isManagerLayout) {
         return (
             <div id="app" className={clsx('sneak-shop', [theme])}>
                 <StoreSettingsLayout

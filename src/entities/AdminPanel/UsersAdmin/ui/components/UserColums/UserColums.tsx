@@ -44,8 +44,12 @@ export const userColumns: ColumnDef<I_UserColumn>[] = [
                 <Button onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}>
                     Роль
                     <ArrowUpDown />
+                    <Pencil />
                 </Button>
             );
+        },
+        cell: ({ row }) => {
+            return <ChangeRole userId={row.original.id} rights={row.original.rights} />;
         },
     },
     {
@@ -54,17 +58,13 @@ export const userColumns: ColumnDef<I_UserColumn>[] = [
         cell: ({ row }) => (
             <Dropdown
                 direction="bottom left"
-                onClick
+                isClick
                 trigger={
                     <Button className="size-8 p-0">
                         <MoreHorizontal className="size-4" />
                     </Button>
                 }
                 items={[
-                    {
-                        content: <ChangeRole />,
-                        key: 2,
-                    },
                     {
                         content: <DeleteAction id={row.original.id} />,
                         key: 3,

@@ -6,12 +6,15 @@ import { ADMIN_URL } from '@/shared/constants/router';
 import { ChartColumn, FolderKanban, Star, Users } from 'lucide-react';
 import { MenuItem } from '../MenuItem/MenuItem';
 import { VStack } from '@/shared/ui/Stack';
+import { useAppSelector } from '@/shared/model';
+import { selectIsUserAdmin } from '@/entities/User';
 
 interface NavigationProps {
     className?: string;
 }
 
 export const Navigation = memo(({ className }: NavigationProps) => {
+    const isAdmin = useAppSelector(selectIsUserAdmin);
     const routes: I_MenuItem[] = [
         {
             icon: ChartColumn,
@@ -21,7 +24,7 @@ export const Navigation = memo(({ className }: NavigationProps) => {
         {
             icon: Users,
             value: 'Пользователи',
-            link: ADMIN_URL.users(),
+            link: isAdmin ? ADMIN_URL.users() : ADMIN_URL.forbidden(),
         },
         {
             icon: FolderKanban,

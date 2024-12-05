@@ -1,0 +1,21 @@
+.MyCheckboxGroup {
+    display: flex;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: start;
+    padding: 1rem;
+    background: var(--bg);
+    border-radius: 12px;
+    border: 2px solid var(--bg-light);
+    z-index: var(--dropdown-z-index);
+    box-shadow: var(--shadow);
+
+    .label {
+        margin-left: 0.5rem;
+        font-size: 0.875rem;
+    }
+}
