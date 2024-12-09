@@ -36,7 +36,7 @@ export const AddCommentForm = memo(({ className }: AddCommentFormProps) => {
             <StarRating size={30} selectedStars={rating} onSelect={onSelectStars} />
             <textarea
                 value={text}
-                placeholder="Ваш комментарий"
+                placeholder="Ваш Отзыв"
                 onChange={onChangeComment}
                 className={cls.commentField}
                 name="comment"

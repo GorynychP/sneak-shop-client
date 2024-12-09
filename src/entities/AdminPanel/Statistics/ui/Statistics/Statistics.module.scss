@@ -1,0 +1,15 @@
+.Statistics {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    h3 {
+        margin: 10px 0;
+    }
+    .chart {
+        border: 2px solid var(--bg-dark);
+        border-radius: 10px;
+        max-width: 800px;
+        box-shadow: var(--shadow);
+        padding: 10px;
+    }
+}

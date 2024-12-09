@@ -6,7 +6,9 @@
 
 .starIcon {
     cursor: pointer;
-    color: var(--text-accent);
+    // color: var(--text-accent);
+    fill: var(--text-accent);
+    stroke: var(--text-accent);
     padding-right: 10px;
 }
 

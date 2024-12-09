@@ -1,6 +1,6 @@
 import { memo, useEffect, useState } from 'react';
 import cls from './StarRating.module.scss';
-import StarIcon from '@/shared/assets/icon/Star.svg?react';
+import StarIcon from '@/shared/assets/icon/star.svg?react';
 import clsx from 'clsx';
 
 interface StarRatingProps {

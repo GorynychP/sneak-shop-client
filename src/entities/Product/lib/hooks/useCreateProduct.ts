@@ -5,6 +5,7 @@ import { productService } from '../../services/product.service';
 import { I_ProductInput } from '../../model/types/product';
 import { ADMIN_URL } from '@/shared/constants/router';
 import { useNavigate } from 'react-router-dom';
+import { AxiosError } from 'axios';
 
 export const useCreateProduct = () => {
     const navigate = useNavigate();
@@ -21,8 +22,9 @@ export const useCreateProduct = () => {
             toast.success('Товар создан');
             navigate(ADMIN_URL.products());
         },
-        onError() {
-            toast.error('Ошибка при создании товара');
+        onError(error: AxiosError<{ message: string }>) {
+            const message = error?.response?.data?.message;
+            toast.error(`Ошибка при создании товара: ${message} `);
         },
     });
 
