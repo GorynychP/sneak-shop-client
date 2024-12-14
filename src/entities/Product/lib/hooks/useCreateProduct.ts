@@ -14,7 +14,9 @@ export const useCreateProduct = () => {
 
     const { mutate: createProduct, isPending: isLoadingCreate } = useMutation({
         mutationKey: ['create product'],
-        mutationFn: (data: I_ProductInput) => productService.create(data),
+        mutationFn: async (data: I_ProductInput) => {
+            return productService.create(data);
+        },
         onSuccess() {
             queryClient.invalidateQueries({
                 queryKey: ['products'],

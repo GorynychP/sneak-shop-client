@@ -21,6 +21,16 @@ class FileService {
 
         return data;
     }
+    async delete(files: string[], folder?: string) {
+        await axiosWithAuth({
+            url: '/files',
+            method: 'DELETE',
+            data: files,
+            params: {
+                folder,
+            },
+        });
+    }
 }
 
 export const fileService = new FileService();
