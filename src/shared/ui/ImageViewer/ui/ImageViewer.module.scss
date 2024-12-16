@@ -1,0 +1,51 @@
+.ImageViewer {
+    .GalleryContainer {
+        padding: 14px;
+        display: flex;
+        border: 2px solid var(--bg-dark);
+        border-radius: 12px;
+        background-color: var(--bg);
+        gap: 20px;
+        min-width: 630px;
+
+        img {
+            border-radius: 12px;
+        }
+
+        .image {
+            max-width: 478px;
+            max-height: 478px;
+            cursor: pointer;
+        }
+
+        .gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+
+            button {
+                cursor: pointer;
+                padding: 0;
+                border: 1px solid var(--bg-dark);
+                border-radius: 12px;
+                // border: none;
+            }
+
+            .active {
+                border: 1px solid var(--text-accent);
+                transform: scale(1.1);
+            }
+        }
+    }
+}
+.ModalImages {
+    width: 100%;
+
+    .ImageSlide {
+        width: 650px;
+        display: block;
+        height: auto;
+        margin: 0 auto;
+        max-height: calc(100vh - 20%);
+    }
+}

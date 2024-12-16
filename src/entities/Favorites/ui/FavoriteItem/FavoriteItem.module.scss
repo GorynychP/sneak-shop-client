@@ -9,11 +9,10 @@
     width: 450px;
 
     .imageLink {
-        border-radius: 12px;
-        height: 100px;
         img {
             border-radius: 12px;
-            height: 100%;
+            width: 140px;
+            height: auto;
         }
     }
 

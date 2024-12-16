@@ -1,7 +1,6 @@
 import { memo, useState } from 'react';
 import clsx from 'clsx';
 import cls from './ProductDetails.module.scss';
-import { ProductGallery } from './components/ProductGallery/ProductGallery';
 import { ProductInfo } from './components/ProductInfo/ProductInfo';
 import { HStack, VStack } from '@/shared/ui/Stack';
 import { I_Product } from '@/entities/Product';
@@ -18,6 +17,7 @@ import {
     renderProductTabs,
     T_ContentProductTabs,
 } from './components/Tabs/renderTabs/renderProductTabs';
+import { ImageViewer } from '@/shared/ui/ImageViewer/ui/ImageViewer';
 
 interface ProductDetailsProps {
     className?: string;
@@ -30,7 +30,7 @@ export const ProductDetails = memo(({ className, product }: ProductDetailsProps)
         setSizeNum(numSize);
     };
 
-    const categories: T_ContentProductTabs[] = [
+    const categoriesTabs: T_ContentProductTabs[] = [
         {
             name: 'Описание',
             type: 'description',
@@ -53,7 +53,8 @@ export const ProductDetails = memo(({ className, product }: ProductDetailsProps)
     return (
         <VStack align="start" gap="44" className={clsx(cls.SneakersDetails, [className])}>
             <HStack align="center" gap="44">
-                <ProductGallery product={product} />
+                {/* <ProductGallery product={product} /> */}
+                <ImageViewer images={product.images} />
                 <ProductInfo
                     product={product}
                     buttonCart={
@@ -72,7 +73,7 @@ export const ProductDetails = memo(({ className, product }: ProductDetailsProps)
             </HStack>
             <Tabs
                 renderTabs={renderProductTabs}
-                categories={categories}
+                categories={categoriesTabs}
                 renderContent={renderProductContent}
             />
         </VStack>
