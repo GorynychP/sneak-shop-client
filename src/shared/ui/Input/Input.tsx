@@ -17,6 +17,7 @@ interface InputProps extends HTMLInputProps {
     value?: string | number;
     onChange?: (value: React.ChangeEvent<HTMLInputElement>) => void;
     onChangeSecondary?: (value: string) => void;
+    onFocusAction?: () => void;
     autofocus?: boolean;
     readonly?: boolean;
     label?: string;
@@ -33,6 +34,7 @@ export const Input = forwardRef((props: InputProps, ref: ForwardedRef<HTMLInputE
         value,
         onChange,
         onChangeSecondary,
+        onFocusAction,
         type = 'text',
         width = '100%',
         height = '48px',
@@ -64,6 +66,7 @@ export const Input = forwardRef((props: InputProps, ref: ForwardedRef<HTMLInputE
     };
     const onFocus = () => {
         setIsFocused(true);
+        onFocusAction?.();
     };
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         e.preventDefault();

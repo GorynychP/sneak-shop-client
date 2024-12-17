@@ -1,0 +1,10 @@
+.SkeletonList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    justify-content: end;
+
+    .skeleton {
+        border-radius: 12px;
+    }
+}

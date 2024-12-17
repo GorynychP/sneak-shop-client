@@ -3,17 +3,19 @@ import clsx from 'clsx';
 import cls from './Pagination.module.scss';
 import { useAppDispatch, useAppSelector } from '@/shared/model';
 import { filterActions, selectorGetFiltersPage } from '@/features/sort';
+
 // import ArrowIcon from '@/shared/assets/icon/arrow.svg?react';
 // import { useLocation } from 'react-router-dom';
 
 interface PaginationProps {
     className?: string;
+    totalCount?: number;
 }
 
-export const Pagination = memo(({ className }: PaginationProps) => {
-    const dispatch = useAppDispatch();
+export const Pagination = memo(({ className, totalCount }: PaginationProps) => {
     const currentPage = useAppSelector(selectorGetFiltersPage);
-    const totalCount = localStorage.getItem('totalCount');
+
+    const dispatch = useAppDispatch();
 
     const handelSetPage = (page: number) => () => {
         dispatch(filterActions.setFilters({ page }));
@@ -22,6 +24,7 @@ export const Pagination = memo(({ className }: PaginationProps) => {
     const generatePageNumbers = () => {
         const pages = [];
         const totalPages = Math.ceil(Number(totalCount) / 9);
+
         // Показываем всегда первую страницу
         if (currentPage >= 3) {
             pages.push(1);
@@ -49,31 +52,27 @@ export const Pagination = memo(({ className }: PaginationProps) => {
     };
 
     const pages = generatePageNumbers();
+
     return (
         <div className={clsx(cls.Pagination, [className])}>
-            {/* <button onClick={handelSetPage(1)}>1</button>
-            <button onClick={handelSetPage(2)}>2</button>
-            ...
-            <button onClick={handelSetPage(currentPage + 1)}>
-                <ArrowIcon className={cls.arrowIcon} />
-            </button> */}
-            {pages.map((page, index) =>
-                typeof page === 'number' ? (
-                    <button
-                        key={index}
-                        onClick={handelSetPage(page)}
-                        className={clsx({
-                            [cls.active]: page === currentPage,
-                        })}
-                    >
-                        {page}
-                    </button>
-                ) : (
-                    <span key={index} className={cls.ellipsis}>
-                        {page}
-                    </span>
-                ),
-            )}
+            {pages.length > 1 &&
+                pages.map((page, index) =>
+                    typeof page === 'number' ? (
+                        <button
+                            key={index}
+                            onClick={handelSetPage(page)}
+                            className={clsx({
+                                [cls.active]: page === currentPage,
+                            })}
+                        >
+                            {page}
+                        </button>
+                    ) : (
+                        <span key={index} className={cls.ellipsis}>
+                            {page}
+                        </span>
+                    ),
+                )}
         </div>
     );
 });

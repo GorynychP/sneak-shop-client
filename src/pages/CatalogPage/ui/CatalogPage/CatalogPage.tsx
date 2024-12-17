@@ -15,14 +15,17 @@ import { useManageProductsQuery } from '@/entities/Product/lib/hooks/useManagePr
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '@/shared/model';
 import { stringifyFilter } from '@/shared/lib/utils/format/stringifyFormat';
-import { getRouteForMen, getRouteSale } from '@/shared/constants/router';
+import { getRouteCatalog, getRouteForMen, getRouteSale } from '@/shared/constants/router';
 
 const CatalogPagePage = memo(() => {
     const [searchParams, setSearchParams] = useSearchParams();
     const filtersProducts = useAppSelector(selectorFiltersProducts);
+
     const location = useLocation();
     const dispatch = useAppDispatch();
-    const { products, isPending, isError } = useManageProductsQuery();
+
+    const { products, isPending, isError, totalCount } = useManageProductsQuery();
+
     const toStringFormat = stringifyFilter<I_FiltersProduct>(filtersProducts);
 
     useEffect(() => {
@@ -31,7 +34,12 @@ const CatalogPagePage = memo(() => {
         } else {
             dispatch(
                 filterActions.resetAndSetFilters({
-                    gender: location.pathname === getRouteForMen() ? 'MALE' : 'FEMALE',
+                    gender:
+                        location.pathname === getRouteCatalog()
+                            ? undefined
+                            : location.pathname === getRouteForMen()
+                            ? 'MALE'
+                            : 'FEMALE',
                 }),
             );
         }
@@ -61,7 +69,12 @@ const CatalogPagePage = memo(() => {
 
             <HStack justify="between">
                 <SortSize filterProducts={filtersProducts} />
-                <SneakersList isLoading={isPending} isError={isError} products={products} />
+                <SneakersList
+                    isLoading={isPending}
+                    isError={isError}
+                    products={products}
+                    totalCount={totalCount}
+                />
             </HStack>
         </Page>
     );

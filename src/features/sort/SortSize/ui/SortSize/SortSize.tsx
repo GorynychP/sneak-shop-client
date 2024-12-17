@@ -20,17 +20,21 @@ const MIN = 2000;
 const MAX = 20000;
 
 export const SortSize = memo(({ className, filterProducts }: SortSizeProps) => {
-    const location = useLocation();
     const [price, setPrice] = useState<RangeValues>([MIN, MAX]);
     const [sizeSearch, setSizeSearch] = useState<number[]>([]);
+
+    const location = useLocation();
+    const dispatch = useAppDispatch();
+
     useEffect(() => {
         setSizeSearch([]);
         setPrice([MIN, MAX]);
     }, [location.pathname]);
-    const dispatch = useAppDispatch();
+
     const handleRangeChange = (values: RangeValues) => {
         setPrice(values);
     };
+
     const handleSizeSearch = (size: number) => {
         if (sizeSearch.includes(size)) {
             setSizeSearch((prev) => prev.filter((item) => item !== size));
@@ -46,6 +50,7 @@ export const SortSize = memo(({ className, filterProducts }: SortSizeProps) => {
                     priceFrom: price[0],
                     priceTo: price[1],
                     sizes: sizeArray,
+                    page: 1,
                 }),
             );
     };

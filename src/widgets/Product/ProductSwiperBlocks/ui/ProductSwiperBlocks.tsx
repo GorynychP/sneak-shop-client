@@ -4,6 +4,8 @@ import cls from './ProductSwiperBlocks.module.scss';
 import { CardsSwiper } from './components/CardsSwiper/CardsSwiper';
 import { I_Product } from '@/entities/Product';
 import { getFilterProduct } from '../utils/getFilterProduct';
+import { Skeleton } from '@/shared/ui/Skeleton';
+import { HStack } from '@/shared/ui/Stack';
 
 interface ProductSwiperBlocksProps {
     className?: string;
@@ -14,10 +16,28 @@ interface ProductSwiperBlocksProps {
 
 export const ProductSwiperBlocks = memo(
     ({ className, products, isLoading, isError }: ProductSwiperBlocksProps) => {
-        if (isLoading) return <div>Loading...</div>;
+        if (isLoading)
+            return (
+                <div className={clsx(cls.SneakersBlocks, [className])}>
+                    <HStack className={cls.skeletonBlock} align="center" justify="center" gap="32">
+                        {Array.from({ length: 4 }).map((_, index) => (
+                            <Skeleton className={cls.skeleton} key={index} width={240} height={360} />
+                        ))}
+                    </HStack>
+                    <HStack className={cls.skeletonBlock} align="center" justify="center" gap="32">
+                        {Array.from({ length: 4 }).map((_, index) => (
+                            <Skeleton className={cls.skeleton} key={index} width={240} height={360} />
+                        ))}
+                    </HStack>
+                </div>
+            );
+
         if (isError) return <div>Error</div>;
+
         if (!products) return null;
+
         const { productsDiscount, productsForMen, productsForWomen } = getFilterProduct(products);
+
         return (
             <div className={clsx(cls.SneakersBlocks, [className])}>
                 <CardsSwiper

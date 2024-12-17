@@ -1,7 +1,13 @@
 import { memo } from 'react';
 import clsx from 'clsx';
 import { AppLink } from '@/shared/ui/AppLink';
-import { getRouteCart, getRouteForMen, getRouteForWomen, getRouteMain } from '@/shared/constants/router';
+import {
+    getRouteCart,
+    getRouteCatalog,
+    getRouteForMen,
+    getRouteForWomen,
+    getRouteMain,
+} from '@/shared/constants/router';
 
 import AppSneakersImage from '@/shared/assets/icon/sneakers.svg';
 import CartImage from '@/shared/assets/icon/cart.svg';
@@ -14,6 +20,7 @@ import { AvatarDropdown } from '@/features/AvatarDropdown';
 import { useAppDispatch, useAppSelector } from '@/shared/model';
 import { selectUserAuthInited } from '@/entities/User';
 import { filterActions, selectorGetFiltersSearch } from '@/features/sort';
+import { useNavigate } from 'react-router-dom';
 
 interface NavbarProps {
     className?: string;
@@ -22,7 +29,9 @@ interface NavbarProps {
 export const Navbar = memo(({ className }: NavbarProps) => {
     const isAuth = useAppSelector(selectUserAuthInited);
     const searchTerms = useAppSelector(selectorGetFiltersSearch);
+
     const dispatch = useAppDispatch();
+    const navigate = useNavigate();
     const handelSearch = (value: string) => {
         dispatch(filterActions.setFilters({ searchTerm: value }));
     };
@@ -46,6 +55,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
             <div className="header-right">
                 <Input
                     onChangeSecondary={handelSearch}
+                    onFocusAction={() => navigate(getRouteCatalog())}
                     value={searchTerms}
                     type="search"
                     width="272px"

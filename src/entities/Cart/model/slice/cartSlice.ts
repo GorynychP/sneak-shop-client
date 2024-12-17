@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { CartSliceState, IAddToCartPayload, IChangeQuantityPayload } from '../types/cart';
 import { generateShortId } from '@/shared/lib/utils/generator/generateShortId';
+import toast from 'react-hot-toast';
 
 const initialState: CartSliceState = { items: [] };
 
@@ -18,12 +19,18 @@ export const cartSlice = createSlice({
                     (item) =>
                         item.size === action.payload.size && item.product.id === action.payload.product.id,
                 );
+
                 if (!isSize) {
                     state.items.unshift({ ...action.payload, id: generateShortId() });
+                    toast.success('Товар добавлен в корзину');
+                } else {
+                    toast('Этот товар уже был ранее добавлен в корзину');
                 }
+
                 return;
             }
             state.items.unshift({ ...action.payload, id: generateShortId() });
+            toast.success('Товар добавлен в корзину');
         },
         removeFromCart: (state, action: PayloadAction<{ id: string }>) => {
             state.items = state.items.filter((item) => item.id !== action.payload.id);
