@@ -1,3 +1,5 @@
+@use 'mixins' as *;
+
 body {
     @include fluid-text(18, 16);
 

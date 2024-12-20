@@ -1,6 +1,7 @@
 import { memo } from 'react';
 import clsx from 'clsx';
 import cls from './CommentList.module.scss';
+
 import { I_Comment } from '../../model/types/comment';
 import { CommentCard } from '../CommentCard/CommentCard';
 

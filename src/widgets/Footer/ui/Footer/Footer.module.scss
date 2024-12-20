@@ -1,5 +1,6 @@
-@import '@/app/styles/mixins.scss';
-@import '@/app/styles/media.scss';
+@use '@/app/styles/mixins' as *;
+@use '@/app/styles/media' as *;
+
 .Footer {
     @include flex-center();
     gap: 50px;

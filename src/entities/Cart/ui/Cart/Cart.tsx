@@ -3,7 +3,6 @@ import clsx from 'clsx';
 import cls from './Cart.module.scss';
 import { CartEmpty } from '../components/CartEmpty/CartEmpty';
 import { CartProductCard } from '../components/CartProductCard/CartProductCard';
-// import { productCartData } from '../../data/productCartData';
 import { CartTotal } from '../components/CartTotal/CartTotal';
 import { useCart } from '../../model/hooks/useCart';
 import { useCartActions } from '../../model/hooks/useCartActions';

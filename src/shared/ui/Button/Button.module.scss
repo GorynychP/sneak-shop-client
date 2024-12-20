@@ -1,4 +1,5 @@
-@import '@/app/styles/mixins.scss';
+@use '@/app/styles/mixins' as *;
+
 .Button {
     display: flex;
     align-items: center;

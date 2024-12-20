@@ -1,10 +1,17 @@
 import { memo, useEffect } from 'react';
 import clsx from 'clsx';
 import cls from './CommentContainer.module.scss';
-import { CommentList, I_Comment } from '@/entities/Comment';
-import { AddCommentForm, useAddCommentAction } from '@/features/comment';
-import { useAppSelector } from '@/shared/model';
+
+// Rollup при сборке в реэкспорте через index.ts видит циклическую зависимость, просит полный путь(проблема!!!)
+import { CommentList } from '@/entities/Comment/ui/CommentList/CommentList';
+import { I_Comment } from '@/entities/Comment';
+
+// Rollup при сборке в реэкспорте через index.ts видит циклическую зависимость, просит полный путь(проблема!!!)
+import { AddCommentForm } from '@/features/comment/ui/AddCommentForm/AddCommentForm';
+import { useAddCommentAction } from '@/features/comment';
+
 import { selectUserAuthInited } from '@/entities/User';
+import { useAppSelector } from '@/shared/model';
 
 interface CommentContainerProps {
     className?: string;

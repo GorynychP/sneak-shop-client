@@ -1,5 +1,8 @@
 import { axiosWithAuth } from '@/shared/api/api.interceptors';
-import { CommentService, I_Comment } from '@/entities/Comment';
+
+// Rollup при сборке в реэкспорте через index.ts видит циклическую зависимость(проблема!!!)
+import { CommentService } from '@/entities/Comment/services/comment.service';
+import { I_Comment } from '@/entities/Comment';
 
 class CommentAdminService extends CommentService {
     async getAll() {

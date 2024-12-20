@@ -1,15 +1,19 @@
 import { memo } from 'react';
 import clsx from 'clsx';
 import cls from './CommentCard.module.scss';
+
 import { I_Comment } from '../../model/types/comment';
-import { HStack } from '@/shared/ui/Stack';
-import AccountImage from '@/shared/assets/icon/account.svg';
-import { formatData } from '@/shared/lib/utils/format/formatData';
-import DeleteImage from '@/shared/assets/icon/trash-solid.svg?react';
-import { useAppDispatch, useAppSelector } from '@/shared/model';
 import { deleteCommentThunk } from '../../api/deleteCommentThunk';
-import { selectIsUserAdmin, selectUserData } from '@/entities/User';
+
+import { HStack } from '@/shared/ui/Stack';
 import { StarRating } from '@/shared/ui/StarRating';
+import { useAppDispatch, useAppSelector } from '@/shared/model';
+import { formatData } from '@/shared/lib/utils/format/formatData';
+
+import AccountImage from '@/shared/assets/icon/account.svg';
+import DeleteImage from '@/shared/assets/icon/trash-solid.svg?react';
+
+import { selectIsUserAdmin, selectUserData } from '@/entities/User';
 
 interface CommentCardProps {
     className?: string;

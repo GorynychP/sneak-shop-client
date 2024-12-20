@@ -1,4 +1,4 @@
-@import '@/app/styles/mixins.scss';
+@use '@/app/styles/mixins' as *;
 .CardsSwiper {
     display: flex;
     flex-direction: column;

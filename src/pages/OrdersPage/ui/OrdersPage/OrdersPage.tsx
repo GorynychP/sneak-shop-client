@@ -1,7 +1,9 @@
-import { Orders } from '@/entities/Orders';
+import { memo } from 'react';
+// Rollup при сборке в реэкспорте через index.ts видит циклическую зависимость(проблема!!!)
+import { Orders } from '@/entities/Orders/ui/Orders/Orders';
+
 import { Breadcrumb } from '@/features/Breadcrumbs';
 import { Page } from '@/widgets/Page';
-import { memo } from 'react';
 
 const OrdersPage = memo(() => {
     return (

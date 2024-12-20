@@ -1,14 +1,16 @@
 import { memo } from 'react';
 import clsx from 'clsx';
 import cls from './ProfileCard.module.scss';
+
 import { Input } from '@/shared/ui/Input';
 import { HStack } from '@/shared/ui/Stack';
-import AccountImage from '@/shared/assets/icon/account.svg';
 import { Button } from '@/shared/ui/Button';
+import AccountImage from '@/shared/assets/icon/account.svg';
+
+import { useAppDispatch, useAppSelector } from '@/shared/model';
 import { I_Profile } from '../../model/types/profile';
 import { useProfileActions } from '../../model/hooks/useProfileActions';
 import { updateProfileThunk } from '../../api/updateProfileThunk';
-import { useAppDispatch, useAppSelector } from '@/shared/model';
 import { selectIsEditProfile } from '../../model/slice/profileSlice';
 
 export enum Country {
@@ -44,9 +46,12 @@ export const ProfileCard = memo((props: ProfileCardProps) => {
         onChangeCity,
         onChangeAddress,
     } = props;
-    const { resetEditProfile } = useProfileActions();
     const isEdit = useAppSelector(selectIsEditProfile);
+
+    const { resetEditProfile } = useProfileActions();
+
     const dispatch = useAppDispatch();
+
     const onSaveProfile = () => {
         dispatch(updateProfileThunk());
     };

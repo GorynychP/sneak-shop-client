@@ -1,4 +1,4 @@
-@import '@/app/styles/media';
+@use '@/app/styles/media' as *;
 
 .MainLayout {
     --headerHeight: 85px;

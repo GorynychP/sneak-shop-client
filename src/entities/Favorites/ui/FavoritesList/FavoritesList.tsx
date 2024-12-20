@@ -1,16 +1,19 @@
 import { memo, ReactNode, useCallback } from 'react';
 import clsx from 'clsx';
 import cls from './FavoritesList.module.scss';
-import { FavoriteItem } from '../FavoriteItem/FavoriteItem';
-import { VStack } from '@/shared/ui/Stack';
-import { Button } from '@/shared/ui/Button';
 
 import { I_Product } from '@/entities/Product';
-import { getRouteCatalog } from '@/shared/constants/router';
-import { useNavigate } from 'react-router-dom';
-import { useClose } from '@headlessui/react';
+
+import { FavoriteItem } from '../FavoriteItem/FavoriteItem';
 import { useLocalFavorites } from '../../api/useLocalFavorites';
 import { useFavoritesAction } from '../../model/hooks/useFavoritesAction';
+
+import { VStack } from '@/shared/ui/Stack';
+import { Button } from '@/shared/ui/Button';
+import { getRouteCatalog } from '@/shared/constants/router';
+
+import { useClose } from '@headlessui/react';
+import { useNavigate } from 'react-router-dom';
 
 interface FavoritesListProps {
     className?: string;

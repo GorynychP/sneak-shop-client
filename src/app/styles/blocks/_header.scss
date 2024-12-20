@@ -1,3 +1,5 @@
+@use '../mixins' as *;
+@use '../media' as *;
 .header {
     --headerHeight: 85px;
     display: flex;

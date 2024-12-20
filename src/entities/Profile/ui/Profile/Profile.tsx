@@ -1,10 +1,12 @@
 import { memo, useCallback } from 'react';
 import clsx from 'clsx';
 import cls from './Profile.module.scss';
+
 import { ProfileCard } from '../ProfileCard/ProfileCard';
 import { useProfile } from '../../api/hooks/useProfile';
-import { PageLoader } from '@/widgets/PageLoader';
 import { useProfileActions } from '../../model/hooks/useProfileActions';
+
+import { PageLoader } from '@/widgets/PageLoader';
 import { useAppSelector } from '@/shared/model';
 
 interface ProfileProps {
@@ -22,6 +24,7 @@ export const Profile = memo(({ className }: ProfileProps) => {
         },
         [updateProfile],
     );
+
     const onChangePhone = useCallback(
         (value?: string) => {
             updateProfile({ phone: value });
@@ -35,6 +38,7 @@ export const Profile = memo(({ className }: ProfileProps) => {
         },
         [updateProfile],
     );
+
     const onChangeCountry = useCallback(
         (value?: string) => {
             updateProfile({ country: value });

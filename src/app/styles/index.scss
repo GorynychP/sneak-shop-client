@@ -1,7 +1,17 @@
-@import 'normalize', 'fonts', 'mixins', 'media', 'variables', 'utils', 'globals';
-@import 'theme/dark';
-@import 'theme/normal';
-@import 'blocks/loader', 'blocks/field', 'blocks/swiper-slide', 'blocks/header', 'blocks/slider';
+@use 'normalize';
+@use 'fonts';
+@use 'mixins';
+@use 'media';
+@use 'variables';
+@use 'utils';
+@use 'globals';
+@use 'theme/dark';
+@use 'theme/normal';
+@use 'blocks/loader';
+@use 'blocks/field';
+@use 'blocks/swiper-slide';
+@use 'blocks/header';
+@use 'blocks/slider';
 
 // div {
 //     border: solid 1px red;

@@ -1,9 +1,11 @@
 import { memo, useCallback } from 'react';
 import clsx from 'clsx';
 import cls from './AddCommentForm.module.scss';
-import { Button } from '@/shared/ui/Button';
+
 import { useAddCommentAction } from '../../model/hooks/useAddCommentAction';
 import { createCommentThunk } from '../../api/createCommentThunk';
+
+import { Button } from '@/shared/ui/Button';
 import { useAppDispatch, useAppSelector } from '@/shared/model';
 import { StarRating } from '@/shared/ui/StarRating';
 

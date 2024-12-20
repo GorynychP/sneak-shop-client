@@ -6,7 +6,7 @@ import { MutationObserver } from '@tanstack/react-query';
 // import { I_Profile } from '../model/types/profile';
 import toast from 'react-hot-toast';
 
-export const updateProfileThunk = (): AppThunk => async (dispatch, getState) => {
+export const updateProfileThunk = (): AppThunk => async (_, getState) => {
     const profile = getState().profile.form;
     await new MutationObserver(queryClient, {
         mutationFn: () => {

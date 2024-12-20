@@ -17,7 +17,7 @@ export const filtersSlice = createSlice({
         resetFilters: () => {
             return initialState;
         },
-        resetAndSetFilters: (state, action: PayloadAction<I_FiltersProduct>) => {
+        resetAndSetFilters: (_, action: PayloadAction<I_FiltersProduct>) => {
             return { ...initialState, ...action.payload };
         },
     },

@@ -1,6 +1,8 @@
 import { axiosWithAuth } from '@/shared/api/api.interceptors';
 import { I_User, UserRole } from '@/entities/User/model/types/user';
-import { UserService } from '@/entities/User';
+
+// Rollup при сборке в реэкспорте через index.ts видит циклическую зависимость(проблема!??)
+import { UserService } from '@/entities/User/services/user.service';
 
 class UsersAdminService extends UserService {
     async getAllUsers() {
